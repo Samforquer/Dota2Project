@@ -31,6 +31,9 @@ public class HeroPickerApplication {
                     throw new RuntimeException("Error: Incorrect number of fields for hero: " + line + " in" + FILE_BASE_PATH);
                 } Hero hero = new Hero(heroFields[0], heroFields[1],heroFields[2] ,heroFields[3],heroFields[4],heroFields[5],heroFields[6],heroFields[7],heroFields[8],heroFields[9]);
                 // need to identify how to separate this data out into something that makes sense. just checking that the csv loads correctly for now.
+
+                // I think I could make like 9 for loops each starting from a different spot and incrementing by 9 or however many fields there are... idk if thats the best way to do this .
+                // but it might technically work.
             }
             System.out.println(heroDataList);
         } catch (FileStorageException e) {
