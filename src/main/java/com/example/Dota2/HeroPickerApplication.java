@@ -27,10 +27,12 @@ public class HeroPickerApplication {
             List<String> heroDataList = FileService.readContentsOfFile(FILE_BASE_PATH); // is there any reason I should make this a list of Hero objects?
             for (String line : heroDataList) {
                 String[] heroFields = line.split(FIELD_DELIMITER);
-                if (heroFields.length != 9) {
+                if (heroFields.length != 10) {
                     throw new RuntimeException("Error: Incorrect number of fields for hero: " + line + " in" + FILE_BASE_PATH);
-                }
+                } Hero hero = new Hero(heroFields[0], heroFields[1],heroFields[2] ,heroFields[3],heroFields[4],heroFields[5],heroFields[6],heroFields[7],heroFields[8],heroFields[9]);
+                // need to identify how to separate this data out into something that makes sense. just checking that the csv loads correctly for now.
             }
+            System.out.println(heroDataList);
         } catch (FileStorageException e) {
             e.printStackTrace();
         }

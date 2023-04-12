@@ -33,6 +33,9 @@ public class Hero {
         this.aboveAncientWinRate = aboveAncientWinRate;
     }
 
+    public Hero(String heroField, String heroField1, String heroField2, String heroField3, String heroField4, String heroField5, String heroField6, String heroField7, String heroField8, String heroField9) {
+    }
+
     public double getBelowArchonWinRate() {
         return belowArchonWinRate;
     }
