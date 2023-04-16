@@ -18,13 +18,13 @@ public class Hero {
 
     public Hero() {
     }
-
-    public Hero(String name, int position, String attributeType, String attackType, int complexity, double belowArchonWinRate,
+//HeroName,AttributeType,AttackType,Position,Complexity,WinRateSkill1(UnderArchon),WinrateSkill2(Archon),WinrateSkill3(Legend),WinrateSkill4(Ancient),WinrateSkill5(Divine-Immortal)
+    public Hero(String name,String attributeType,  String attackType, int position,  int complexity, double belowArchonWinRate,
                 double archonWinRate, double legendWinRate, double ancientWinRate, double aboveAncientWinRate) {
         this.name = name;
-        this.position = position;
         this.attributeType = attributeType;
         this.attackType = attackType;
+        this.position = position;
         this.complexity = complexity;
         this.belowArchonWinRate = belowArchonWinRate;
         this.archonWinRate = archonWinRate;
