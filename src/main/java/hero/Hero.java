@@ -13,13 +13,15 @@ public class Hero {
     private double ancientWinRate;
     private double aboveAncientWinRate;
 
-    // are there any other initial things I need to add here?
-
 
     public Hero() {
     }
-//HeroName,AttributeType,AttackType,Position,Complexity,WinRateSkill1(UnderArchon),WinrateSkill2(Archon),WinrateSkill3(Legend),WinrateSkill4(Ancient),WinrateSkill5(Divine-Immortal)
-    public Hero(String name,String attributeType,  String attackType, int position,  int complexity, double belowArchonWinRate,
+
+    //HEADERS >>
+//HeroName,AttributeType,AttackType,Position,Complexity,WinRateSkill1(UnderArchon),WinrateSkill2(Archon),
+// WinrateSkill3(Legend),WinrateSkill4(Ancient),WinrateSkill5(Divine-Immortal)
+
+    public Hero(String name, String attributeType, String attackType, int position, int complexity, double belowArchonWinRate,
                 double archonWinRate, double legendWinRate, double ancientWinRate, double aboveAncientWinRate) {
         this.name = name;
         this.attributeType = attributeType;
@@ -33,7 +35,8 @@ public class Hero {
         this.aboveAncientWinRate = aboveAncientWinRate;
     }
 
-    public Hero(String heroField, String heroField1, String heroField2, String heroField3, String heroField4, String heroField5, String heroField6, String heroField7, String heroField8, String heroField9) {
+    public Hero(String heroField, String heroField1, String heroField2, String heroField3, String heroField4,
+                String heroField5, String heroField6, String heroField7, String heroField8, String heroField9) {
     }
 
     public double getBelowArchonWinRate() {
@@ -122,6 +125,15 @@ public class Hero {
 
     public void setWinRate(double winRate) {
         this.belowArchonWinRate = winRate;
+    }
+
+
+    public String toString() {
+        return "Hero name: " + name + "\nAttribute type: " + attributeType + "\nAttack type: " + attackType
+                + "\nPosition: " + position + "\nComplexity: " + complexity + "\nBelow Archon win rate: "
+                + belowArchonWinRate + "\nArchon win rate: " + archonWinRate + "\nLegend win rate: "
+                + legendWinRate + "\nAncient win rate: " + ancientWinRate + "\nAbove Ancient win rate: "
+                + aboveAncientWinRate;
     }
 }
 

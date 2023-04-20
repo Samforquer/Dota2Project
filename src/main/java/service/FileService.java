@@ -1,5 +1,6 @@
 package service;
 
+import hero.Hero;
 import service.exception.FileStorageException;
 
 import java.io.*;
@@ -26,16 +27,38 @@ public class FileService {
     }
 
 
-    public static List<String> readContentsOfFile(String filename) throws FileStorageException {
-        List<String> results = new ArrayList<>();
+    public static List<Hero> readContentsOfFile(String filename) throws FileStorageException {
+        List<Hero> heroes = new ArrayList<>();
 
         try (Scanner scanner = new Scanner(new File(filename))) {
+            scanner.useDelimiter(",");
+            // skip the header row
+            if (scanner.hasNextLine()) {
+                scanner.nextLine();
+            }
             while (scanner.hasNextLine()) {
-                results.add(scanner.nextLine());
+                String line = scanner.nextLine();
+                String[] fields = line.split(",");
+
+                String name = fields[0];
+                String attributeType = fields[1];
+                String attackType = fields[2];
+                int position = Integer.parseInt(fields[3]);
+                int complexity = Integer.parseInt(fields[4]);
+                double belowArchonWinRate = Double.parseDouble(fields[5]);
+                double archonWinRate = Double.parseDouble(fields[6]);
+                double legendWinRate = Double.parseDouble(fields[7]);
+                double ancientWinRate = Double.parseDouble(fields[8]);
+                double aboveAncientWinRate = Double.parseDouble(fields[9]);
+
+
+                Hero hero = new Hero(name, attributeType, attackType, position, complexity, belowArchonWinRate,
+                        archonWinRate, legendWinRate, ancientWinRate, aboveAncientWinRate);
+                heroes.add(hero);
             }
         } catch (FileNotFoundException e) {
             throw new FileStorageException("File " + filename + " was not found.");
         }
-        return results;
+        return heroes;
     }
 }
