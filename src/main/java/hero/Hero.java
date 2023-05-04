@@ -33,10 +33,7 @@ public class Hero {
         this.ancientWinRate = ancientWinRate;           // field[8]
         this.aboveAncientWinRate = aboveAncientWinRate; // field[9]
     }
-// potential hero declaration. I am not sure.
-//    Hero hero = new Hero(fields[0], fields[1], fields[2], Integer.parseInt(fields[3]), Integer.parseInt(fields[4]),
-//            Double.parseDouble(fields[5]), Double.parseDouble(fields[6]), Double.parseDouble(fields[7]), Double.parseDouble(fields[8])
-//            ,Double.parseDouble(fields[9]));
+
     public double getBelowArchonWinRate() {
         return belowArchonWinRate;
     }

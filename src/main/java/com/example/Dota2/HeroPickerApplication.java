@@ -62,7 +62,8 @@ public class HeroPickerApplication {
                     heroes.add(hero);
 
                 }
-            } for (Hero hero:heroes){
+            }
+            for (Hero hero : heroes) {
                 System.out.println("Name: " + hero.getName());
                 System.out.println("Attribute Type: " + hero.getAttributeType());
                 System.out.println("Attack Type: " + hero.getAttackType());
