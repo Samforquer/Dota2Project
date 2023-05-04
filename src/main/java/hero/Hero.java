@@ -1,5 +1,6 @@
 package hero;
-
+import java.util.ArrayList;
+import java.util.List;
 public class Hero {
 
     private String name;
@@ -135,6 +136,15 @@ public class Hero {
                 + legendWinRate + "\nAncient win rate: " + ancientWinRate + "\nAbove Ancient win rate: "
                 + aboveAncientWinRate;
     }
+
+    public String[] split(String delimiter) {
+        return new String[] {
+                name, attributeType, attackType, java.lang.String.valueOf(position), java.lang.String.valueOf(complexity),
+                java.lang.String.valueOf(belowArchonWinRate), java.lang.String.valueOf(archonWinRate),
+                java.lang.String.valueOf(legendWinRate), java.lang.String.valueOf(ancientWinRate),
+                java.lang.String.valueOf(aboveAncientWinRate)};
+    }
+
 }
 
-// maybe look into a toString method.
+

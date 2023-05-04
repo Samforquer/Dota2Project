@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class FileService {
     private List<Hero> heroList = new ArrayList<>();
+
     public static void writeContentsToFile(String contents, String filename, boolean appendFile) throws FileStorageException {
 
         try (
@@ -35,50 +36,28 @@ public class FileService {
             // skip the header row
             if (scanner.hasNextLine()) {
                 scanner.nextLine();
+
             }
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                String[] values = line.split(",");
+                String[] fields = line.split(",");
 
-                // create a new Hero object every 10 values
-                for (int i = 0; i < values.length; i += 10) {
-                    String name = values[i];
-                    String attributeType = values[i+1];
-                    String attackType = values[i+2];
-                    int position = Integer.parseInt(values[i+3]);
-                    int complexity = Integer.parseInt(values[i+4]);
-                    double belowArchonWinRate = Double.parseDouble(values[i+5]);
-                    double archonWinRate = Double.parseDouble(values[i+6]);
-                    double legendWinRate = Double.parseDouble(values[i+7]);
-                    double ancientWinRate = Double.parseDouble(values[i+8]);
-                    double aboveAncientWinRate = Double.parseDouble(values[i+9]);
+                String name = fields[0];
+                String attributeType = fields[1];
+                String attackType = fields[2];
+                int position = Integer.parseInt(fields[3]);
+                int complexity = Integer.parseInt(fields[4]);
+                double belowArchonWinRate = Double.parseDouble(fields[5]);
+                double archonWinRate = Double.parseDouble(fields[6]);
+                double legendWinRate = Double.parseDouble(fields[7]);
+                double ancientWinRate = Double.parseDouble(fields[8]);
+                double aboveAncientWinRate = Double.parseDouble(fields[9]);
 
-                    Hero hero = new Hero(name, attributeType, attackType, position, complexity, belowArchonWinRate,
-                            archonWinRate, legendWinRate, ancientWinRate, aboveAncientWinRate);
 
-                    heroes.add(hero);
+                Hero hero = new Hero(name, attributeType, attackType, position, complexity, belowArchonWinRate,
+                        archonWinRate, legendWinRate, ancientWinRate, aboveAncientWinRate);
+                heroes.add(hero);
 
-                }
-//            while (scanner.hasNextLine()) {
-//                String line = scanner.nextLine();
-//                String[] fields = line.split(",");
-//
-//                String name = fields[0];
-//                String attributeType = fields[1];
-//                String attackType = fields[2];
-//                int position = Integer.parseInt(fields[3]);
-//                int complexity = Integer.parseInt(fields[4]);
-//                double belowArchonWinRate = Double.parseDouble(fields[5]);
-//                double archonWinRate = Double.parseDouble(fields[6]);
-//                double legendWinRate = Double.parseDouble(fields[7]);
-//                double ancientWinRate = Double.parseDouble(fields[8]);
-//                double aboveAncientWinRate = Double.parseDouble(fields[9]);
-//
-//
-//                Hero hero = new Hero(name, attributeType, attackType, position, complexity, belowArchonWinRate,
-//                        archonWinRate, legendWinRate, ancientWinRate, aboveAncientWinRate);
-//                heroes.add(hero);
-//
             }
         } catch (FileNotFoundException e) {
             throw new FileStorageException("File " + filename + " was not found.");

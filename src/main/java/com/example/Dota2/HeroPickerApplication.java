@@ -6,9 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import service.FileService;
 import service.exception.FileStorageException;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,33 +25,32 @@ public class HeroPickerApplication {
     private final Scanner userInput = new Scanner(System.in);
 
     public static void main(String[] args) {
-       // SpringApplication.run(HeroPickerApplication.class, args);
+        // SpringApplication.run(HeroPickerApplication.class, args);
         HeroPickerApplication app = new HeroPickerApplication();
         app.initialize();
         app.run();
 
 
-
     }
 
 
-
-    private void initialize(){
+    private void initialize() {
+        // The purpose of this is to take in data about Heroes from a CSV and split them into appropriate fields.
         try {
             List<Hero> heroList = FileService.readContentsOfFile(FILE_BASE_PATH);
             for (Hero line : heroList) {
-                System.out.println(line);
+                String[] fields = line.split(FIELD_DELIMITER);
+                if (fields.length != 10) {
+                    throw new RuntimeException("Error: Incorrect number of fields for hero: " + line + "in " + FILE_BASE_PATH);
+                }
             }
         } catch (FileStorageException e) {
             e.printStackTrace();
         }
-      }
+    }
 
 
-
-
-    //
-
+    // This whole menu needs changed, there are definitely ways to simplify it.
     private void run() {
         while (true) {
             printMainMenu();
@@ -500,14 +501,11 @@ public class HeroPickerApplication {
                 break;
             }
         }
-     }
+    }
 
 //    public List<String> recommendHeroes(int position, int skillLevel, int complexity) {
 //        // TODO: Implement recommendation algorithm based on user input
 //        List<String> recommendedHeroes = new ArrayList<>();
-
-
-
 
 
     private void printMainMenu() {
