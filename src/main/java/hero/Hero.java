@@ -1,6 +1,8 @@
 package hero;
+
 import java.util.ArrayList;
 import java.util.List;
+
 public class Hero {
 
     private String name;
@@ -18,10 +20,6 @@ public class Hero {
     public Hero() {
     }
 
-    //HEADERS >>
-//HeroName,AttributeType,AttackType,Position,Complexity,WinRateSkill1(UnderArchon),WinrateSkill2(Archon),
-// WinrateSkill3(Legend),WinrateSkill4(Ancient),WinrateSkill5(Divine-Immortal)
-
     public Hero(String name, String attributeType, String attackType, int position, int complexity, double belowArchonWinRate,
                 double archonWinRate, double legendWinRate, double ancientWinRate, double aboveAncientWinRate) {
         this.name = name;
@@ -34,10 +32,6 @@ public class Hero {
         this.legendWinRate = legendWinRate;
         this.ancientWinRate = ancientWinRate;
         this.aboveAncientWinRate = aboveAncientWinRate;
-    }
-
-    public Hero(String heroField, String heroField1, String heroField2, String heroField3, String heroField4,
-                String heroField5, String heroField6, String heroField7, String heroField8, String heroField9) {
     }
 
     public double getBelowArchonWinRate() {
@@ -138,7 +132,7 @@ public class Hero {
     }
 
     public String[] split(String delimiter) {
-        return new String[] {
+        return new String[]{
                 name, attributeType, attackType, java.lang.String.valueOf(position), java.lang.String.valueOf(complexity),
                 java.lang.String.valueOf(belowArchonWinRate), java.lang.String.valueOf(archonWinRate),
                 java.lang.String.valueOf(legendWinRate), java.lang.String.valueOf(ancientWinRate),

@@ -39,7 +39,7 @@ public class HeroPickerApplication {
         try {
             List<Hero> heroList = FileService.readContentsOfFile(FILE_BASE_PATH);
             for (Hero line : heroList) {
-                String[] fields = line.split(FIELD_DELIMITER);
+                String[] fields = line.split(FIELD_DELIMITER); // This calls the custom split method in the Hero class.
                 if (fields.length != 10) {
                     throw new RuntimeException("Error: Incorrect number of fields for hero: " + line + "in " + FILE_BASE_PATH);
                 }
