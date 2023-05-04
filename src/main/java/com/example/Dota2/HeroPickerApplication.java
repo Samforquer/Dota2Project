@@ -27,9 +27,9 @@ public class HeroPickerApplication {
     public static void main(String[] args) {
         // SpringApplication.run(HeroPickerApplication.class, args);
         HeroPickerApplication app = new HeroPickerApplication();
-        app.run();
         HeroService heroService = new HeroService();
         heroService.initialize();
+        app.run();
         List<Hero> heroes = heroService.getHeroes();
 
     }

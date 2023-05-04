@@ -48,12 +48,22 @@ public class HeroService {
 
 
     public List<Hero> filterByComplexity(List<Hero> heroes, int complexity) {
-        List<Hero> filteredHeroes = new ArrayList<>();
+        List<Hero> heroComplexityList = new ArrayList<>();
         for (Hero hero : heroes) {
             if (hero.getComplexity() == complexity) {
-                filteredHeroes.add(hero);
+                heroComplexityList.add(hero);
             }
         }
-        return filteredHeroes;
+        return heroComplexityList;
+    }
+
+    public List<Hero> filterByPosition(List<Hero> heroes, int position) {
+        List<Hero> heroPositionList = new ArrayList<>();
+        for (Hero hero : heroes) {
+            if (hero.getPosition() == position) {
+                heroPositionList.add(hero);
+            }
+        }
+        return heroPositionList;
     }
 }
