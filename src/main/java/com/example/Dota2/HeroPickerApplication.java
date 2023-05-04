@@ -36,13 +36,44 @@ public class HeroPickerApplication {
 
     private void initialize() {
         // The purpose of this is to take in data about Heroes from a CSV and split them into appropriate fields.
+        List<Hero> heroes = new ArrayList<>();
+
         try {
-            List<Hero> heroList = FileService.readContentsOfFile(FILE_BASE_PATH);
-            for (Hero line : heroList) {
-                String[] fields = line.split(FIELD_DELIMITER); // This calls the custom split method in the Hero class.
+            List<Hero> lines = FileService.readContentsOfFile(FILE_BASE_PATH);
+            for (Hero line : lines) {
+                String[] fields = line.split(FIELD_DELIMITER);
                 if (fields.length != 10) {
                     throw new RuntimeException("Error: Incorrect number of fields for hero: " + line + "in " + FILE_BASE_PATH);
+                } else {
+                    String name = fields[0];
+                    String attributeType = fields[1];
+                    String attackType = fields[2];
+                    int position = Integer.parseInt(fields[3]);
+                    int complexity = Integer.parseInt(fields[4]);
+                    double belowArchonWinRate = Double.parseDouble(fields[5]);
+                    double archonWinRate = Double.parseDouble(fields[6]);
+                    double legendWinRate = Double.parseDouble(fields[7]);
+                    double ancientWinRate = Double.parseDouble(fields[8]);
+                    double aboveAncientWinRate = Double.parseDouble(fields[9]);
+
+                    Hero hero = new Hero(name, attributeType, attackType, position, complexity, belowArchonWinRate,
+                            archonWinRate, legendWinRate, ancientWinRate, aboveAncientWinRate);
+
+                    heroes.add(hero);
+
                 }
+            } for (Hero hero:heroes){
+                System.out.println("Name: " + hero.getName());
+                System.out.println("Attribute Type: " + hero.getAttributeType());
+                System.out.println("Attack Type: " + hero.getAttackType());
+                System.out.println("Position: " + hero.getPosition());
+                System.out.println("Complexity: " + hero.getComplexity());
+                System.out.println("Below Archon Win Rate: " + hero.getBelowArchonWinRate());
+                System.out.println("Archon Win Rate: " + hero.getArchonWinRate());
+                System.out.println("Legend Win Rate: " + hero.getLegendWinRate());
+                System.out.println("Ancient Win Rate: " + hero.getAncientWinRate());
+                System.out.println("Above Ancient Win Rate: " + hero.getAboveAncientWinRate());
+                System.out.println("------------------------");
             }
         } catch (FileStorageException e) {
             e.printStackTrace();
@@ -50,7 +81,8 @@ public class HeroPickerApplication {
     }
 
 
-    // This whole menu needs changed, there are definitely ways to simplify it.
+    // This whole menu needs changed, there are definitely ways to simplify it. I'll probably see if I can change
+    // it to a switch case menu.
     private void run() {
         while (true) {
             printMainMenu();

@@ -14,6 +14,8 @@ public interface HeroDao {
     List<Hero> searchByWinRate(double winRate);
 
     List<Hero> searchByPositionAndWinRate(int position, double winRate);
+    // I am not sure what I'm going to do with the filter method yet.
+    List<Hero> filterByPositionWinRateAndComplexity(int position, double winRate, int complexity);
 
 
 }
