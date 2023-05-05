@@ -50,8 +50,9 @@ public class HeroService {
 
 
     public List<Hero> filterByComplexityAndPosition(List<Hero> heroes, int complexity, int position) {
+        // <= complexity so users can select the HIGHEST level of complexity, for example: max complexity 3 will return 1 2 and 3 
         return heroes.stream()
-                .filter(hero -> hero.getComplexity() == complexity && hero.getPosition() == position)
+                .filter(hero -> hero.getComplexity() <= complexity && hero.getPosition() == position)
                 .collect(Collectors.toList());
     }
 

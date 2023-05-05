@@ -18,6 +18,8 @@ import java.util.Scanner;
 // add future feature branch for SQL integration.  create new branch after program is working. finish SQL version
 // then merge back into master.
 
+// Add dependency injection later.
+
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 // don't forget to remove the 'exclude' part later.
@@ -41,7 +43,8 @@ public class HeroPickerApplication {
                 " (1 = low, 2 = medium, 3 = high skill): ", 1, 3);
         int position = promptForInteger(scanner, "Enter the position (1 = Carry, 2 = Midlane, 3 = Offlane," +
                 " 4 = Soft Support, 5 = Hard Support): ", 1, 5);
-        int skillLevel = promptForInteger(scanner, "Enter the skill level (1-5): ", 1, 5);
+        int skillLevel = promptForInteger(scanner, "Enter your skill bracket (1 = Below Archon, 2 = Archon, 3 = Legend," +
+                " 4 = Ancient, 5 = Above Ancient): ", 1, 5);
 
         List<Hero> filteredHeroes = heroService.filterByComplexityAndPosition(heroService.getHeroes(), complexity, position);
 //    TODO I need to figure out how to sort the filtered heroes by win rate in Desc. order.
