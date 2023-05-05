@@ -32,24 +32,39 @@ public class HeroPickerApplication {
         HeroService heroService = new HeroService();
         heroService.initialize();
         app.run(heroService);
-        List<Hero> heroes = heroService.getHeroes();
     }
-
 
     private void run(HeroService heroService) {
         Scanner scanner = new Scanner(System.in);
 
-        int complexity = promptForInteger(scanner, "Enter the complexity level (1-3): ", 1, 3);
-        int position = promptForInteger(scanner, "Enter the position (1-5): ", 1, 5);
+        int complexity = promptForInteger(scanner, "Enter the max complexity of Hero you wish to play" +
+                " (1 = low, 2 = medium, 3 = high skill): ", 1, 3);
+        int position = promptForInteger(scanner, "Enter the position (1 = Carry, 2 = Midlane, 3 = Offlane," +
+                " 4 = Soft Support, 5 = Hard Support): ", 1, 5);
         int skillLevel = promptForInteger(scanner, "Enter the skill level (1-5): ", 1, 5);
 
         List<Hero> filteredHeroes = heroService.filterByComplexityAndPosition(heroService.getHeroes(), complexity, position);
+//    TODO I need to figure out how to sort the filtered heroes by win rate in Desc. order.
         List<Hero> sortedHeroes = heroService.sortByWinRate(filteredHeroes, skillLevel);
 
-        // Print the filtered heroes
-        System.out.println("Filtered heroes:");
+
+
+        // TODO I want to make this look better when printed out, and have Headers above things
+        //  for example Hero Name || Position || Win Rate for chosen bracket and then have columns of the associated data
+        //  below.
+
+        System.out.println("Here are the top recommended Heroes based on your selections, good luck! : ");
         for (Hero hero : filteredHeroes) {
-            System.out.println(hero.getName());
+            switch (skillLevel) {
+                case 1 -> System.out.println(hero.getName() + " " + hero.getPosition() + " " + hero.getBelowArchonWinRate());
+                case 2 -> System.out.println(hero.getName() + " " + hero.getPosition() + " " + hero.getArchonWinRate());
+                case 3 -> System.out.println(hero.getName() + " " + hero.getPosition() + " " + hero.getLegendWinRate());
+                case 4 -> System.out.println(hero.getName() + " " + hero.getPosition() + " " + hero.getAncientWinRate());
+                case 5 -> System.out.println(hero.getName() + " " + hero.getPosition() + " " + hero.getAboveAncientWinRate());
+                default -> System.out.println("Invalid skill level.");
+            }
+
+
         }
     }
 

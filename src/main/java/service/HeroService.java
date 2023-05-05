@@ -57,23 +57,12 @@ public class HeroService {
 
     public List<Hero> sortByWinRate(List<Hero> heroes, int skillLevel) {
         switch (skillLevel) {
-            case 1:
-                heroes.sort(Comparator.comparing(Hero::getBelowArchonWinRate).reversed());
-                break;
-            case 2:
-                heroes.sort(Comparator.comparing(Hero::getArchonWinRate).reversed());
-                break;
-            case 3:
-                heroes.sort(Comparator.comparing(Hero::getLegendWinRate).reversed());
-                break;
-            case 4:
-                heroes.sort(Comparator.comparing(Hero::getAncientWinRate).reversed());
-                break;
-            case 5:
-                heroes.sort(Comparator.comparing(Hero::getAboveAncientWinRate).reversed());
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid skill level: " + skillLevel);
+            case 1 -> heroes.sort(Comparator.comparing(Hero::getBelowArchonWinRate).reversed());
+            case 2 -> heroes.sort(Comparator.comparing(Hero::getArchonWinRate).reversed());
+            case 3 -> heroes.sort(Comparator.comparing(Hero::getLegendWinRate).reversed());
+            case 4 -> heroes.sort(Comparator.comparing(Hero::getAncientWinRate).reversed());
+            case 5 -> heroes.sort(Comparator.comparing(Hero::getAboveAncientWinRate).reversed());
+            default -> throw new IllegalArgumentException("Invalid skill level: " + skillLevel);
         }
         return heroes;
     }
