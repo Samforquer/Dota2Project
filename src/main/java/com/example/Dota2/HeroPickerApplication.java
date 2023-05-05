@@ -15,6 +15,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+// add future feature branch for SQL integration.  create new branch after program is working. finish SQL version
+// then merge back into master.
+
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 // don't forget to remove the 'exclude' part later.
@@ -29,468 +32,46 @@ public class HeroPickerApplication {
         HeroPickerApplication app = new HeroPickerApplication();
         HeroService heroService = new HeroService();
         heroService.initialize();
-        app.run();
+        app.run(heroService);
         List<Hero> heroes = heroService.getHeroes();
-
     }
 
 
 
 
 
-    // This whole menu needs changed, there are definitely ways to simplify it. I'll probably see if I can change
-    // it to a switch case menu.
-    private void run() {
-        while (true) {
-            printMainMenu();
-            int mainMenuSelection = promptForMenuSelection("Please make a role selection from 1-5: ");
-            if (mainMenuSelection == 1) {
-                // Carry loop  = 1
-                while (true) {
-                    printSkillLevelMenu();
-                    int skillLevelSelection = promptForMenuSelection("Please select a skill level from 1-5: ");
-                    if (skillLevelSelection == 1) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Hero list with appropriate filters");
-                            break;
-                            // placeholder til I can figure out how to put the filtered list here.
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 1 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 1 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 2) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 2 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 2 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 2 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 3) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 3 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 3 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 3 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 4) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 4 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 4 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 4 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 5) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 5 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 5 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Carry heroes > Skill level: 5 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    }
-                }
-                break;
 
+    private void run(HeroService heroService) {
+        Scanner scanner = new Scanner(System.in);
 
-            } else if (mainMenuSelection == 2) {
-                // Middle lane loop Midlane
-                while (true) {
-                    printSkillLevelMenu();
-                    int skillLevelSelection = promptForMenuSelection("Please select a skill level from 1-5: ");
-                    if (skillLevelSelection == 1) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 1 > Complexity: 1");
-                            break;
-                            // placeholder til I can figure out how to put the filtered list here.
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 1 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 1 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 2) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 2 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 2 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 2 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 3) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 3 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 3 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 3 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 4) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 4 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 4 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 4 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 5) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 5 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 5 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Midlane heroes > Skill level: 5 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    }
-                }
-                break;
-            } else if (mainMenuSelection == 3) {
-                // Offlane menu = 3
-                while (true) {
-                    printSkillLevelMenu();
-                    int skillLevelSelection = promptForMenuSelection("Please select a skill level from 1-5: ");
-                    if (skillLevelSelection == 1) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 1 > Complexity: 1");
-                            break;
-                            // placeholder til I can figure out how to put the filtered list here.
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 1 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 1 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 2) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 2 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 2 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 2 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 3) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 3 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 3 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 3 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 4) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 4 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 4 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 4 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 5) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 5 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 5 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Offlane heroes > Skill level: 5 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    }
-                }
-                break;
-            } else if (mainMenuSelection == 4) {
-                //  -- Soft Support = 4
-                while (true) {
-                    printSkillLevelMenu();
-                    int skillLevelSelection = promptForMenuSelection("Please select a skill level from 1-5: ");
-                    if (skillLevelSelection == 1) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 1 > Complexity: 1");
-                            break;
-                            // placeholder til I can figure out how to put the filtered list here.
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 1 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 1 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 2) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 2 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 2 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 2 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 3) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 3 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 3 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 3 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 4) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 4 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 4 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 4 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 5) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 5 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 5 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Soft Support heroes > Skill level: 5 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    }
-                }
-                break;
-            } else if (mainMenuSelection == 5) {
-                // Hard support menu = 5
-                while (true) {
-                    printSkillLevelMenu();
-                    int skillLevelSelection = promptForMenuSelection("Please select a skill level from 1-5: ");
-                    if (skillLevelSelection == 1) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 1 > Complexity: 1");
-                            break;
-                            // placeholder til I can figure out how to put the filtered list here.
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 1 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 1 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 2) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 2 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 2 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 2 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 3) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 3 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 3 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 3 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 4) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 4 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 4 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 4 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    } else if (skillLevelSelection == 5) {
-                        printComplexityLevelMenu();
-                        int complexityLevelSelection = promptForMenuSelection("Please select a complexity level from 1-3: ");
-                        if (complexityLevelSelection == 1) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 5 > Complexity: 1");
-                            // placeholder til I can figure out how to put the filtered list here.
-                            break;
-                        } else if (complexityLevelSelection == 2) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 5 > Complexity: 2");
-                            break;
-                        } else if (complexityLevelSelection == 3) {
-                            System.out.println("Display list of: Hard Support heroes > Skill level: 5 > Complexity: 3");
-                            break;
-                        } else if (complexityLevelSelection == 0) {
-                            break;
-                        }
-                    }
-                }
-                break;
-            } else if (mainMenuSelection == 0) {
-                break;
-            }
+        int complexity = promptForInteger(scanner, "Enter the complexity level (1-3): ", 1, 3);
+        int position = promptForInteger(scanner, "Enter the position (1-5): ", 1, 5);
+        int skillLevel = promptForInteger(scanner, "Enter the skill level (1-5): ", 1, 5);
+
+        List<Hero> filteredHeroes = heroService.filterByComplexityAndPosition(heroService.getHeroes(), complexity, position);
+        List<Hero> sortedHeroes = heroService.sortByWinRate(filteredHeroes, skillLevel);
+
+        // Print the filtered heroes
+        System.out.println("Filtered heroes:");
+        for (Hero hero : filteredHeroes) {
+            System.out.println(hero.getName());
         }
     }
+
+    private static int promptForInteger(Scanner scanner, String prompt, int min, int max) {
+        int value = 0;
+        do {
+            System.out.print(prompt);
+            try {
+                value = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                // Ignore invalid input
+            }
+        } while (value < min || value > max);
+        return value;
+    }
+
+
 
 //    public List<String> recommendHeroes(int position, int skillLevel, int complexity) {
 //        // TODO: Implement recommendation algorithm based on user input

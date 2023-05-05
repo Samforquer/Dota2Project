@@ -4,7 +4,9 @@ import hero.Hero;
 import service.exception.FileStorageException;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HeroService {
 
@@ -47,23 +49,34 @@ public class HeroService {
     }
 
 
-    public List<Hero> filterByComplexity(List<Hero> heroes, int complexity) {
-        List<Hero> heroComplexityList = new ArrayList<>();
-        for (Hero hero : heroes) {
-            if (hero.getComplexity() == complexity) {
-                heroComplexityList.add(hero);
-            }
-        }
-        return heroComplexityList;
+    public List<Hero> filterByComplexityAndPosition(List<Hero> heroes, int complexity, int position) {
+        return heroes.stream()
+                .filter(hero -> hero.getComplexity() == complexity && hero.getPosition() == position)
+                .collect(Collectors.toList());
     }
 
-    public List<Hero> filterByPosition(List<Hero> heroes, int position) {
-        List<Hero> heroPositionList = new ArrayList<>();
-        for (Hero hero : heroes) {
-            if (hero.getPosition() == position) {
-                heroPositionList.add(hero);
-            }
+    public List<Hero> sortByWinRate(List<Hero> heroes, int skillLevel) {
+        switch (skillLevel) {
+            case 1:
+                heroes.sort(Comparator.comparing(Hero::getBelowArchonWinRate).reversed());
+                break;
+            case 2:
+                heroes.sort(Comparator.comparing(Hero::getArchonWinRate).reversed());
+                break;
+            case 3:
+                heroes.sort(Comparator.comparing(Hero::getLegendWinRate).reversed());
+                break;
+            case 4:
+                heroes.sort(Comparator.comparing(Hero::getAncientWinRate).reversed());
+                break;
+            case 5:
+                heroes.sort(Comparator.comparing(Hero::getAboveAncientWinRate).reversed());
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid skill level: " + skillLevel);
         }
-        return heroPositionList;
+        return heroes;
     }
-}
+
+    }
+
