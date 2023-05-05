@@ -33,6 +33,7 @@ public class HeroPickerApplication {
         HeroPickerApplication app = new HeroPickerApplication();
         HeroService heroService = new HeroService();
         heroService.initialize();
+        System.out.println("***** Welcome to the Dota2 Hero Picker App *****");
         app.run(heroService);
     }
 
@@ -56,14 +57,23 @@ public class HeroPickerApplication {
         //  for example Hero Name || Position || Win Rate for chosen bracket and then have columns of the associated data
         //  below.
 
+        System.out.println(" -------------------------------------------------------------------------");
         System.out.println("Here are the top recommended Heroes based on your selections, good luck! : ");
+        System.out.println(" -------------------------------------------------------------------------");
+        System.out.println("Hero Name | Position | Complexity | Win Rate @ selected Skill Bracket");
+        System.out.println(" -------------------------------------------------------------------------");
         for (Hero hero : filteredHeroes) {
             switch (skillLevel) {
-                case 1 -> System.out.println(hero.getName() + " " + hero.getPosition() + " " + hero.getBelowArchonWinRate());
-                case 2 -> System.out.println(hero.getName() + " " + hero.getPosition() + " " + hero.getArchonWinRate());
-                case 3 -> System.out.println(hero.getName() + " " + hero.getPosition() + " " + hero.getLegendWinRate());
-                case 4 -> System.out.println(hero.getName() + " " + hero.getPosition() + " " + hero.getAncientWinRate());
-                case 5 -> System.out.println(hero.getName() + " " + hero.getPosition() + " " + hero.getAboveAncientWinRate());
+                case 1 -> System.out.println(hero.getName() + " | " + hero.getPosition() + " | " + hero.getComplexity()+ " | "
+                        + hero.getBelowArchonWinRate());
+                case 2 -> System.out.println(hero.getName() + " | " + hero.getPosition() + " | " + hero.getComplexity()+ " | "
+                        + hero.getArchonWinRate());
+                case 3 -> System.out.println(hero.getName() + " | " + hero.getPosition() + " | " + hero.getComplexity()+ " | "
+                        + hero.getLegendWinRate());
+                case 4 -> System.out.println(hero.getName() + " | " + hero.getPosition() + " | " + hero.getComplexity() + " | "
+                        + hero.getAncientWinRate());
+                case 5 -> System.out.println(hero.getName() + " | " + hero.getPosition() + " | " + hero.getComplexity() + " | "
+                        + hero.getAboveAncientWinRate());
                 default -> System.out.println("Invalid skill level.");
             }
 
