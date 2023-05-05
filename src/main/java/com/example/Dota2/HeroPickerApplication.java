@@ -52,32 +52,36 @@ public class HeroPickerApplication {
         List<Hero> sortedHeroes = heroService.sortByWinRate(filteredHeroes, skillLevel);
 
 
-
         // TODO I want to make this look better when printed out, and have Headers above things
         //  for example Hero Name || Position || Win Rate for chosen bracket and then have columns of the associated data
         //  below.
 
-        System.out.println(" -------------------------------------------------------------------------");
-        System.out.println("Here are the top recommended Heroes based on your selections, good luck! : ");
-        System.out.println(" -------------------------------------------------------------------------");
-        System.out.println("Hero Name | Position | Complexity | Win Rate @ selected Skill Bracket");
-        System.out.println(" -------------------------------------------------------------------------");
+        // set the width of each column
+        int nameWidth = 20;
+        int positionWidth = 10;
+        int complexityWidth = 10;
+        int winRateWidth = 20;
+
+// print the headers
+        System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                "Hero Name", "Position", "Complexity", "Win Rate @ selected Skill Bracket");
+        System.out.println("-".repeat(nameWidth + positionWidth + complexityWidth + winRateWidth + 14));
+
+// print each hero's information
         for (Hero hero : filteredHeroes) {
             switch (skillLevel) {
-                case 1 -> System.out.println(hero.getName() + " | " + hero.getPosition() + " | " + hero.getComplexity()+ " | "
-                        + hero.getBelowArchonWinRate());
-                case 2 -> System.out.println(hero.getName() + " | " + hero.getPosition() + " | " + hero.getComplexity()+ " | "
-                        + hero.getArchonWinRate());
-                case 3 -> System.out.println(hero.getName() + " | " + hero.getPosition() + " | " + hero.getComplexity()+ " | "
-                        + hero.getLegendWinRate());
-                case 4 -> System.out.println(hero.getName() + " | " + hero.getPosition() + " | " + hero.getComplexity() + " | "
-                        + hero.getAncientWinRate());
-                case 5 -> System.out.println(hero.getName() + " | " + hero.getPosition() + " | " + hero.getComplexity() + " | "
-                        + hero.getAboveAncientWinRate());
+                case 1 -> System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                        hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getBelowArchonWinRate());
+                case 2 -> System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                        hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getArchonWinRate());
+                case 3 -> System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                        hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getLegendWinRate());
+                case 4 -> System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                        hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getAncientWinRate());
+                case 5 -> System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                        hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getAboveAncientWinRate());
                 default -> System.out.println("Invalid skill level.");
             }
-
-
         }
     }
 
