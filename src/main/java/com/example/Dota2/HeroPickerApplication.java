@@ -24,7 +24,6 @@ import java.util.Scanner;
 public class HeroPickerApplication {
 
 
-
     private final Scanner userInput = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -35,10 +34,6 @@ public class HeroPickerApplication {
         app.run(heroService);
         List<Hero> heroes = heroService.getHeroes();
     }
-
-
-
-
 
 
     private void run(HeroService heroService) {
@@ -69,50 +64,5 @@ public class HeroPickerApplication {
             }
         } while (value < min || value > max);
         return value;
-    }
-
-
-
-//    public List<String> recommendHeroes(int position, int skillLevel, int complexity) {
-//        // TODO: Implement recommendation algorithm based on user input
-//        List<String> recommendedHeroes = new ArrayList<>();
-
-
-    private void printMainMenu() {
-        System.out.println("****** Welcome to the Dota 2 Hero picker app! ******");
-        System.out.println("Please select the role you would like to play: (1-5)");
-        System.out.println("1 = Hard Carry");
-        System.out.println("2 = Midlane");
-        System.out.println("3 = Offlane");
-        System.out.println("4 = Soft Support");
-        System.out.println("5 = Hard Support");
-
-    }
-
-    private void printSkillLevelMenu() {
-        System.out.println("Select your skill level: (1-5): ");
-        System.out.println("1 = Crusader or lower: (< 2000 MMR)");
-        System.out.println("2 = Archon: (~2000-3000 MMR)");
-        System.out.println("3 = Legend:  (~3000-4000 MMR)");
-        System.out.println("4 = Ancient: (~4000-5000 MMR)");
-        System.out.println("5 = Divine/Immortal: (5000+ MMR)");
-    }
-
-    private void printComplexityLevelMenu() {
-        System.out.println("How complex of a hero would you like to play?");
-        System.out.println("1 = Easy to play");
-        System.out.println("2 = Moderately complicated to play");
-        System.out.println("3 = Very complicated to play");
-    }
-
-    private int promptForMenuSelection(String prompt) {
-        System.out.print(prompt);
-        int menuSelection;
-        try {
-            menuSelection = Integer.parseInt(userInput.nextLine());
-        } catch (NumberFormatException e) {
-            menuSelection = -1;
-        }
-        return menuSelection;
     }
 }
