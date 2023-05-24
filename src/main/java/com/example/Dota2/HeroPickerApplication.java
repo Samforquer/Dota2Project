@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 // Add dependency injection later.
 
-
+//TODO I need to not return any heroes with a sub 50% winrate, and possibly limit the heroes returned to the top 5 or so
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 // don't forget to remove the 'exclude' part later.
 public class HeroPickerApplication {
@@ -34,6 +34,7 @@ public class HeroPickerApplication {
         HeroService heroService = new HeroService();
         heroService.initialize();
         System.out.println("***** Welcome to the Dota2 Hero Picker App *****");
+        System.out.println("-------------------------------------------------------------------------------------");
         app.run(heroService);
     }
 
@@ -63,6 +64,7 @@ public class HeroPickerApplication {
         int winRateWidth = 20;
 
 // print the headers
+        System.out.println("-------------------------------------------------------------------------------------");
         System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
                 "Hero Name", "Position", "Complexity", "Win Rate @ selected Skill Bracket");
         System.out.println("-".repeat(nameWidth + positionWidth + complexityWidth + winRateWidth + 14));
