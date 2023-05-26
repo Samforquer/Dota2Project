@@ -25,6 +25,7 @@ import java.util.Scanner;
 // don't forget to remove the 'exclude' part later.
 public class HeroPickerApplication {
 
+    // Testing the feature branch
 
     private final Scanner userInput = new Scanner(System.in);
 
