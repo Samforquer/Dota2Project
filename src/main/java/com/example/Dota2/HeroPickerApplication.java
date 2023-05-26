@@ -21,7 +21,7 @@ import java.util.Scanner;
 // Add dependency injection later.
 
 //TODO I need to not return any heroes with a sub 50% winrate, and possibly limit the heroes returned to the top 5 or so
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication
 // don't forget to remove the 'exclude' part later.
 public class HeroPickerApplication {
 
@@ -49,13 +49,7 @@ public class HeroPickerApplication {
                 " 4 = Ancient, 5 = Above Ancient): ", 1, 5);
 
         List<Hero> filteredHeroes = heroService.filterByComplexityAndPosition(heroService.getHeroes(), complexity, position);
-//    TODO I need to figure out how to sort the filtered heroes by win rate in Desc. order.
         List<Hero> sortedHeroes = heroService.sortByWinRate(filteredHeroes, skillLevel);
-
-
-        // TODO I want to make this look better when printed out, and have Headers above things
-        //  for example Hero Name || Position || Win Rate for chosen bracket and then have columns of the associated data
-        //  below.
 
         // set the width of each column
         int nameWidth = 20;
