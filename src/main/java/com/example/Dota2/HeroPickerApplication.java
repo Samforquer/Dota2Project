@@ -22,7 +22,6 @@ import java.util.Scanner;
 
 //TODO I need to not return any heroes with a sub 50% winrate, and possibly limit the heroes returned to the top 5 or so
 @SpringBootApplication
-// don't forget to remove the 'exclude' part later.
 public class HeroPickerApplication {
 
 
