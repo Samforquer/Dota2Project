@@ -19,7 +19,7 @@ public class HeroService {
 
     public void initialize() {
 
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dota2_hero_database",
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dota2Heroes",
                 "postgres", "postgres1");
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery("SELECT * FROM heroes")) {

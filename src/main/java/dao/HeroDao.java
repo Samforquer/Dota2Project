@@ -10,7 +10,6 @@ public interface HeroDao {
     Hero get (int id);
 
     List<Hero> searchByPosition(int position);
-
     List<Hero> searchByWinRate(double winRate);
 
     List<Hero> searchByPositionAndWinRate(int position, double winRate);
