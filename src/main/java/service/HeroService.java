@@ -8,9 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.http.ResponseEntity;
 
 public class HeroService {
 
@@ -18,30 +21,15 @@ public class HeroService {
 
 
     public void initialize() {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "https://api.opendota.com/api/heroes";
+        //TODO I need to check the format of the data this returns. Just testing for now.
 
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dota2Heroes",
-                "postgres", "postgres1");
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM heroes")) {
+        ResponseEntity<Hero[]> response = restTemplate.getForEntity(url, Hero[].class);
+        Hero[] heroArray = response.getBody();
 
-            while (resultSet.next()) {
-                String name = resultSet.getString("name");
-                String attributeType = resultSet.getString("attribute_type");
-                String attackType = resultSet.getString("attack_type");
-                int position = resultSet.getInt("position");
-                int complexity = resultSet.getInt("complexity");
-                double belowArchonWinRate = resultSet.getDouble("below_archon_win_rate");
-                double archonWinRate = resultSet.getDouble("archon_win_rate");
-                double legendWinRate = resultSet.getDouble("legend_win_rate");
-                double ancientWinRate = resultSet.getDouble("ancient_win_rate");
-                double aboveAncientWinRate = resultSet.getDouble("above_ancient_win_rate");
-
-                Hero hero = new Hero(name,attributeType,attackType,position,complexity,belowArchonWinRate,archonWinRate,
-                        legendWinRate,ancientWinRate,aboveAncientWinRate);
-                heroes.add(hero);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (heroArray != null) {
+            heroes = Arrays.asList(heroArray);
         }
     }
 
