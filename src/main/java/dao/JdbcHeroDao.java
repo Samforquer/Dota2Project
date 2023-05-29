@@ -63,14 +63,14 @@ public class JdbcHeroDao implements HeroDao {
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
-            Hero hero = mapRowtoHero(results);
+            Hero hero = mapRowToHero(results);
             heroes.add(hero);
         }
         return heroes;
     }
 
 
-    private Hero mapRowtoHero(SqlRowSet rs) {
+    private Hero mapRowToHero(SqlRowSet rs) {
         Hero hero = new Hero();
         hero.setName(rs.getString("localized_name")); // I need to make naming consistent across Java/SQL/JSON etc. or figure out what to do there.
         // How do I set the complexity or hero positions ? I may do it manually but is that weird to have inconsistency in the manual or auto populating of my database. for example: the heroes/ winrates are going to be the API
