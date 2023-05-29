@@ -19,13 +19,6 @@ public class JdbcHeroDao implements HeroDao {
     JdbcHeroDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
-    public List<Hero> selectAll() {
-        String sql = "SELECT * FROM heroes";
-        List<Hero> heroes = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Hero.class));
-        return heroes;
-    }
-
     @Override
     public List<Hero> list() {
         return null;
