@@ -13,6 +13,10 @@ import java.util.List;
 public class HeroController {
     private HeroDao heroDao;
 
+    public HeroController(HeroDao heroDao){
+        this.heroDao = heroDao;
+    }
+
     @RequestMapping(path = "https://api.opendota.com/api/heroes", method = RequestMethod.GET)
     public List<Hero> getHeroes(){
         return heroDao.getHeroes();

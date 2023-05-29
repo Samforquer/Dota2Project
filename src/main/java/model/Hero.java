@@ -1,24 +1,25 @@
 package model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Hero {
 
-        private int id;
-        private String name;
-        private String attributeType;
-        private String attackType;
-        private BigDecimal heraldWinRate;
-        private BigDecimal guardianWinRate;
-        private BigDecimal crusaderWinRate;
-        private BigDecimal archonRate;
-        private BigDecimal legendWinRate;
-        private BigDecimal ancientWinRate;
-        private BigDecimal divineWinRate;
-        private BigDecimal immortalWinRate;
-        private BigDecimal proWinRate;
-        private int heroComplexity;
-        private int heroPosition;
+    private int id;
+    private String name;
+    private String attributeType;
+    private String attackType;
+    private BigDecimal heraldWinRate;
+    private BigDecimal guardianWinRate;
+    private BigDecimal crusaderWinRate;
+    private BigDecimal archonRate;
+    private BigDecimal legendWinRate;
+    private BigDecimal ancientWinRate;
+    private BigDecimal divineWinRate;
+    private BigDecimal immortalWinRate;
+    private BigDecimal proWinRate;
+    private int heroComplexity;
+    private int heroPosition;
 
 
     public Hero() {
@@ -80,7 +81,7 @@ public class Hero {
     }
 
     public void setHeraldWinRate(BigDecimal heraldWinRate) {
-        this.heraldWinRate = heraldWinRate;
+        this.heraldWinRate = heraldWinRate.setScale(2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getGuardianWinRate() {
@@ -88,7 +89,7 @@ public class Hero {
     }
 
     public void setGuardianWinRate(BigDecimal guardianWinRate) {
-        this.guardianWinRate = guardianWinRate;
+        this.guardianWinRate = guardianWinRate.setScale(2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getCrusaderWinRate() {
@@ -96,7 +97,7 @@ public class Hero {
     }
 
     public void setCrusaderWinRate(BigDecimal crusaderWinRate) {
-        this.crusaderWinRate = crusaderWinRate;
+        this.crusaderWinRate = crusaderWinRate.setScale(2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getArchonRate() {
@@ -104,7 +105,7 @@ public class Hero {
     }
 
     public void setArchonRate(BigDecimal archonRate) {
-        this.archonRate = archonRate;
+        this.archonRate = archonRate.setScale(2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getLegendWinRate() {
@@ -112,7 +113,7 @@ public class Hero {
     }
 
     public void setLegendWinRate(BigDecimal legendWinRate) {
-        this.legendWinRate = legendWinRate;
+        this.legendWinRate = legendWinRate.setScale(2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getAncientWinRate() {
@@ -120,7 +121,7 @@ public class Hero {
     }
 
     public void setAncientWinRate(BigDecimal ancientWinRate) {
-        this.ancientWinRate = ancientWinRate;
+        this.ancientWinRate = ancientWinRate.setScale(2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getDivineWinRate() {
@@ -128,7 +129,7 @@ public class Hero {
     }
 
     public void setDivineWinRate(BigDecimal divineWinRate) {
-        this.divineWinRate = divineWinRate;
+        this.divineWinRate = divineWinRate.setScale(2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getImmortalWinRate() {
@@ -136,7 +137,7 @@ public class Hero {
     }
 
     public void setImmortalWinRate(BigDecimal immortalWinRate) {
-        this.immortalWinRate = immortalWinRate;
+        this.immortalWinRate = immortalWinRate.setScale(2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getProWinRate() {
@@ -144,7 +145,7 @@ public class Hero {
     }
 
     public void setProWinRate(BigDecimal proWinRate) {
-        this.proWinRate = proWinRate;
+        this.proWinRate = proWinRate.setScale(2, RoundingMode.HALF_UP);
     }
 
     public int getHeroComplexity() {
