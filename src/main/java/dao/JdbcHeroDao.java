@@ -36,7 +36,7 @@ public class JdbcHeroDao implements HeroDao {
             hero.setHeraldWinRate(rs.getBigDecimal("herald_win_rate"));
             hero.setGuardianWinRate(rs.getBigDecimal("guardian_win_rate"));
             hero.setCrusaderWinRate(rs.getBigDecimal("crusader_win_rate"));
-            hero.setArchonRate(rs.getBigDecimal("archon_win_rate"));
+            hero.setArchonWinRate(rs.getBigDecimal("archon_win_rate"));
             hero.setLegendWinRate(rs.getBigDecimal("legend_win_rate"));
             hero.setAncientWinRate(rs.getBigDecimal("ancient_win_rate"));
             hero.setDivineWinRate(rs.getBigDecimal("divine_win_rate"));

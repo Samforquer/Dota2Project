@@ -12,7 +12,7 @@ public class Hero {
     private BigDecimal heraldWinRate;
     private BigDecimal guardianWinRate;
     private BigDecimal crusaderWinRate;
-    private BigDecimal archonRate;
+    private BigDecimal archonWinRate;
     private BigDecimal legendWinRate;
     private BigDecimal ancientWinRate;
     private BigDecimal divineWinRate;
@@ -26,7 +26,7 @@ public class Hero {
     }
 
     public Hero(int id, String name, String attributeType, String attackType, BigDecimal heraldWinRate, BigDecimal guardianWinRate,
-                BigDecimal crusaderWinRate, BigDecimal archonRate, BigDecimal legendWinRate, BigDecimal ancientWinRate, BigDecimal divineWinRate, BigDecimal immortalWinRate, BigDecimal proWinRate, int heroComplexity, int heroPosition) {
+                BigDecimal crusaderWinRate, BigDecimal archonWinRate, BigDecimal legendWinRate, BigDecimal ancientWinRate, BigDecimal divineWinRate, BigDecimal immortalWinRate, BigDecimal proWinRate, int heroComplexity, int heroPosition) {
         this.id = id;
         this.name = name;
         this.attributeType = attributeType;
@@ -34,7 +34,7 @@ public class Hero {
         this.heraldWinRate = heraldWinRate;
         this.guardianWinRate = guardianWinRate;
         this.crusaderWinRate = crusaderWinRate;
-        this.archonRate = archonRate;
+        this.archonWinRate = archonWinRate;
         this.legendWinRate = legendWinRate;
         this.ancientWinRate = ancientWinRate;
         this.divineWinRate = divineWinRate;
@@ -100,12 +100,12 @@ public class Hero {
         this.crusaderWinRate = crusaderWinRate.setScale(2, RoundingMode.HALF_UP);
     }
 
-    public BigDecimal getArchonRate() {
-        return archonRate;
+    public BigDecimal getArchonWinRate() {
+        return archonWinRate;
     }
 
-    public void setArchonRate(BigDecimal archonRate) {
-        this.archonRate = archonRate.setScale(2, RoundingMode.HALF_UP);
+    public void setArchonWinRate(BigDecimal archonWinRate) {
+        this.archonWinRate = archonWinRate.setScale(2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getLegendWinRate() {
@@ -163,6 +163,12 @@ public class Hero {
     public void setHeroPosition(int heroPosition) {
         this.heroPosition = heroPosition;
     }
+
+    @Override
+    public String toString() {
+        return "Hero: " + name + ", Herald Win Rate: " + heraldWinRate + "%, Guardian Win Rate: " + guardianWinRate + "%, Crusader Win Rate: " + crusaderWinRate + "%, Archon Win Rate: " + archonWinRate + "%, Legend Win Rate: " + legendWinRate + "%, Ancient Win Rate: " + ancientWinRate + "%, Divine Win Rate: " + divineWinRate + "%, Immortal Win Rate: " + immortalWinRate + "%";
+    }
 }
+
 
 
