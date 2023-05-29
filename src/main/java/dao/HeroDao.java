@@ -17,5 +17,7 @@ public interface HeroDao {
     List<Hero> filterByPositionWinRateAndComplexity(int position, double winRate, int complexity);
 
 
+    List<Hero> getHeroes();
+
 }
 

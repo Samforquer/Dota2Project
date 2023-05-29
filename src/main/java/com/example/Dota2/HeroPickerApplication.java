@@ -23,10 +23,6 @@ import java.util.Scanner;
 //TODO I need to not return any heroes with a sub 50% winrate, and possibly limit the heroes returned to the top 5 or so
 @SpringBootApplication
 public class HeroPickerApplication {
-
-
-    private final Scanner userInput = new Scanner(System.in);
-
     public static void main(String[] args) {
         // SpringApplication.run(HeroPickerApplication.class, args);
         HeroPickerApplication app = new HeroPickerApplication();
@@ -65,16 +61,21 @@ public class HeroPickerApplication {
 // print each hero's information
         for (Hero hero : filteredHeroes) {
             switch (skillLevel) {
-                case 1 -> System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
-                        hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getBelowArchonWinRate());
-                case 2 -> System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
-                        hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getArchonWinRate());
-                case 3 -> System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
-                        hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getLegendWinRate());
-                case 4 -> System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
-                        hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getAncientWinRate());
-                case 5 -> System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
-                        hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getAboveAncientWinRate());
+                case 1 ->
+                        System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                                hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getBelowArchonWinRate());
+                case 2 ->
+                        System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                                hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getArchonWinRate());
+                case 3 ->
+                        System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                                hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getLegendWinRate());
+                case 4 ->
+                        System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                                hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getAncientWinRate());
+                case 5 ->
+                        System.out.printf("%-" + nameWidth + "s | %-" + positionWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                                hero.getName(), hero.getPosition(), hero.getComplexity(), hero.getAboveAncientWinRate());
                 default -> System.out.println("Invalid skill level.");
             }
         }

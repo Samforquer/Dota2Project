@@ -23,7 +23,6 @@ public class HeroService {
     public void initialize() {
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://api.opendota.com/api/heroes";
-        //TODO I need to check the format of the data this returns. Just testing for now.
 
         ResponseEntity<Hero[]> response = restTemplate.getForEntity(url, Hero[].class);
         Hero[] heroArray = response.getBody();
@@ -31,6 +30,7 @@ public class HeroService {
         if (heroArray != null) {
             heroes = Arrays.asList(heroArray);
         }
+
     }
 
     public List<Hero> getHeroes() {
