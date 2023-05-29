@@ -12,7 +12,7 @@
 	<artifactId>Dota2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>HeroPicker</name>
-	<description>An app to help Dota2 players pick the best hero for every situation</description>
+	<description>An app to help Dota2 players pick the best model for every situation</description>
 	<properties>
 		<java.version>20</java.version>
 	</properties>
