@@ -1,47 +1,40 @@
 package model;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 public class Hero {
 
     private int id;
     private String name;
     private String attributeType;
     private String attackType;
-    private BigDecimal heraldWinRate;
-    private BigDecimal guardianWinRate;
-    private BigDecimal crusaderWinRate;
-    private BigDecimal archonWinRate;
-    private BigDecimal legendWinRate;
-    private BigDecimal ancientWinRate;
-    private BigDecimal divineWinRate;
-    private BigDecimal immortalWinRate;
-    private BigDecimal proWinRate;
+    private int pick1;
+    private int pick2;
+    private int pick3;
+    private int pick4;
+    private int pick5;
+    private int pick6;
+    private int pick7;
+    private int pick8;
+    private int proPicked;
+    private int proWins;
+    private int win1;
+    private int win2;
+    private int win3;
+    private int win4;
+    private int win5;
+    private int win6;
+    private int win7;
+    private int win8;
     private int heroComplexity;
     private int heroPosition;
 
-
-    public Hero() {
-    }
-
-    public Hero(int id, String name, String attributeType, String attackType, BigDecimal heraldWinRate, BigDecimal guardianWinRate,
-                BigDecimal crusaderWinRate, BigDecimal archonWinRate, BigDecimal legendWinRate, BigDecimal ancientWinRate, BigDecimal divineWinRate, BigDecimal immortalWinRate, BigDecimal proWinRate, int heroComplexity, int heroPosition) {
+    public Hero(int id, String name, String attributeType, String attackType, int heroComplexity, int heroPosition) {
         this.id = id;
         this.name = name;
         this.attributeType = attributeType;
         this.attackType = attackType;
-        this.heraldWinRate = heraldWinRate;
-        this.guardianWinRate = guardianWinRate;
-        this.crusaderWinRate = crusaderWinRate;
-        this.archonWinRate = archonWinRate;
-        this.legendWinRate = legendWinRate;
-        this.ancientWinRate = ancientWinRate;
-        this.divineWinRate = divineWinRate;
-        this.immortalWinRate = immortalWinRate;
-        this.proWinRate = proWinRate;
         this.heroComplexity = heroComplexity;
         this.heroPosition = heroPosition;
+    }
+    public Hero() {
     }
 
     public int getId() {
@@ -76,76 +69,148 @@ public class Hero {
         this.attackType = attackType;
     }
 
-    public BigDecimal getHeraldWinRate() {
-        return heraldWinRate;
+    public int getPick1() {
+        return pick1;
     }
 
-    public void setHeraldWinRate(BigDecimal heraldWinRate) {
-        this.heraldWinRate = heraldWinRate.setScale(2, RoundingMode.HALF_UP);
+    public void setPick1(int pick1) {
+        this.pick1 = pick1;
     }
 
-    public BigDecimal getGuardianWinRate() {
-        return guardianWinRate;
+    public int getPick2() {
+        return pick2;
     }
 
-    public void setGuardianWinRate(BigDecimal guardianWinRate) {
-        this.guardianWinRate = guardianWinRate.setScale(2, RoundingMode.HALF_UP);
+    public void setPick2(int pick2) {
+        this.pick2 = pick2;
     }
 
-    public BigDecimal getCrusaderWinRate() {
-        return crusaderWinRate;
+    public int getPick3() {
+        return pick3;
     }
 
-    public void setCrusaderWinRate(BigDecimal crusaderWinRate) {
-        this.crusaderWinRate = crusaderWinRate.setScale(2, RoundingMode.HALF_UP);
+    public void setPick3(int pick3) {
+        this.pick3 = pick3;
     }
 
-    public BigDecimal getArchonWinRate() {
-        return archonWinRate;
+    public int getPick4() {
+        return pick4;
     }
 
-    public void setArchonWinRate(BigDecimal archonWinRate) {
-        this.archonWinRate = archonWinRate.setScale(2, RoundingMode.HALF_UP);
+    public void setPick4(int pick4) {
+        this.pick4 = pick4;
     }
 
-    public BigDecimal getLegendWinRate() {
-        return legendWinRate;
+    public int getPick5() {
+        return pick5;
     }
 
-    public void setLegendWinRate(BigDecimal legendWinRate) {
-        this.legendWinRate = legendWinRate.setScale(2, RoundingMode.HALF_UP);
+    public void setPick5(int pick5) {
+        this.pick5 = pick5;
     }
 
-    public BigDecimal getAncientWinRate() {
-        return ancientWinRate;
+    public int getPick6() {
+        return pick6;
     }
 
-    public void setAncientWinRate(BigDecimal ancientWinRate) {
-        this.ancientWinRate = ancientWinRate.setScale(2, RoundingMode.HALF_UP);
+    public void setPick6(int pick6) {
+        this.pick6 = pick6;
     }
 
-    public BigDecimal getDivineWinRate() {
-        return divineWinRate;
+    public int getPick7() {
+        return pick7;
     }
 
-    public void setDivineWinRate(BigDecimal divineWinRate) {
-        this.divineWinRate = divineWinRate.setScale(2, RoundingMode.HALF_UP);
+    public void setPick7(int pick7) {
+        this.pick7 = pick7;
     }
 
-    public BigDecimal getImmortalWinRate() {
-        return immortalWinRate;
+    public int getPick8() {
+        return pick8;
     }
 
-    public void setImmortalWinRate(BigDecimal immortalWinRate) {
-        this.immortalWinRate = immortalWinRate.setScale(2, RoundingMode.HALF_UP);
+    public void setPick8(int pick8) {
+        this.pick8 = pick8;
     }
 
-    public BigDecimal getProWinRate() {
-        return proWinRate;
+    public int getProPicked() {
+        return proPicked;
     }
 
-    public void setProWinRate(BigDecimal proWinRate) {
-        this.proWinRate = proWinRate.setScale(2, RoundingMode.HALF_UP);
+    public void setProPicked(int proPicked) {
+        this.proPicked = proPicked;
+    }
+
+    public int getProWins() {
+        return proWins;
+    }
+
+    public void setProWins(int proWins) {
+        this.proWins = proWins;
+    }
+
+    public int getWin1() {
+        return win1;
+    }
+
+    public void setWin1(int win1) {
+        this.win1 = win1;
+    }
+
+    public int getWin2() {
+        return win2;
+    }
+
+    public void setWin2(int win2) {
+        this.win2 = win2;
+    }
+
+    public int getWin3() {
+        return win3;
+    }
+
+    public void setWin3(int win3) {
+        this.win3 = win3;
+    }
+
+    public int getWin4() {
+        return win4;
+    }
+
+    public void setWin4(int win4) {
+        this.win4 = win4;
+    }
+
+    public int getWin5() {
+        return win5;
+    }
+
+    public void setWin5(int win5) {
+        this.win5 = win5;
+    }
+
+    public int getWin6() {
+        return win6;
+    }
+
+    public void setWin6(int win6) {
+        this.win6 = win6;
+    }
+
+    public int getWin7() {
+        return win7;
+    }
+
+    public void setWin7(int win7) {
+        this.win7 = win7;
+    }
+
+    public int getWin8() {
+        return win8;
+    }
+
+    public void setWin8(int win8) {
+        this.win8 = win8;
     }
 
     public int getHeroComplexity() {
@@ -163,11 +228,7 @@ public class Hero {
     public void setHeroPosition(int heroPosition) {
         this.heroPosition = heroPosition;
     }
-
-    @Override
-    public String toString() {
-        return "Hero: " + name + ", Herald Win Rate: " + heraldWinRate + "%, Guardian Win Rate: " + guardianWinRate + "%, Crusader Win Rate: " + crusaderWinRate + "%, Archon Win Rate: " + archonWinRate + "%, Legend Win Rate: " + legendWinRate + "%, Ancient Win Rate: " + ancientWinRate + "%, Divine Win Rate: " + divineWinRate + "%, Immortal Win Rate: " + immortalWinRate + "%";
-    }
+//TODO add toString()
 }
 
 
