@@ -23,15 +23,7 @@ public class JdbcHeroDao implements HeroDao {
         this.restTemplate = restTemplate;
     }
 
-    public void createAndPopulateHeroesTable() {
-        createHeroTable(); // Create the table if it doesn't exist
 
-        List<Hero> heroes = fetchHeroesFromApi(); // Fetch heroes from the API
-
-        for (Hero hero : heroes) {
-            insertHero(hero); // Insert each hero into the table
-        }
-    }
 
     private void createHeroTable() {
         String sql = "CREATE TABLE IF NOT EXISTS heroes (" +
@@ -61,6 +53,15 @@ public class JdbcHeroDao implements HeroDao {
                 "hero_position INT" +
                 ")";
         jdbcTemplate.execute(sql);
+    }
+    public void createAndPopulateHeroesTable() {
+        createHeroTable(); // Create the table if it doesn't exist
+
+        List<Hero> heroes = fetchHeroesFromApi(); // Fetch heroes from the API
+
+        for (Hero hero : heroes) {
+            insertHero(hero); // Insert each hero into the table
+        }
     }
 
     @Override
