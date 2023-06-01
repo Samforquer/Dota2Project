@@ -1,6 +1,4 @@
 package controller;
-
-
 import dao.HeroDao;
 import model.Hero;
 import org.springframework.web.bind.annotation.RequestMapping;

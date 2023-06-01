@@ -1,12 +1,10 @@
 package dao;
-
 import model.Hero;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +16,35 @@ public class JdbcHeroDao implements HeroDao {
     public JdbcHeroDao(DataSource dataSource, RestTemplate restTemplate) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.restTemplate = restTemplate;
+    }
+    public void createHeroTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS heroes (" +
+                "id SERIAL PRIMARY KEY," +
+                "name VARCHAR(255) NOT NULL," +
+                "attribute_type VARCHAR(255) NOT NULL," +
+                "attack_type VARCHAR(255) NOT NULL," +
+                "pick1 INT," +
+                "pick2 INT," +
+                "pick3 INT," +
+                "pick4 INT," +
+                "pick5 INT," +
+                "pick6 INT," +
+                "pick7 INT," +
+                "pick8 INT," +
+                "pro_picked INT," +
+                "pro_wins INT," +
+                "win1 INT," +
+                "win2 INT," +
+                "win3 INT," +
+                "win4 INT," +
+                "win5 INT," +
+                "win6 INT," +
+                "win7 INT," +
+                "win8 INT," +
+                "hero_complexity INT," +
+                "hero_position INT" +
+                ")";
+        jdbcTemplate.execute(sql);
     }
     @Override
     public List<Hero> getHeroes() {
