@@ -1,4 +1,5 @@
 package model;
+
 public class Hero {
 
     private int id;
@@ -34,6 +35,7 @@ public class Hero {
         this.heroComplexity = heroComplexity;
         this.heroPosition = heroPosition;
     }
+
     public Hero() {
     }
 

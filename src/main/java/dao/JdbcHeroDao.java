@@ -1,27 +1,28 @@
 package dao;
 
 import model.Hero;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper; // perhaps this would be another way to look into?
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.client.RestTemplate;
 
+import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 @Component
 public class JdbcHeroDao implements HeroDao {
-
     private final JdbcTemplate jdbcTemplate;
-
-    public JdbcHeroDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    private final RestTemplate restTemplate;
+    public JdbcHeroDao(DataSource dataSource, RestTemplate restTemplate) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.restTemplate = restTemplate;
     }
-
     @Override
     public List<Hero> getHeroes() {
         List<Hero> heroes = new ArrayList<>();
         String sql = "SELECT * FROM heroes";
-
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){
         Hero hero = mapRowToHero(results);
@@ -29,6 +30,13 @@ public class JdbcHeroDao implements HeroDao {
     }
     return heroes;
 }
+
+    public List<Hero> fetchHeroesFromApi() {
+        String apiUrl = "https://api.example.com/heroes";
+        ResponseEntity<Hero[]> response = restTemplate.getForEntity(apiUrl, Hero[].class);
+        Hero[] heroes = response.getBody();
+        return Arrays.asList(heroes);
+    }
 
     private Hero mapRowToHero(SqlRowSet rs){
         Hero hero = new Hero();
@@ -57,6 +65,5 @@ public class JdbcHeroDao implements HeroDao {
         hero.setHeroComplexity(rs.getInt("hero_complexity"));
         hero.setHeroPosition(rs.getInt("hero_position"));
         return hero;
-
     }
 }

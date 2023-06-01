@@ -1,12 +1,17 @@
 package com.example.Dota2;
-import dao.HeroMapper;
+
+import dao.JdbcHeroDao;
 import model.Hero;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
-import service.WinRateCalculator;
+import org.springframework.web.client.RestTemplate;
+import service.HeroApiService;
+
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -23,37 +28,25 @@ public class HeroPickerApplication {
         SpringApplication.run(HeroPickerApplication.class, args);
         System.out.println("***** Welcome to the Dota2 Hero Picker App *****");
         System.out.println("-------------------------------------------------------------------------------------");
-
-        // Create the data source
+        ApplicationContext context = new AnnotationConfigApplicationContext(HeroPickerApplication.class);
         DataSource dataSource = createDataSource();
+        JdbcHeroDao heroDao = new JdbcHeroDao(dataSource, context.getBean(RestTemplate.class));
 
-        // Create a JdbcTemplate with the DataSource
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        List<Hero> heroes = heroDao.fetchHeroesFromApi();
 
-        // Fetch data from the database
-        String sql = "SELECT * FROM heroes";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
-
-        // Create instances of HeroMapper and WinRateCalculator
-        WinRateCalculator winRateCalculator = new WinRateCalculator();
-        HeroMapper heroMapper = new HeroMapper(winRateCalculator);
-
-        // Map the SqlRowSet to a list of Hero objects
-        List<Hero> heroes = heroMapper.mapRowSetToHeroes(rowSet);
-
-        // Print the mapped heroes
+        // Print the list of heroes
         for (Hero hero : heroes) {
-            System.out.println(hero);
+            System.out.println(hero.getName());
         }
     }
 
-    private static DataSource createDataSource() {
-        // Create a DataSource with your database connection details
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/dota2Heroes");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("postgres1");
-        return dataSource;
+        private static DataSource createDataSource () {
+            // Create a DataSource with database connection details.
+            DriverManagerDataSource dataSource = new DriverManagerDataSource();
+            dataSource.setDriverClassName("org.postgresql.Driver");
+            dataSource.setUrl("jdbc:postgresql://localhost:5432/dota2Heroes");
+            dataSource.setUsername("postgres");
+            dataSource.setPassword("postgres1");
+            return dataSource;
+        }
     }
-}
