@@ -1,23 +1,39 @@
 package dao;
+
 import model.Hero;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
+
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-@Component
+
+@Repository
 public class JdbcHeroDao implements HeroDao {
+
     private final JdbcTemplate jdbcTemplate;
     private final RestTemplate restTemplate;
+
     public JdbcHeroDao(DataSource dataSource, RestTemplate restTemplate) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.restTemplate = restTemplate;
     }
-    public void createHeroTable() {
+
+    public void createAndPopulateHeroesTable() {
+        createHeroTable(); // Create the table if it doesn't exist
+
+        List<Hero> heroes = fetchHeroesFromApi(); // Fetch heroes from the API
+
+        for (Hero hero : heroes) {
+            insertHero(hero); // Insert each hero into the table
+        }
+    }
+
+    private void createHeroTable() {
         String sql = "CREATE TABLE IF NOT EXISTS heroes (" +
                 "id SERIAL PRIMARY KEY," +
                 "name VARCHAR(255) NOT NULL," +
@@ -46,30 +62,52 @@ public class JdbcHeroDao implements HeroDao {
                 ")";
         jdbcTemplate.execute(sql);
     }
+
     @Override
     public List<Hero> getHeroes() {
+        if (!isHeroesTableExists()) {
+            createAndPopulateHeroesTable();
+        }
+
         List<Hero> heroes = new ArrayList<>();
         String sql = "SELECT * FROM heroes";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        while(results.next()){
-        Hero hero = mapRowToHero(results);
-        heroes.add(hero);
+        while (results.next()) {
+            Hero hero = mapRowToHero(results);
+            heroes.add(hero);
+        }
+        return heroes;
     }
-    return heroes;
-}
 
     public List<Hero> fetchHeroesFromApi() {
-        String apiUrl = "https://api.example.com/heroes";
+        String apiUrl = "https://api.opendota.com/api/herostats";
         ResponseEntity<Hero[]> response = restTemplate.getForEntity(apiUrl, Hero[].class);
         Hero[] heroes = response.getBody();
+        assert heroes != null;
         return Arrays.asList(heroes);
     }
 
-    private Hero mapRowToHero(SqlRowSet rs){
+    private boolean isHeroesTableExists() {
+        String sql = "SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'heroes')";
+        return jdbcTemplate.queryForObject(sql, Boolean.class);
+    }
+
+    private void insertHero(Hero hero) {
+        String sql = "INSERT INTO heroes (id, name, attribute_type, attack_type, pick1, pick2, pick3, pick4, " +
+                "pick5, pick6, pick7, pick8, pro_picked, pro_wins, win1, win2, win3, win4, win5, win6, win7, " +
+                "win8, hero_complexity, hero_position) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, hero.getId(), hero.getName(), hero.getPrimaryAttr(), hero.getAttackType(),
+                hero.getPick1(), hero.getPick2(), hero.getPick3(), hero.getPick4(), hero.getPick5(), hero.getPick6(),
+                hero.getPick7(), hero.getPick8(), hero.getProPicked(), hero.getProWins(), hero.getWin1(), hero.getWin2(),
+                hero.getWin3(), hero.getWin4(), hero.getWin5(), hero.getWin6(), hero.getWin7(), hero.getWin8(),
+                hero.getHeroComplexity(), hero.getHeroPosition());
+    }
+    private Hero mapRowToHero(SqlRowSet rs) {
         Hero hero = new Hero();
         hero.setId(rs.getInt("id"));
         hero.setName(rs.getString("name"));
-        hero.setAttributeType(rs.getString("attribute_type"));
+        hero.setPrimaryAttr(rs.getString("attribute_type"));
         hero.setAttackType(rs.getString("attack_type"));
         hero.setPick1(rs.getInt("pick1"));
         hero.setPick2(rs.getInt("pick2"));

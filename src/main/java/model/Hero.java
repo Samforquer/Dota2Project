@@ -4,6 +4,7 @@ public class Hero {
 
     private int id;
     private String name;
+    private String primaryAttr;
     private String attributeType;
     private String attackType;
     private int pick1;
@@ -55,13 +56,14 @@ public class Hero {
         this.name = name;
     }
 
-    public String getAttributeType() {
-        return attributeType;
+    public String getPrimaryAttr() {
+        return primaryAttr;
     }
 
-    public void setAttributeType(String attributeType) {
-        this.attributeType = attributeType;
+    public void setPrimaryAttr(String primaryAttr) {
+        this.primaryAttr = primaryAttr;
     }
+
 
     public String getAttackType() {
         return attackType;
@@ -230,7 +232,37 @@ public class Hero {
     public void setHeroPosition(int heroPosition) {
         this.heroPosition = heroPosition;
     }
-//TODO add toString()
+
+    public String toString() {
+        return "Hero{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", attributeType='" + attributeType + '\'' +
+                ", attackType='" + attackType + '\'' +
+                ", pick1=" + pick1 +
+                ", pick2=" + pick2 +
+                ", pick3=" + pick3 +
+                ", pick4=" + pick4 +
+                ", pick5=" + pick5 +
+                ", pick6=" + pick6 +
+                ", pick7=" + pick7 +
+                ", pick8=" + pick8 +
+                ", proPicked=" + proPicked +
+                ", proWins=" + proWins +
+                ", win1=" + win1 +
+                ", win2=" + win2 +
+                ", win3=" + win3 +
+                ", win4=" + win4 +
+                ", win5=" + win5 +
+                ", win6=" + win6 +
+                ", win7=" + win7 +
+                ", win8=" + win8 +
+                ", heroComplexity=" + heroComplexity +
+                ", heroPosition=" + heroPosition +
+                '}';
+    }
+
+
 }
 
 
