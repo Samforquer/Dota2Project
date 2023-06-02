@@ -28,10 +28,10 @@ public class Hero {
     private int heroComplexity;
     private int heroPosition;
 
-    public Hero(int id, String name, String attributeType, String attackType, int heroComplexity, int heroPosition) {
+    public Hero(int id, String name, String primaryAttr, String attackType, int heroComplexity, int heroPosition) {
         this.id = id;
         this.name = name;
-        this.attributeType = attributeType;
+        this.primaryAttr=primaryAttr;
         this.attackType = attackType;
         this.heroComplexity = heroComplexity;
         this.heroPosition = heroPosition;
@@ -261,8 +261,6 @@ public class Hero {
                 ", heroPosition=" + heroPosition +
                 '}';
     }
-
-
 }
 
 

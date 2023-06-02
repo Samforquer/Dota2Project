@@ -20,20 +20,6 @@ public class HeroController {
     @RequestMapping(path = "/heroes", method = RequestMethod.GET)
     public List<Hero> getHeroes() {
         List<Hero> heroes = heroDao.getHeroes();
-        printHeroItems(heroes);
         return heroes;
-    }
-
-    private void printHeroItems(List<Hero> heroes) {
-        for (Hero hero : heroes) {
-            System.out.println("ID: " + hero.getId());
-            System.out.println("Name: " + hero.getName());
-            System.out.println("Attribute Type: " + hero.getPrimaryAttr());
-            System.out.println("Attack Type: " + hero.getAttackType());
-            System.out.println("Pick1: " + hero.getPick1());
-            System.out.println("Pick2: " + hero.getPick2());
-            // Print other hero properties as needed
-            System.out.println("-----------------------------");
-        }
     }
 }

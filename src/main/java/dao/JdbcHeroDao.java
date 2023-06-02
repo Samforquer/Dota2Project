@@ -1,29 +1,34 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import model.Hero;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
+import service.HeroApiService;
 
 import javax.sql.DataSource;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Repository
 public class JdbcHeroDao implements HeroDao {
 
-    private final JdbcTemplate jdbcTemplate;
-    private final RestTemplate restTemplate;
+    private JdbcTemplate jdbcTemplate;
+    private RestTemplate restTemplate;
+    private HeroApiService heroApiService;
 
-    public JdbcHeroDao(DataSource dataSource, RestTemplate restTemplate) {
+    @Autowired
+    public JdbcHeroDao(DataSource dataSource, RestTemplate restTemplate, HeroApiService heroApiService) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.restTemplate = restTemplate;
+        this.heroApiService = heroApiService;
     }
 
-
+    public void setDataSource(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
     private void createHeroTable() {
         String sql = "CREATE TABLE IF NOT EXISTS heroes (" +
@@ -54,10 +59,11 @@ public class JdbcHeroDao implements HeroDao {
                 ")";
         jdbcTemplate.execute(sql);
     }
+
     public void createAndPopulateHeroesTable() {
         createHeroTable(); // Create the table if it doesn't exist
 
-        List<Hero> heroes = fetchHeroesFromApi(); // Fetch heroes from the API
+        List<Hero> heroes = heroApiService.fetchHeroesFromApi(); // Fetch heroes from the API
 
         for (Hero hero : heroes) {
             insertHero(hero); // Insert each hero into the table
@@ -80,14 +86,6 @@ public class JdbcHeroDao implements HeroDao {
         return heroes;
     }
 
-    public List<Hero> fetchHeroesFromApi() {
-        String apiUrl = "https://api.opendota.com/api/herostats";
-        ResponseEntity<Hero[]> response = restTemplate.getForEntity(apiUrl, Hero[].class);
-        Hero[] heroes = response.getBody();
-        assert heroes != null;
-        return Arrays.asList(heroes);
-    }
-
     private boolean isHeroesTableExists() {
         String sql = "SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'heroes')";
         return jdbcTemplate.queryForObject(sql, Boolean.class);
@@ -104,6 +102,7 @@ public class JdbcHeroDao implements HeroDao {
                 hero.getWin3(), hero.getWin4(), hero.getWin5(), hero.getWin6(), hero.getWin7(), hero.getWin8(),
                 hero.getHeroComplexity(), hero.getHeroPosition());
     }
+
     private Hero mapRowToHero(SqlRowSet rs) {
         Hero hero = new Hero();
         hero.setId(rs.getInt("id"));
