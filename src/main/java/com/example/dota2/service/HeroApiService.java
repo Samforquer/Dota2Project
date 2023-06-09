@@ -1,6 +1,7 @@
 package com.example.dota2.service;
 
 import com.example.dota2.model.Hero;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class HeroApiService {
     private final RestTemplate restTemplate;
-
+@Autowired
     public HeroApiService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
