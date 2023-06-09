@@ -1,11 +1,10 @@
-package model;
+package com.example.dota2.model;
 
 public class Hero {
 
     private int id;
     private String name;
     private String primaryAttr;
-    private String attributeType;
     private String attackType;
     private int pick1;
     private int pick2;
@@ -237,7 +236,7 @@ public class Hero {
         return "Hero{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", attributeType='" + attributeType + '\'' +
+                ", attributeType='" + primaryAttr + '\'' +
                 ", attackType='" + attackType + '\'' +
                 ", pick1=" + pick1 +
                 ", pick2=" + pick2 +

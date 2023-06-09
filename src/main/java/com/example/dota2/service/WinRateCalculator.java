@@ -1,4 +1,4 @@
-package service;
+package com.example.dota2.service;
 
 public class WinRateCalculator {
     public static double calculateWinRate(double pickCount, double winCount) {
