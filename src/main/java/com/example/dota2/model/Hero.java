@@ -1,29 +1,53 @@
 package com.example.dota2.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Hero {
 
     private int id;
+    @JsonProperty("localized_name")
     private String name;
+    @JsonProperty("primary_attr")
     private String primaryAttr;
+    @JsonProperty("attack_type")
     private String attackType;
+    @JsonProperty("1_pick")
     private int pick1;
+    @JsonProperty("2_pick")
     private int pick2;
+    @JsonProperty("3_pick")
     private int pick3;
+    @JsonProperty("4_pick")
     private int pick4;
+    @JsonProperty("5_pick")
     private int pick5;
+    @JsonProperty("6_pick")
     private int pick6;
+    @JsonProperty("7_pick")
     private int pick7;
+    @JsonProperty("8_pick")
     private int pick8;
+    @JsonProperty("pro_pick")
     private int proPicked;
+    @JsonProperty("pro_win")
     private int proWins;
+    @JsonProperty("1_win")
     private int win1;
+    @JsonProperty("2_win")
     private int win2;
+    @JsonProperty("3_win")
     private int win3;
+    @JsonProperty("4_win")
     private int win4;
+    @JsonProperty("5_win")
     private int win5;
+    @JsonProperty("6_win")
     private int win6;
+    @JsonProperty("7_win")
     private int win7;
+    @JsonProperty("8_win")
     private int win8;
+    @JsonProperty("time_last_updated")
     private int heroComplexity;
     private int heroPosition;
 
