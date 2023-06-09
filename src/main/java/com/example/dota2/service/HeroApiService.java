@@ -23,6 +23,8 @@ public class HeroApiService {
         Hero[] heroes = response.getBody();
         return Arrays.asList(heroes != null ? heroes : new Hero[0]);
     }
+
+}
     // Implement methods for fetching and filtering hero data from the API
     // Implement the logic to fetch all heroes from the API
         // Example code:
@@ -30,4 +32,3 @@ public class HeroApiService {
         // Parse the response and create a list of Hero objects
         // Return the list of heroes
     // Add more methods as needed for filtering and manipulating hero data
-}
