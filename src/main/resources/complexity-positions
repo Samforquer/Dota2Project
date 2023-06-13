@@ -1,0 +1,741 @@
+[
+    {
+        "id":1,
+        "name": "Anti-Mage",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":2,
+        "name": "Axe",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":3,
+        "name": "Bane",
+        "heroComplexity": 2,
+        "heroPosition": 5
+    },
+    {
+        "id":4,
+        "name": "Bloodseeker",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":5,
+        "name": "Crystal Maiden",
+        "heroComplexity": 1,
+        "heroPosition": 5
+    },
+    {
+        "id":6,
+        "name": "Drow Ranger",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":7,
+        "name": "Earthshaker",
+        "heroComplexity": 2,
+        "heroPosition": 4
+    },
+    {
+        "id":8,
+        "name": "Juggernaut",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":9,
+        "name": "Mirana",
+        "heroComplexity": 2,
+        "heroPosition": 4
+    },
+    {
+        "id":10,
+        "name": "Morphling",
+        "heroComplexity": 3,
+        "heroPosition": 1
+    },
+    {
+        "id":11,
+        "name": "Shadow Fiend",
+        "heroComplexity": 2,
+        "heroPosition": [1,2]
+    },
+    {
+        "id":12,
+        "name": "Phantom Lancer",
+        "heroComplexity": 2,
+        "heroPosition": 1
+    },
+    {
+        "id":13,
+        "name": "Puck",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":14,
+        "name": "Pudge",
+        "heroComplexity": 2,
+        "heroPosition": 4
+    },
+
+    {
+        "id":15,
+        "name": "Razor",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":16,
+        "name": "Sand King",
+        "heroComplexity": 2,
+        "heroPosition": 3
+    },
+    {
+        "id":17,
+        "name": "Storm Spirit",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":18,
+        "name": "Sven",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":19,
+        "name": "Tiny",
+        "heroComplexity": 2,
+        "heroPosition": [2,4]
+    },
+    {
+        "id":20,
+        "name": "Vengeful Spirit",
+        "heroComplexity": 1,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":21,
+        "name": "Windranger",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":22,
+        "name": "Zeus",
+        "heroComplexity": 1,
+        "heroPosition": 2
+    },
+    {
+        "id":23,
+        "name": "Kunkka",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":25,
+        "name": "Lina",
+        "heroComplexity": 1,
+        "heroPosition": 2
+    },
+    {
+        "id":26,
+        "name": "Lion",
+        "heroComplexity": 1,
+        "heroPosition": 5
+    },
+    {
+        "id":27,
+        "name": "Shadow Shaman",
+        "heroComplexity": 1,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":28,
+        "name": "Slardar",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":29,
+        "name": "Tidehunter",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":30,
+        "name": "Witch Doctor",
+        "heroComplexity": 1,
+        "heroPosition": 5
+    },
+    {
+        "id":31,
+        "name": "Lich",
+        "heroComplexity": 1,
+        "heroPosition": 5
+    },
+    {
+        "id":32,
+        "name": "Riki",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":33,
+        "name": "Enigma",
+        "heroComplexity": 2,
+        "heroPosition": 3
+    },
+    {
+        "id":34,
+        "name": "Tinker",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":35,
+        "name": "Sniper",
+        "heroComplexity": 1,
+        "heroPosition": 2
+    },
+    {
+        "id":36,
+        "name": "Necrophos",
+        "heroComplexity": 1,
+        "heroPosition": [2,3]
+    },
+    {
+        "id":37,
+        "name": "Warlock",
+        "heroComplexity": 1,
+        "heroPosition": 5
+    },
+    {
+        "id":38,
+        "name": "Beastmaster",
+        "heroComplexity": 2,
+        "heroPosition": 3
+    },
+    {
+        "id":39,
+        "name": "Queen of Pain",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":40,
+        "name": "Venomancer",
+        "heroComplexity": 1,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":41,
+        "name": "Faceless Void",
+        "heroComplexity": 2,
+        "heroPosition": 1
+    },
+    {
+        "id":42,
+        "name": "Wraith King",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":43,
+        "name": "Death Prophet",
+        "heroComplexity": 1,
+        "heroPosition": [2,3]
+    },
+    {
+        "id":44,
+        "name": "Phantom Assassin",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":45,
+        "name": "Pugna",
+        "heroComplexity": 2,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":46,
+        "name": "Templar Assassin",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":47,
+        "name": "Viper",
+        "heroComplexity": 1,
+        "heroPosition": [2,3]
+    },
+    {
+        "id":48,
+        "name": "Luna",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":49,
+        "name": "Dragon Knight",
+        "heroComplexity": 1,
+        "heroPosition": [2,3]
+    },
+    {
+        "id":50,
+        "name": "Dazzle",
+        "heroComplexity": 1,
+        "heroPosition": 5
+    },
+    {
+        "id":51,
+        "name": "Clockwerk",
+        "heroComplexity": 1,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":52,
+        "name": "Leshrac",
+        "heroComplexity": 1,
+        "heroPosition": 2
+    },
+    {
+        "id":53,
+        "name": "Nature's Prophet",
+        "heroComplexity": 2,
+        "heroPosition": 3
+    },
+    {
+        "id":54,
+        "name": "Lifestealer",
+        "heroComplexity": 2,
+        "heroPosition": 1
+    },
+    {
+        "id":55,
+        "name": "Dark Seer",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":56,
+        "name": "Clinkz",
+        "heroComplexity": 2,
+        "heroPosition": 4
+    },
+    {
+        "id":57,
+        "name": "Omniknight",
+        "heroComplexity": 1,
+        "heroPosition": [3,5]
+    },
+    {
+        "id":58,
+        "name": "Enchantress",
+        "heroComplexity": 2,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":59,
+        "name": "Huskar",
+        "heroComplexity": 1,
+        "heroPosition": 2
+    },
+    {
+        "id":60,
+        "name": "Night Stalker",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":61,
+        "name": "Broodmother",
+        "heroComplexity": 2,
+        "heroPosition": [2,3]
+    },
+    {
+        "id":62,
+        "name": "Bounty Hunter",
+        "heroComplexity": 1,
+        "heroPosition": 4
+    },
+    {
+        "id":63,
+        "name": "Weaver",
+        "heroComplexity": 2,
+        "heroPosition": 1
+    },
+    {
+        "id":64,
+        "name": "Jakiro",
+        "heroComplexity": 1,
+        "heroPosition": 5
+    },
+    {
+        "id":65,
+        "name": "Batrider",
+        "heroComplexity": 2,
+        "heroPosition": [2,3,4,5]
+    },
+    {
+        "id":66,
+        "name": "Chen",
+        "heroComplexity": 3,
+        "heroPosition": 5
+    },
+    {
+        "id":67,
+        "name": "Spectre",
+        "heroComplexity": 2,
+        "heroPosition": 1
+    },
+    {
+        "id":68,
+        "name": "Ancient Apparition",
+        "heroComplexity": 2,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":69,
+        "name": "Doom",
+        "heroComplexity": 2,
+        "heroPosition": 3
+    },
+    {
+        "id":70,
+        "name": "Ursa",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":71,
+        "name": "Spirit Breaker",
+        "heroComplexity": 1,
+        "heroPosition": [3,4]
+    },
+    {
+        "id":72,
+        "name": "Gyrocopter",
+        "heroComplexity": 1,
+        "heroPosition": 4
+    },
+    {
+        "id":73,
+        "name": "Alchemist",
+        "heroComplexity": 1,
+        "heroPosition": [1,2]
+    },
+    {
+        "id":74,
+        "name": "Invoker",
+        "heroComplexity": 3,
+        "heroPosition": 2
+    },
+    {
+        "id":75,
+        "name": "Silencer",
+        "heroComplexity": 2,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":76,
+        "name": "Outworld Destroyer",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":77,
+        "name": "Lycan",
+        "heroComplexity": 2,
+        "heroPosition": [2,3]
+    },
+    {
+        "id":78,
+        "name": "Brewmaster",
+        "heroComplexity": 3,
+        "heroPosition": 3
+    },
+    {
+        "id":79,
+        "name": "Shadow Demon",
+        "heroComplexity": 2,
+        "heroPosition": [4.5]
+    },
+    {
+        "id":80,
+        "name": "Lone Druid",
+        "heroComplexity": 3,
+        "heroPosition": 2
+    },
+    {
+        "id":81,
+        "name": "Chaos Knight",
+        "heroComplexity": 1,
+        "heroPosition": [1,3]
+    },
+    {
+        "id":82,
+        "name": "Meepo",
+        "heroComplexity": 3,
+        "heroPosition": 2
+    },
+    {
+        "id":83,
+        "name": "Treant Protector",
+        "heroComplexity": 2,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":84,
+        "name": "Ogre Magi",
+        "heroComplexity": 1,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":85,
+        "name": "Undying",
+        "heroComplexity": 1,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":86,
+        "name": "Rubick",
+        "heroComplexity": 3,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":87,
+        "name": "Disruptor",
+        "heroComplexity": 2,
+        "heroPosition": 5
+    },
+    {
+        "id":88,
+        "name": "Nyx Assassin",
+        "heroComplexity": 2,
+        "heroPosition": 4
+    },
+    {
+        "id":89,
+        "name": "Naga Siren",
+        "heroComplexity": 2,
+        "heroPosition": 1
+    },
+    {
+        "id":90,
+        "name": "Keeper of the Light",
+        "heroComplexity": 2,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":91,
+        "name": "Io",
+        "heroComplexity": 3,
+        "heroPosition": 5
+    },
+    {
+        "id":92,
+        "name": "Visage",
+        "heroComplexity": 3,
+        "heroPosition": [2,3]
+    },
+    {
+        "id":93,
+        "name": "Slark",
+        "heroComplexity": 2,
+        "heroPosition": 1
+    },
+    {
+        "id":94,
+        "name": "Medusa",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    },
+    {
+        "id":95,
+        "name": "Troll Warlord",
+        "heroComplexity": 2,
+        "heroPosition": 1
+    },
+    {
+        "id":96,
+        "name": "Centaur Warrunner",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":97,
+        "name": "Magnus",
+        "heroComplexity": 2,
+        "heroPosition": 3
+    },
+    {
+        "id":98,
+        "name": "Timbersaw",
+        "heroComplexity": 2,
+        "heroPosition": 3
+    },
+    {
+        "id":99,
+        "name": "Bristleback",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":100,
+        "name": "Tusk",
+        "heroComplexity": 2,
+        "heroPosition": 4
+    },
+    {
+        "id":101,
+        "name": "Skywrath Mage",
+        "heroComplexity": 1,
+        "heroPosition": 4
+    },
+    {
+        "id":102,
+        "name": "Abaddon",
+        "heroComplexity": 1,
+        "heroPosition": [1,3]
+    },
+    {
+        "id":103,
+        "name": "Elder Titan",
+        "heroComplexity": 2,
+        "heroPosition": 3
+    },
+    {
+        "id":104,
+        "name": "Legion Commander",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":105,
+        "name": "Techies",
+        "heroComplexity": 2,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":106,
+        "name": "Ember Spirit",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":107,
+        "name": "Earth Spirit",
+        "heroComplexity": 3,
+        "heroPosition": 4
+    },
+    {
+        "id":108,
+        "name": "Underlord",
+        "heroComplexity": 2,
+        "heroPosition": 3
+    },
+    {
+        "id":109,
+        "name": "Terrorblade",
+        "heroComplexity": 2,
+        "heroPosition": 1
+    },
+    {
+        "id":110,
+        "name": "Phoenix",
+        "heroComplexity": 2,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":111,
+        "name": "Oracle",
+        "heroComplexity": 3,
+        "heroPosition": 5
+    },
+    {
+        "id":112,
+        "name": "Winter Wyvern",
+        "heroComplexity": 2,
+        "heroPosition": [3,5]
+    },
+    {
+        "id":113,
+        "name": "Arc Warden",
+        "heroComplexity": 3,
+        "heroPosition": 2
+    },
+    {
+        "id":119,
+        "name": "Dark Willow",
+        "heroComplexity": 2,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":120,
+        "name": "Pangolier",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":121,
+        "name": "Grimstroke",
+        "heroComplexity": 2,
+        "heroPosition": [4,5]
+    },
+    {
+        "id":123,
+        "name": "Hoodwink",
+        "heroComplexity": 2,
+        "heroPosition": 4
+    },
+    {
+        "id":126,
+        "name": "Void Spirit",
+        "heroComplexity": 2,
+        "heroPosition": 2
+    },
+    {
+        "id":128,
+        "name": "Snapfire",
+        "heroComplexity": 1,
+        "heroPosition": 4
+    },
+    {
+        "id":129,
+        "name": "Mars",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":135,
+        "name": "Dawnbreaker",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":136,
+        "name": "Marci",
+        "heroComplexity": 2,
+        "heroPosition": 3
+    },
+    {
+        "id":137,
+        "name": "Primal Beast",
+        "heroComplexity": 1,
+        "heroPosition": 3
+    },
+    {
+        "id":138,
+        "name": "Muerta",
+        "heroComplexity": 1,
+        "heroPosition": 1
+    }
+]
