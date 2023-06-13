@@ -28,10 +28,9 @@ public class HeroPickerApplication {
         System.out.println(" ");
         Hero[] heroes = heroApiService.fetchHeroesFromApi();
 
-        // Create an instance of HeroFilterService
         HeroFilterService heroFilterService = new HeroFilterService();
 
-        // Filter heroes by win rate in bracket 4 -Archon for example
+        // Filter heroes by win rate in bracket 4 = Archon, 5 = Legend for example
         List<Hero> filteredHeroes = heroFilterService.filterHeroesByWinRate(heroes, 4);
 
         // Print out the win rate of filtered heroes

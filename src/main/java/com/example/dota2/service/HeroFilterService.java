@@ -32,48 +32,30 @@ public class HeroFilterService {
     }
 
     private int getPickCount(Hero hero, int bracket) {
-        switch (bracket) {
-            case 1:
-                return hero.getPick1();
-            case 2:
-                return hero.getPick2();
-            case 3:
-                return hero.getPick3();
-            case 4:
-                return hero.getPick4();
-            case 5:
-                return hero.getPick5();
-            case 6:
-                return hero.getPick6();
-            case 7:
-                return hero.getPick7();
-            case 8:
-                return hero.getPick8();
-            default:
-                return 0;
-        }
+        return switch (bracket) {
+            case 1 -> hero.getPick1();
+            case 2 -> hero.getPick2();
+            case 3 -> hero.getPick3();
+            case 4 -> hero.getPick4();
+            case 5 -> hero.getPick5();
+            case 6 -> hero.getPick6();
+            case 7 -> hero.getPick7();
+            case 8 -> hero.getPick8();
+            default -> 0;
+        };
     }
 
     private int getWinCount(Hero hero, int bracket) {
-        switch (bracket) {
-            case 1:
-                return hero.getWin1();
-            case 2:
-                return hero.getWin2();
-            case 3:
-                return hero.getWin3();
-            case 4:
-                return hero.getWin4();
-            case 5:
-                return hero.getWin5();
-            case 6:
-                return hero.getWin6();
-            case 7:
-                return hero.getWin7();
-            case 8:
-                return hero.getWin8();
-            default:
-                return 0;
-        }
+        return switch (bracket) {
+            case 1 -> hero.getWin1();
+            case 2 -> hero.getWin2();
+            case 3 -> hero.getWin3();
+            case 4 -> hero.getWin4();
+            case 5 -> hero.getWin5();
+            case 6 -> hero.getWin6();
+            case 7 -> hero.getWin7();
+            case 8 -> hero.getWin8();
+            default -> 0;
+        };
     }
 }
