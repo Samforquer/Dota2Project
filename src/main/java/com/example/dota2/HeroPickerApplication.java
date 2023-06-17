@@ -32,7 +32,7 @@ public class HeroPickerApplication {
         System.out.println(" ");
 
 // Todo how do I turn the following list into taking in the user input as the arguments? and print cleaner looking data
-        List<Hero> filteredHeroes = heroFilterService.filterHeroes(heroes, 4, Collections.singletonList(3), 1);
+        List<Hero> filteredHeroes = heroFilterService.filterHeroes(heroes, 4, Collections.singletonList(3), 3);
         filteredHeroes.forEach(System.out::println);
 
 

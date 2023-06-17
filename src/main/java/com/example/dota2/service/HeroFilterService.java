@@ -9,12 +9,11 @@ import java.util.stream.Collectors;
 
 public class HeroFilterService {
     public List<Hero> filterHeroes(Hero[] heroes, int bracket, List<Integer> position, int complexity) {
-        List<Hero> filteredHeroes = Arrays.stream(heroes)
+        return Arrays.stream(heroes)
                 .filter(hero -> calculateWinRate(hero,bracket)>=48)
                 .filter(hero -> hero.getHeroPosition().stream().anyMatch(position::contains))
                 .filter(hero -> hero.getHeroComplexity()<=complexity)
                 .collect(Collectors.toList());
-                 return filteredHeroes;
         }
 
 
