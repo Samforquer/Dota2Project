@@ -1,5 +1,6 @@
 package com.example.dota2;
-
+import java.util.Scanner;
+import java.util.stream.Collectors;
 import com.example.dota2.model.Hero;
 import com.example.dota2.service.HeroApiService;
 import com.example.dota2.service.HeroFilterService;
@@ -19,7 +20,6 @@ import java.util.List;
 public class HeroPickerApplication {
 
     public static void main(String[] args) {
-        // Get the HeroApiService instance from the application context
         ApplicationContext context = SpringApplication.run(HeroPickerApplication.class, args);
         HeroApiService heroApiService = context.getBean(HeroApiService.class);
         Hero[] heroes = heroApiService.getAllHeroes();
@@ -30,6 +30,14 @@ public class HeroPickerApplication {
         System.out.println("****************************************");
         System.out.println(" ");
         System.out.println(" ");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your skill bracket: (1-8) : 1 = Herald, 2 = Guardian, 3 = Crusader, 4 = Archon," +
+                "5 = Legend, 6 = Ancient, 7 = Divine, 8 = Immortal");
+        int bracket = scanner.nextInt();
+        System.out.println("Enter your position: (1-5) : 1 = Carry, 2 = Mid Lane, 3 = Offlane, 4 = Soft Support," +
+                " 5 = Hard Support");
+        int position = scanner.nextInt();
+
 
 // Todo how do I turn the following list into taking in the user input as the arguments? and print cleaner looking data
         List<Hero> filteredHeroes = heroFilterService.filterHeroes(heroes, 4, Collections.singletonList(3), 3);

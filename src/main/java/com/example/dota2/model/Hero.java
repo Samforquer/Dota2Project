@@ -15,20 +15,28 @@ public class Hero {
     @JsonProperty("attack_type")
     private String attackType;
     @JsonProperty("1_pick")
+    //Herald = 1
     private int pick1;
     @JsonProperty("2_pick")
+    //Guardian = 2
     private int pick2;
     @JsonProperty("3_pick")
+    //Crusader = 3
     private int pick3;
     @JsonProperty("4_pick")
+    //Archon = 4
     private int pick4;
     @JsonProperty("5_pick")
+    //Legend = 5
     private int pick5;
     @JsonProperty("6_pick")
+    //Ancient = 6
     private int pick6;
     @JsonProperty("7_pick")
+    //Divine = 7
     private int pick7;
     @JsonProperty("8_pick")
+    //Immortal = 8
     private int pick8;
     @JsonProperty("pro_pick")
     private int proPicked;
