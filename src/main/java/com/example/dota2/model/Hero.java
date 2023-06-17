@@ -1,6 +1,9 @@
 package com.example.dota2.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import java.util.List;
 
 public class Hero {
 
@@ -47,11 +50,12 @@ public class Hero {
     private int win7;
     @JsonProperty("8_win")
     private int win8;
-    @JsonProperty("time_last_updated")
+    @JsonProperty("heroComplexity")
     private int heroComplexity;
-    private int heroPosition;
+    @JsonProperty("heroPosition")
+    private List<Integer> heroPosition;
 
-    public Hero(int id, String name, String primaryAttr, String attackType, int heroComplexity, int heroPosition) {
+    public Hero(int id, String name, String primaryAttr, String attackType, int heroComplexity, List<Integer> heroPosition) {
         this.id = id;
         this.name = name;
         this.primaryAttr=primaryAttr;
@@ -248,11 +252,11 @@ public class Hero {
         this.heroComplexity = heroComplexity;
     }
 
-    public int getHeroPosition() {
+    public List<Integer> getHeroPosition() {
         return heroPosition;
     }
 
-    public void setHeroPosition(int heroPosition) {
+    public void setHeroPosition(List<Integer> heroPosition) {
         this.heroPosition = heroPosition;
     }
 

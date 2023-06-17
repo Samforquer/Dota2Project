@@ -3,22 +3,21 @@ package com.example.dota2.service;
 import com.example.dota2.model.Hero;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HeroFilterService {
-
-    public List<Hero> filterHeroesByWinRate(Hero[] heroes, int bracket) {
-        List<Hero> filteredHeroes = new ArrayList<>();
-
-        for (Hero hero : heroes) {
-            double winRate = calculateWinRate(hero, bracket);
-            if (winRate >= 50.0) {
-                filteredHeroes.add(hero);
-            }
+    public List<Hero> filterHeroes(Hero[] heroes, int bracket, List<Integer> position, int complexity) {
+        List<Hero> filteredHeroes = Arrays.stream(heroes)
+                .filter(hero -> calculateWinRate(hero,bracket)>=48)
+                .filter(hero -> hero.getHeroPosition().stream().anyMatch(position::contains))
+                .filter(hero -> hero.getHeroComplexity()<=complexity)
+                .collect(Collectors.toList());
+                 return filteredHeroes;
         }
 
-        return filteredHeroes;
-    }
+
 
     public double calculateWinRate(Hero hero, int bracket) {
         int pickCount = getPickCount(hero, bracket);
@@ -58,7 +57,5 @@ public class HeroFilterService {
             default -> 0;
         };
     }
-
-
 
 }
