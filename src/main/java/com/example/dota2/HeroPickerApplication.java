@@ -1,6 +1,5 @@
 package com.example.dota2;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import com.example.dota2.model.Hero;
 import com.example.dota2.service.HeroApiService;
 import com.example.dota2.service.HeroFilterService;
@@ -42,13 +41,21 @@ public class HeroPickerApplication {
                 "1 = Low, 2 = Medium, 3 = High: ");
         int complexity = scanner.nextInt();
 
-//      I am not sure what the Collections.singletonList does exactly yet. Seems to work as expected for now.//todo look into this more
         List<Hero> filteredHeroes = heroFilterService.filterHeroes(heroes, bracket, Collections.singletonList(position), complexity);
 
-        filteredHeroes.forEach(hero -> {
+        int nameWidth = 20;
+        int winRateWidth = 25;
+
+// Print the headers
+        System.out.println("-------------------------------------------------");
+        System.out.printf("%-" + nameWidth + "s | %-" + winRateWidth + "s\n",
+                "Hero Name", "Win Rate");
+        System.out.println("-".repeat(nameWidth + winRateWidth + 4));
+
+// Print each hero's information
+        for (Hero hero : filteredHeroes) {
             double winRate = 0.0;
             switch (bracket) {
-                // Todo I need to change the output to have 2 decimal places to show the user.
                 case 1 -> winRate = hero.getWin1() / hero.getPick1() * 100;
                 case 2 -> winRate = hero.getWin2() / hero.getPick2() * 100;
                 case 3 -> winRate = hero.getWin3() / hero.getPick3() * 100;
@@ -57,22 +64,14 @@ public class HeroPickerApplication {
                 case 6 -> winRate = hero.getWin6() / hero.getPick6() * 100;
                 case 7 -> winRate = hero.getWin7() / hero.getPick7() * 100;
                 case 8 -> winRate = hero.getWin8() / hero.getPick8() * 100;
-
-                // Add more cases for other brackets if needed
                 default -> {
                 }
-                // Handle the case where the bracket name is invalid or not found
+                // Handle the case where the bracket is invalid or not found
             }
-            System.out.println("Hero ID: " + hero.getId());
-            System.out.println("Name: " + hero.getName());
-            System.out.println("Win Rate in " + bracket + ": " + winRate + "%");
-            // Print other desired information about the hero
-        });
-
-// Todo how do I turn the following list into taking in the user input as the arguments? and print cleaner looking data
-
+            System.out.printf("%-" + nameWidth + "s | %-" + winRateWidth + ".2f%%\n",
+                    hero.getName(), winRate);
+        }
     }
-
 
     @Bean
     public RestTemplate restTemplate() {
