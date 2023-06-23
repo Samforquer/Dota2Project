@@ -44,13 +44,14 @@ public class HeroPickerApplication {
         List<Hero> filteredHeroes = heroFilterService.filterHeroes(heroes, bracket, Collections.singletonList(position), complexity);
 
         int nameWidth = 20;
-        int winRateWidth = 25;
+        int complexityWidth = 12;
+        int winRateWidth = 20;
 
 // Print the headers
-        System.out.println("-------------------------------------------------");
-        System.out.printf("%-" + nameWidth + "s | %-" + winRateWidth + "s\n",
-                "Hero Name", "Win Rate");
-        System.out.println("-".repeat(nameWidth + winRateWidth + 4));
+        System.out.println("----------------------------------------------------------------------------------");
+        System.out.printf("%-" + nameWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
+                "Hero Name", "Complexity", "Win Rate at Selected Bracket");
+        System.out.println("-".repeat(nameWidth + complexityWidth + winRateWidth + 6));
 
 // Print each hero's information
         for (Hero hero : filteredHeroes) {
@@ -68,11 +69,10 @@ public class HeroPickerApplication {
                 }
                 // Handle the case where the bracket is invalid or not found
             }
-            System.out.printf("%-" + nameWidth + "s | %-" + winRateWidth + ".2f%%\n",
-                    hero.getName(), winRate);
+            System.out.printf("%-" + nameWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + ".2f%%\n",
+                    hero.getName(), hero.getHeroComplexity(), winRate);
         }
     }
-
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
