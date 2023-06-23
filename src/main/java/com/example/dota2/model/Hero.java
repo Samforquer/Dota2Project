@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class Hero {
-
+public class Hero{
     private int id;
     @JsonProperty("localized_name")
     private String name;
@@ -111,144 +110,72 @@ public class Hero {
         return pick1;
     }
 
-    public void setPick1(double pick1) {
-        this.pick1 = pick1;
-    }
-
     public double getPick2() {
         return pick2;
-    }
-
-    public void setPick2(double pick2) {
-        this.pick2 = pick2;
     }
 
     public double getPick3() {
         return pick3;
     }
 
-    public void setPick3(double pick3) {
-        this.pick3 = pick3;
-    }
-
     public double getPick4() {
         return pick4;
-    }
-
-    public void setPick4(double pick4) {
-        this.pick4 = pick4;
     }
 
     public double getPick5() {
         return pick5;
     }
 
-    public void setPick5(double pick5) {
-        this.pick5 = pick5;
-    }
-
     public double getPick6() {
         return pick6;
-    }
-
-    public void setPick6(double pick6) {
-        this.pick6 = pick6;
     }
 
     public double getPick7() {
         return pick7;
     }
 
-    public void setPick7(double pick7) {
-        this.pick7 = pick7;
-    }
-
     public double getPick8() {
         return pick8;
-    }
-
-    public void setPick8(double pick8) {
-        this.pick8 = pick8;
     }
 
     public double getProPicked() {
         return proPicked;
     }
 
-    public void setProPicked(double proPicked) {
-        this.proPicked = proPicked;
-    }
-
     public double getProWins() {
         return proWins;
-    }
-
-    public void setProWins(double proWins) {
-        this.proWins = proWins;
     }
 
     public double getWin1() {
         return win1;
     }
 
-    public void setWin1(double win1) {
-        this.win1 = win1;
-    }
-
     public double getWin2() {
         return win2;
-    }
-
-    public void setWin2(double win2) {
-        this.win2 = win2;
     }
 
     public double getWin3() {
         return win3;
     }
 
-    public void setWin3(double win3) {
-        this.win3 = win3;
-    }
-
     public double getWin4() {
         return win4;
-    }
-
-    public void setWin4(double win4) {
-        this.win4 = win4;
     }
 
     public double getWin5() {
         return win5;
     }
 
-    public void setWin5(double win5) {
-        this.win5 = win5;
-    }
-
     public double getWin6() {
         return win6;
-    }
-
-    public void setWin6(double win6) {
-        this.win6 = win6;
     }
 
     public double getWin7() {
         return win7;
     }
 
-    public void setWin7(double win7) {
-        this.win7 = win7;
-    }
-
     public double getWin8() {
         return win8;
-    }
-
-    public void setWin8(double win8) {
-        this.win8 = win8;
     }
 
     public int getHeroComplexity() {
@@ -295,6 +222,36 @@ public class Hero {
                 ", heroPosition=" + heroPosition +
                 '}';
     }
+
+    public double getHeraldWinRate(){
+        return getWin1()/getPick1()*100;
+    }
+    public double getGuardianWinRate(){
+        return getWin2()/getPick2()*100;
+    }
+    public double getCrusaderWinRate(){
+        return getWin3()/getPick3()*100;
+    }
+    public double getArchonWinRate(){
+        return getWin4()/getPick4()*100;
+    }
+    public double getLegendWinRate(){
+        return getWin5()/getPick5()*100;
+    }
+    public double getAncientWinRate(){
+        return getWin6()/getPick6()*100;
+    }
+    public double getDivineWinRate(){
+        return getWin7()/getPick7()*100;
+    }
+    public double getImmortalWinRate(){
+        return getWin8()/getPick8()*100;
+    }
+    public double getProWinRate(){
+        return getProWins()/getProPicked()*100;
+    }
+
+
 }
 
 

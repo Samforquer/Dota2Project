@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 public class HeroFilterService {
     public List<Hero> filterHeroes(Hero[] heroes, int bracket, List<Integer> position, int complexity) {
         return Arrays.stream(heroes)
-                // Heroes above or equal to 48% winrate should be shown.
-                .filter(hero -> calculateWinRate(hero,bracket)>=48)
+                // Heroes above or equal to 50% winrate should be shown.
+                .filter(hero -> calculateWinRate(hero,bracket)>=50)
                 .filter(hero -> hero.getHeroPosition().stream().anyMatch(position::contains))
                 .filter(hero -> hero.getHeroComplexity()<=complexity)
                 .collect(Collectors.toList());
