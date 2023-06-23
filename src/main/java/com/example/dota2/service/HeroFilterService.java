@@ -2,7 +2,6 @@ package com.example.dota2.service;
 
 import com.example.dota2.model.Hero;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,8 +19,8 @@ public class HeroFilterService {
 
 
     public double calculateWinRate(Hero hero, int bracket) {
-        int pickCount = getPickCount(hero, bracket);
-        int winCount = getWinCount(hero, bracket);
+        double pickCount = getPickCount(hero, bracket);
+        double winCount = getWinCount(hero, bracket);
 
         if (pickCount == 0) {
             return 0.0; // Avoid division by zero
@@ -30,8 +29,8 @@ public class HeroFilterService {
         return (double) winCount / pickCount * 100;
     }
 
-    private int getPickCount(Hero hero, int bracket) {
-        return switch (bracket) {
+    private double getPickCount(Hero hero, double bracket) {
+        return switch ((int) bracket) {
             case 1 -> hero.getPick1();
             case 2 -> hero.getPick2();
             case 3 -> hero.getPick3();
@@ -44,8 +43,8 @@ public class HeroFilterService {
         };
     }
 
-    private int getWinCount(Hero hero, int bracket) {
-        return switch (bracket) {
+    private double getWinCount(Hero hero, double bracket) {
+        return switch ((int) bracket) {
             case 1 -> hero.getWin1();
             case 2 -> hero.getWin2();
             case 3 -> hero.getWin3();
