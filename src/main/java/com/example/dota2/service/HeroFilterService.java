@@ -26,7 +26,7 @@ public class HeroFilterService {
             return 0.0; // Avoid division by zero
         }
 
-        return (double) winCount / pickCount * 100;
+        return winCount / pickCount * 100;
     }
 
     private double getPickCount(Hero hero, double bracket) {
