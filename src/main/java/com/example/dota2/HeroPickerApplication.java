@@ -65,7 +65,7 @@ public class HeroPickerApplication {
                     hero.getName(), hero.getHeroComplexity(), winRate);
         }
     }
-
+// Todo add capability to return to the main menu without closing and re-launching etc.
     private static double getWinRateForBracket(Hero hero, int bracket) {
         return switch (bracket) {
             case 1 -> hero.getHeraldWinRate();
