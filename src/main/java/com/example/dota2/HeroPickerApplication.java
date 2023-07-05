@@ -52,7 +52,6 @@ public class HeroPickerApplication {
         int complexityWidth = 12;
         int winRateWidth = 20;
 
-        // Print the headers
         System.out.println("----------------------------------------------------------------------------------");
         System.out.printf("%-" + nameWidth + "s | %-" + complexityWidth + "s | %-" + winRateWidth + "s\n",
                 "Hero Name", "Complexity", "Win Rate at Selected Bracket");
@@ -65,7 +64,8 @@ public class HeroPickerApplication {
                     hero.getName(), hero.getHeroComplexity(), winRate);
         }
     }
-// Todo add capability to return to the main menu without closing and re-launching etc.
+
+    // Todo add capability to return to the main menu without closing and re-launching etc.
     private static double getWinRateForBracket(Hero hero, int bracket) {
         return switch (bracket) {
             case 1 -> hero.getHeraldWinRate();
@@ -84,5 +84,4 @@ public class HeroPickerApplication {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
 }
