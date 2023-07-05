@@ -45,7 +45,7 @@ public class HeroPickerApplication {
 
         List<Hero> filteredHeroes = heroFilterService.filterHeroes(heroes, bracket, Collections.singletonList(position), complexity);
 
-        // Sort the filteredHeroes list based on win rate
+        // Sort the filteredHeroes list based on win rate for each bracket
         filteredHeroes.sort(Comparator.comparingDouble(hero -> getWinRateForBracket((Hero) hero, bracket)).reversed());
 
         int nameWidth = 20;
