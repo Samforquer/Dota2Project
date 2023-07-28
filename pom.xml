@@ -15,6 +15,8 @@
 	<description>An app to help Dota2 players pick the best model for every situation</description>
 	<properties>
 		<java.version>17</java.version>
+		<node.version>v18.16.0</node.version>
+		<npm.version>9.5.1</npm.version>
 	</properties>
 	<dependencies>
 

@@ -5,10 +5,10 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <img alt="Vue logo" class="logo" src="https://pbs.twimg.com/profile_images/1478893871199186945/1mA6tezL_400x400.jpg" width="400" height="400" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld msg="Free Dota+" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
