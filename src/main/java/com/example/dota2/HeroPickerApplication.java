@@ -44,7 +44,7 @@ public class HeroPickerApplication {
         int complexity = scanner.nextInt();
 
         List<Hero> filteredHeroes = heroFilterService.filterHeroes(heroes, bracket, Collections.singletonList(position), complexity);
-
+        // testing
         // Sort the filteredHeroes list based on win rate for each bracket
         filteredHeroes.sort(Comparator.comparingDouble(hero -> getWinRateForBracket((Hero) hero, bracket)).reversed());
 
