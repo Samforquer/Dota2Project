@@ -1,9 +1,9 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
   <main>
-    <TheWelcome />
+    <skill-filter/>
   </main>
+
 </template>
+<script setup>
+import SkillFilter from "@/components/SkillFilter.vue";
+</script>
