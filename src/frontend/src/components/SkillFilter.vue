@@ -1,5 +1,6 @@
 <template>
   <div class="form-container">
+    <div class="form-box">
     <h3>Choose your skill bracket: </h3>
     <form class="bracket">
       <input type="radio" id="html">
@@ -19,7 +20,8 @@
       <input type="radio" id="immortal">
       <label for="immortal"> Immortal</label><br>
     </form>
-
+    </div>
+    <div class="form-box">
     <h3>Choose your desired Hero complexity: <br>
       (Select up to 3 options)</h3>
     <form class="complexity">
@@ -30,6 +32,8 @@
       <input type="checkbox" id="complex">
       <label for="complex"> Complex</label><br>
     </form>
+    </div>
+    <div class="form-box">
     <h3>Choose your desired Role:</h3>
     <form class="role">
       <input type="radio" id="carry">
@@ -43,10 +47,13 @@
       <input type="radio" id="hard-support">
       <label for="hard-support">Hard Support</label><br>
     </form>
+    </div>
   </div>
+  <div class="center-button">
   <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="onButtonClick">
     Submit
   </button>
+  </div>
 </template>
 
 <script>
@@ -72,6 +79,9 @@ export default {
 </script>
 
 <style scoped>
+label{
+  color: white;
+}
 input {
   accent-color: #4d0f00;
 }
@@ -88,7 +98,22 @@ button {
   background-color: #f15c41;
   box-shadow: 0 5px 0 #4d0f00;
 }
+.form-box {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgba(40,41,37,0.93);
+}
 
+.form-box h3 {
+  margin-top: 0;
+  background-color: #4d1300;
+  padding: 8px;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 5px
+}
 .glow-on-hover:active {
   box-shadow: none;
   transform: translateY(5px);
@@ -111,6 +136,11 @@ button {
 .glow-on-hover:hover {
   background-color: #691000;
   background-image: none !important;
+}
+.center-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 
