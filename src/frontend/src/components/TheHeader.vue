@@ -33,7 +33,6 @@ header {
   margin: 10px;
 }
 h1 {
-  font-family: "Book Antiqua";
   font-weight: 700;
   color: #4d1300;
   margin: 10px;
