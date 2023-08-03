@@ -1,35 +1,34 @@
 @import 'base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+    border: 3px solid #52140d;
+    border-radius: 5px;
+    width: 85vw;
+    background-color: #4f4d4b;
+    opacity: 0.9;
+    margin: 0 auto;
+    padding: 2rem;
+    font-weight: normal;
 }
 
 a,
 .green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+    text-decoration: none;
+    color: hsla(160, 100%, 37%, 1);
+    transition: 0.4s;
 }
 
 @media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+    a:hover {
+        background-color: hsla(160, 100%, 37%, 0.2);
+    }
 }
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+    body {
+        margin: 50px;
+        background-image: url("../assets/Dota2HeroImg.jpg");
+        display: flex;
+        place-items: center;
+    }
 }
