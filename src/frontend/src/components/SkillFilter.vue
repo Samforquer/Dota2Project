@@ -1,7 +1,7 @@
 <template>
-  <h1>Make your selections here: </h1>
+  <div class="form-container">
   <h3>Choose your skill bracket: </h3>
-  <form id="bracket">
+  <form class="bracket">
     <input type="radio" id="html">
     <label for="herald"> Herald</label><br>
     <input type="radio" id="guardian">
@@ -19,9 +19,10 @@
     <input type="radio" id="immortal">
     <label for="immortal"> Immortal</label><br>
   </form>
-  <br>
-  <h3>Choose your desired Hero complexity (Select up to 3 options):</h3>
-  <form id="complexity">
+
+  <h3>Choose your desired Hero complexity: <br>
+    (Select up to 3 options)</h3>
+  <form class="complexity">
     <input type="checkbox" id="easy">
     <label for="easy"> Easy</label><br>
     <input type="checkbox" id="moderate">
@@ -29,9 +30,8 @@
     <input type="checkbox" id="complex">
     <label for="complex"> Complex</label><br>
   </form>
-  <br>
   <h3>Choose your desired Role:</h3>
-  <form id="role">
+  <form class="role">
     <input type="radio" id="carry">
     <label for="carry">Carry</label><br>
     <input type="radio" id="mid-lane">
@@ -42,7 +42,8 @@
     <label for="soft-support">Soft Support</label><br>
     <input type="radio" id="hard-support">
     <label for="hard-support">Hard Support</label><br>
-  </form><br>
+  </form>
+  </div>
   <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="onButtonClick">
     Submit
   </button>
@@ -71,6 +72,15 @@
   </script>
 
 <style scoped>
+input{
+  accent-color: #4d0f00;
+}
+.form-container {
+  display: flex; /* Use flexbox to arrange the forms side by side */
+  flex-wrap: wrap;
+  justify-content: space-between; /* Space elements evenly along the container */
+  gap: 20px; /* Add some space between forms */
+}
 button{
   margin: 10px;
   background-color: #f15c41;
@@ -98,6 +108,7 @@ button{
   background-color: #691000;
   background-image: none !important;
 }
+
 
 
 </style>
