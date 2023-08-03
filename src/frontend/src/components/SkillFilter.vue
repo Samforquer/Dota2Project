@@ -43,17 +43,61 @@
     <input type="radio" id="hard-support">
     <label for="hard-support">Hard Support</label><br>
   </form><br>
-
-
+  <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="onButtonClick">
+    Submit
+  </button>
 </template>
 
-<script>
-export default {
-  name: "SkillFilter"
-}
-
-</script>
+  <script>
+    export default {
+      name: "SkillFilter",
+      data() {
+        return {
+          isClicked: false
+        };
+      },
+      methods: {
+        onButtonClick() {
+          // Your logic or action when the button is clicked goes here
+          // For example, you can show a message or perform some other action
+          // And toggle the isClicked state to trigger the CSS animation
+          this.isClicked = true;
+          setTimeout(() => {
+            this.isClicked = false; // Reset the isClicked state after the animation duration
+          }, 1000); // Replace 500 with your animation duration in milliseconds
+        }
+      }
+    }
+  </script>
 
 <style scoped>
+button{
+  margin: 10px;
+  background-color: #f15c41;
+  box-shadow: 0 5px 0 #4d0f00;
+}
+.glow-on-hover:active{
+  box-shadow: none;
+  transform: translateY(5px);
+}
+.glow-on-hover {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  background-image: linear-gradient(to right, #4d0f00, #f15c41) !important;
+  border-radius: 3px;
+  padding: 16px 18px 15px;
+  white-space: nowrap;
+}
+
+.glow-on-hover:hover {
+  background-color: #691000;
+  background-image: none !important;
+}
+
 
 </style>

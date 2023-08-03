@@ -13,7 +13,6 @@ import TheHeader from "@/components/TheHeader.vue";
     </nav>
     <RouterView/>
 
-
   </div>
 </template>
 
