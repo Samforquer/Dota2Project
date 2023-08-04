@@ -1,11 +1,13 @@
 package com.example.dota2.service;
 
 import com.example.dota2.model.Hero;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Service
 public class HeroFilterService {
     public List<Hero> filterHeroes(Hero[] heroes, int bracket, List<Integer> position, int complexity) {
         return Arrays.stream(heroes)

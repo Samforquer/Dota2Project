@@ -1,87 +1,126 @@
 <template>
   <div class="form-container">
     <div class="form-box">
-    <h3>Choose your skill bracket: </h3>
-    <form class="bracket">
-      <input type="radio" id="html">
-      <label for="herald"> Herald</label><br>
-      <input type="radio" id="guardian">
-      <label for="guardian"> Guardian</label><br>
-      <input type="radio" id="crusader">
-      <label for="crusader"> Crusader</label><br>
-      <input type="radio" id="archon">
-      <label for="archon"> Archon</label><br>
-      <input type="radio" id="legend">
-      <label for="legend"> Legend</label><br>
-      <input type="radio" id="ancient">
-      <label for="ancient"> Ancient</label><br>
-      <input type="radio" id="divine">
-      <label for="divine"> Divine</label><br>
-      <input type="radio" id="immortal">
-      <label for="immortal"> Immortal</label><br>
-    </form>
+      <h3>Choose your skill bracket: </h3>
+      <form class="bracket">
+        <input type="radio" id="html" name="bracket" v-model="bracket" value="1">
+        <label for="herald"> Herald</label><br>
+        <input type="radio" id="guardian" name="bracket" v-model="bracket" value="2">
+        <label for="guardian"> Guardian</label><br>
+        <input type="radio" id="crusader" name="bracket" v-model="bracket" value="3">
+        <label for="crusader"> Crusader</label><br>
+        <input type="radio" id="archon" name="bracket" v-model="bracket" value="4">
+        <label for="archon"> Archon</label><br>
+        <input type="radio" id="legend" name="bracket" v-model="bracket" value="5">
+        <label for="legend"> Legend</label><br>
+        <input type="radio" id="ancient" name="bracket" v-model="bracket" value="6">
+        <label for="ancient"> Ancient</label><br>
+        <input type="radio" id="divine" name="bracket" v-model="bracket" value="7">
+        <label for="divine"> Divine</label><br>
+        <input type="radio" id="immortal" name="bracket" v-model="bracket" value="8">
+        <label for="immortal"> Immortal</label><br>
+      </form>
     </div>
     <div class="form-box">
-    <h3>Choose your desired Hero complexity: <br>
-      (Select up to 3 options)</h3>
-    <form class="complexity">
-      <input type="checkbox" id="easy">
-      <label for="easy"> Easy</label><br>
-      <input type="checkbox" id="moderate">
-      <label for="moderate"> Moderate</label><br>
-      <input type="checkbox" id="complex">
-      <label for="complex"> Complex</label><br>
-    </form>
+      <h3>Choose your desired Hero complexity: <br>
+        (Select up to 3 options)</h3>
+      <form class="complexity">
+        <input type="checkbox" id="easy" v-model="heroComplexity" value="1">
+        <label for="easy"> Easy</label><br>
+        <input type="checkbox" id="moderate" v-model="heroComplexity" value="2">
+        <label for="moderate"> Moderate</label><br>
+        <input type="checkbox" id="complex" v-model="heroComplexity" value="3">
+        <label for="complex"> Complex</label><br>
+      </form>
     </div>
     <div class="form-box">
-    <h3>Choose your desired Role:</h3>
-    <form class="role">
-      <input type="radio" id="carry">
-      <label for="carry">Carry</label><br>
-      <input type="radio" id="mid-lane">
-      <label for="mid-lane">Mid Lane</label><br>
-      <input type="radio" id="offlane">
-      <label for="offlane">Offlane</label><br>
-      <input type="radio" id="soft-support">
-      <label for="soft-support">Soft Support</label><br>
-      <input type="radio" id="hard-support">
-      <label for="hard-support">Hard Support</label><br>
-    </form>
+      <h3>Choose your desired Role:</h3>
+      <form class="role">
+        <input type="checkbox" id="carry" v-model="heroPosition" value="1">
+        <label for="carry">Carry</label><br>
+        <input type="checkbox" id="mid-lane" v-model="heroPosition" value="2">
+        <label for="mid-lane">Mid Lane</label><br>
+        <input type="checkbox" id="offlane" v-model="heroPosition" value="3">
+        <label for="offlane">Offlane</label><br>
+        <input type="checkbox" id="soft-support" v-model="heroPosition" value="4">
+        <label for="soft-support">Soft Support</label><br>
+        <input type="checkbox" id="hard-support" v-model="heroPosition" value="5">
+        <label for="hard-support">Hard Support</label><br>
+      </form>
     </div>
   </div>
   <div class="center-button">
-  <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="onButtonClick">
-    Submit
-  </button>
+    <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="filterHeroes">Filter Heroes</button>
+    <!-- Display the filtered heroes if desired -->
+    <div v-for="hero in filteredHeroes" :key="hero.id">
+      <!-- Display hero information -->
+      <p>Name: {{ hero.name }}</p>
+      <p>Win Rate: this.winRate = winRate;</p>
+    </div>
+  </div>
+  <div v-if="filteredHeroes.length > 0">
+    <h2>Filtered Heroes for Bracket {{ bracket }}:</h2>
+    <div v-for="hero in filteredHeroes" :key="hero.id">
+      <p>Name: {{ hero.localized_name }}</p>
+      <p>Positions: {{ hero.heroPosition.join(", ") }}</p>
+      <!-- Display the win rate directly from the filteredHeroes array -->
+      <p>Win Rate: {{ hero.winRate }}%</p>
+    </div>
+  </div>
+  <div v-else>
+    <p>No heroes found for Bracket {{ bracket }}.</p>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "SkillFilter",
   data() {
     return {
-      isClicked: false
+      isClicked: false,
+      bracket: 1,
+      heroPosition: [1,2],
+      heroComplexity: [1], // Initialize with default complexity (Easy)
+      filteredHeroes: [],
     };
   },
   methods: {
+    async filterHeroes() {
+      const backendURL = "http://localhost:8082/api";
+      const bracket = this.bracket;
+      const position = this.heroPosition.join(","); // Serialize the array to a comma-separated string
+      const complexity = this.heroComplexity.join(","); // Serialize the array to a comma-separated string
+
+      try {
+        const url = `${backendURL}/heroes/filter?bracket=${encodeURIComponent(
+            bracket
+        )}&position=${encodeURIComponent(
+            position
+        )}&complexity=${encodeURIComponent(complexity)}`;
+        const response = await axios.get(url);
+        this.filteredHeroes = response.data;
+      } catch (error) {
+        console.error("Error while filtering heroes:", error);
+      }
+    },
     onButtonClick() {
-      // Your logic or action when the button is clicked goes here
-      // For example, you can show a message or perform some other action
-      // And toggle the isClicked state to trigger the CSS animation
       this.isClicked = true;
       setTimeout(() => {
         this.isClicked = false; // Reset the isClicked state after the animation duration
       }, 1000); // Replace 500 with your animation duration in milliseconds
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
+
 <style scoped>
-label{
+label {
   color: white;
 }
+
 input {
   accent-color: #4d0f00;
 }
@@ -98,12 +137,13 @@ button {
   background-color: #f15c41;
   box-shadow: 0 5px 0 #4d0f00;
 }
+
 .form-box {
   flex: 1;
   padding: 20px;
   border: 1px solid black;
   border-radius: 5px;
-  background-color: rgba(40,41,37,0.93);
+  background-color: rgba(40, 41, 37, 0.93);
 }
 
 .form-box h3 {
@@ -114,6 +154,7 @@ button {
   font-size: 18px;
   border-radius: 5px
 }
+
 .glow-on-hover:active {
   box-shadow: none;
   transform: translateY(5px);
@@ -137,6 +178,7 @@ button {
   background-color: #691000;
   background-image: none !important;
 }
+
 .center-button {
   display: flex;
   justify-content: center;
