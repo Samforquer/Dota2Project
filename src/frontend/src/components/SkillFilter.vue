@@ -171,6 +171,7 @@ label {
   flex-grow: 1;
   color: antiquewhite;
 }
+
 .bracket div,
 .complexity div,
 .role div {
@@ -179,13 +180,11 @@ label {
   gap: 5px;
   padding: 10px;
 }
-.form-item {
-  display: flex;
-  align-items: center;
-}
+
 .form-item label {
   flex-grow: 1;
 }
+
 /* Add a custom style for the radio button */
 input[type="radio"] + img {
   border-radius: 50%;
@@ -193,12 +192,6 @@ input[type="radio"] + img {
   padding: 2px;
 }
 
-/* Add a custom style for the checked radio button */
-input[type="radio"]:checked + img {
-  background-color: #4d0f00;
-}
-
-/* Optionally add a hover effect for the labels */
 label:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -207,7 +200,6 @@ label:hover {
   display: flex;
   padding: 10px;
 }
-
 
 .filtered-heroes {
   margin-top: 20px;
@@ -233,8 +225,8 @@ input {
 .form-container {
   display: flex; /* Use flexbox to arrange the forms side by side */
   flex-wrap: wrap;
-  justify-content: space-between; /* Space elements evenly along the container */
-  gap: 10px; /* Add some space between forms */
+  justify-content: space-between;
+  gap: 10px;
 }
 
 button {
