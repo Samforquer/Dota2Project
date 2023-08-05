@@ -51,14 +51,8 @@
   </div>
   <div class="center-button">
     <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="filterHeroes">Filter Heroes</button>
-    <!-- Display the filtered heroes if desired -->
-    <div v-for="hero in filteredHeroes" :key="hero.id">
-      <!-- Display hero information -->
-      <p>Name: {{ hero.name }}</p>
-      <p>Win Rate: this.winRate = winRate;</p>
-    </div>
   </div>
-  <div v-if="filteredHeroes.length > 0">
+  <div class = filtered-heroes v-if="filteredHeroes.length > 0">
     <h2>Filtered Heroes for Bracket {{ bracket }}:</h2>
     <div v-for="hero in filteredHeroes" :key="hero.id">
       <p>Name: {{ hero.localized_name }}</p>
@@ -117,6 +111,23 @@ export default {
 
 
 <style scoped>
+.filtered-heroes {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgba(40, 41, 37, 0.93);
+}
+
+.filtered-heroes h2 {
+  margin-top: 0;
+  background-color: #4d1300;
+  padding: 8px;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
 label {
   color: white;
 }
