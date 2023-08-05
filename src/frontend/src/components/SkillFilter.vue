@@ -22,7 +22,8 @@
       </form>
     </div>
     <div class="form-box">
-      <h3>Choose your desired Hero complexity: <br>
+      <!-- Todo Fix complexity filter here: -->
+      <h3>Choose your maximum desired complexity: <br>
         (Select up to 3 options)</h3>
       <form class="complexity">
         <input type="checkbox" id="easy" v-model="heroComplexity" value="1">
