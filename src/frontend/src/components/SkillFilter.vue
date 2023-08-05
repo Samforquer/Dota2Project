@@ -3,57 +3,96 @@
     <div class="form-box">
       <h3>Choose your skill bracket: </h3>
       <form class="bracket">
+        <span id="herald">
+          <img class="icon-img" src="../assets/herald.png" alt="herald-img">
         <input type="radio" id="html" name="bracket" v-model="bracket" value="1">
-        <label for="herald"> Herald</label><br>
+        <label for="herald">Herald</label><br>
+        </span>
+        <span id="guardian">
+          <img class="icon-img" src="../assets/guardian.png" alt="guardian-img">
         <input type="radio" id="guardian" name="bracket" v-model="bracket" value="2">
         <label for="guardian"> Guardian</label><br>
+        </span>
+        <span id="crusader">
+          <img class="icon-img" src="../assets/crusader.png" alt="crusader-img">
         <input type="radio" id="crusader" name="bracket" v-model="bracket" value="3">
         <label for="crusader"> Crusader</label><br>
+           </span>
+        <span id="archon">
+          <img class="icon-img" src="../assets/archon.png" alt="archon-img">
         <input type="radio" id="archon" name="bracket" v-model="bracket" value="4">
         <label for="archon"> Archon</label><br>
+          </span>
+        <span id="legend">
+          <img class="icon-img" src="../assets/legend.png" alt="legend-img">
         <input type="radio" id="legend" name="bracket" v-model="bracket" value="5">
         <label for="legend"> Legend</label><br>
+          </span>
+        <span id="ancient">
+          <img class="icon-img" src="../assets/ancient.png" alt="ancient-img">
         <input type="radio" id="ancient" name="bracket" v-model="bracket" value="6">
         <label for="ancient"> Ancient</label><br>
+          </span>
+        <span id="divine">
+          <img class="icon-img" src="../assets/divine.png" alt="divine-img">
         <input type="radio" id="divine" name="bracket" v-model="bracket" value="7">
         <label for="divine"> Divine</label><br>
+          </span>
+        <span id="immortal">
+          <img class="icon-img" src="../assets/immortal.png" alt="immortal-img">
         <input type="radio" id="immortal" name="bracket" v-model="bracket" value="8">
         <label for="immortal"> Immortal</label><br>
+          </span>
       </form>
     </div>
     <div class="form-box">
-      <!-- Todo Fix complexity filter here: -->
-      <h3>Choose your maximum desired complexity: <br>
+      <h3>Choose your desired hero complexity: <br>
         (Select up to 3 options)</h3>
       <form class="complexity">
-        <input type="checkbox" id="easy" v-model="heroComplexity" value="1">
-        <label for="easy"> Easy</label><br>
-        <input type="checkbox" id="moderate" v-model="heroComplexity" value="2">
-        <label for="moderate"> Moderate</label><br>
-        <input type="checkbox" id="complex" v-model="heroComplexity" value="3">
-        <label for="complex"> Complex</label><br>
+        <div>
+          <input type="checkbox" id="easy" v-model="heroComplexity" value="1">
+          <label for="easy"> Easy</label>
+        </div>
+        <div>
+          <input type="checkbox" id="moderate" v-model="heroComplexity" value="2">
+          <label for="moderate"> Moderate</label>
+        </div>
+        <div>
+          <input type="checkbox" id="complex" v-model="heroComplexity" value="3">
+          <label for="complex"> Complex</label>
+        </div>
       </form>
     </div>
     <div class="form-box">
       <h3>Choose your desired Role:</h3>
       <form class="role">
-        <input type="checkbox" id="carry" v-model="heroPosition" value="1">
-        <label for="carry">Carry</label><br>
-        <input type="checkbox" id="mid-lane" v-model="heroPosition" value="2">
-        <label for="mid-lane">Mid Lane</label><br>
-        <input type="checkbox" id="offlane" v-model="heroPosition" value="3">
-        <label for="offlane">Offlane</label><br>
-        <input type="checkbox" id="soft-support" v-model="heroPosition" value="4">
-        <label for="soft-support">Soft Support</label><br>
-        <input type="checkbox" id="hard-support" v-model="heroPosition" value="5">
-        <label for="hard-support">Hard Support</label><br>
+        <div>
+          <input type="checkbox" id="carry" v-model="heroPosition" value="1">
+          <label for="carry">Carry</label>
+        </div>
+        <div>
+          <input type="checkbox" id="mid-lane" v-model="heroPosition" value="2">
+          <label for="mid-lane">Mid Lane</label>
+        </div>
+        <div>
+          <input type="checkbox" id="offlane" v-model="heroPosition" value="3">
+          <label for="offlane">Offlane</label>
+        </div>
+        <div>
+          <input type="checkbox" id="soft-support" v-model="heroPosition" value="4">
+          <label for="soft-support">Soft Support</label>
+        </div>
+        <div>
+          <input type="checkbox" id="hard-support" v-model="heroPosition" value="5">
+          <label for="hard-support">Hard Support</label>
+        </div>
       </form>
     </div>
   </div>
   <div class="center-button">
     <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="filterHeroes">Filter Heroes</button>
   </div>
-  <div class = filtered-heroes v-if="filteredHeroes.length > 0">
+  <div class=filtered-heroes v-if="filteredHeroes.length > 0">
     <h2>Filtered Heroes for Bracket {{ bracket }}:</h2>
     <div v-for="hero in filteredHeroes" :key="hero.id">
       <p>Name: {{ hero.localized_name }}</p>
@@ -76,7 +115,7 @@ export default {
     return {
       isClicked: false,
       bracket: 1,
-      heroPosition: [1,2],
+      heroPosition: [1, 2],
       heroComplexity: [1], // Initialize with default complexity (Easy)
       filteredHeroes: [],
     };
@@ -112,6 +151,64 @@ export default {
 
 
 <style scoped>
+.icon-img {
+  height: auto;
+  width: 40px;
+}
+
+label:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  flex-grow: 1;
+  color: antiquewhite;
+}
+.bracket div,
+.complexity div,
+.role div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+}
+.form-item {
+  display: flex;
+  align-items: center;
+}
+.form-item label {
+  flex-grow: 1;
+}
+/* Add a custom style for the radio button */
+input[type="radio"] + img {
+  border-radius: 50%;
+  border: 2px solid #4d0f00;
+  padding: 2px;
+}
+
+/* Add a custom style for the checked radio button */
+input[type="radio"]:checked + img {
+  background-color: #4d0f00;
+}
+
+/* Optionally add a hover effect for the labels */
+label:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#herald, #guardian, #crusader, #archon, #legend, #ancient, #divine, #immortal {
+  display: flex;
+  padding: 10px;
+}
+
+
 .filtered-heroes {
   margin-top: 20px;
   padding: 20px;
@@ -127,10 +224,6 @@ export default {
   color: #fff;
   font-size: 18px;
   border-radius: 5px;
-}
-
-label {
-  color: white;
 }
 
 input {
@@ -196,6 +289,4 @@ button {
   justify-content: center;
   margin-top: 50px;
 }
-
-
 </style>
