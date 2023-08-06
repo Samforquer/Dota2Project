@@ -5,42 +5,42 @@
       <form class="bracket">
         <span id="herald">
           <img class="icon-img" src="../assets/herald.png" alt="herald-img">
-        <input type="radio" id="html" name="bracket" v-model="bracket" value="1">
+        <input type="radio" id="herald" name="bracket" v-model="selectedBracket" value="1">
         <label for="herald">Herald</label><br>
         </span>
         <span id="guardian">
           <img class="icon-img" src="../assets/guardian.png" alt="guardian-img">
-        <input type="radio" id="guardian" name="bracket" v-model="bracket" value="2">
+        <input type="radio" id="guardian" name="bracket" v-model="selectedBracket" value="2">
         <label for="guardian"> Guardian</label><br>
         </span>
         <span id="crusader">
           <img class="icon-img" src="../assets/crusader.png" alt="crusader-img">
-        <input type="radio" id="crusader" name="bracket" v-model="bracket" value="3">
+        <input type="radio" id="crusader" name="bracket" v-model="selectedBracket" value="3">
         <label for="crusader"> Crusader</label><br>
            </span>
         <span id="archon">
           <img class="icon-img" src="../assets/archon.png" alt="archon-img">
-        <input type="radio" id="archon" name="bracket" v-model="bracket" value="4">
+        <input type="radio" id="archon" name="bracket" v-model="selectedBracket" value="4">
         <label for="archon"> Archon</label><br>
           </span>
         <span id="legend">
           <img class="icon-img" src="../assets/legend.png" alt="legend-img">
-        <input type="radio" id="legend" name="bracket" v-model="bracket" value="5">
+        <input type="radio" id="legend" name="bracket" v-model="selectedBracket" value="5">
         <label for="legend"> Legend</label><br>
           </span>
         <span id="ancient">
           <img class="icon-img" src="../assets/ancient.png" alt="ancient-img">
-        <input type="radio" id="ancient" name="bracket" v-model="bracket" value="6">
+        <input type="radio" id="ancient" name="bracket" v-model="selectedBracket" value="6">
         <label for="ancient"> Ancient</label><br>
           </span>
         <span id="divine">
           <img class="icon-img" src="../assets/divine.png" alt="divine-img">
-        <input type="radio" id="divine" name="bracket" v-model="bracket" value="7">
+        <input type="radio" id="divine" name="bracket" v-model="selectedBracket" value="7">
         <label for="divine"> Divine</label><br>
           </span>
         <span id="immortal">
           <img class="icon-img" src="../assets/immortal.png" alt="immortal-img">
-        <input type="radio" id="immortal" name="bracket" v-model="bracket" value="8">
+        <input type="radio" id="immortal" name="bracket" v-model="selectedBracket" value="8">
         <label for="immortal"> Immortal</label><br>
           </span>
       </form>
@@ -92,23 +92,23 @@
   <div class="center-button">
     <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="filterHeroes">Filter Heroes</button>
   </div>
-  <div class=filtered-heroes v-if="filteredHeroes.length > 0">
-    <h2>Filtered Heroes for Bracket {{ bracket }}:</h2>
+  <div class="filtered-heroes" v-if="filteredHeroes.length > 0">
+    <h2>Filtered Heroes for Bracket {{ selectedBracket }}:</h2>
     <div v-for="hero in filteredHeroes" :key="hero.id">
       <p>Name: {{ hero.localized_name }}</p>
       <p>Positions: {{ hero.heroPosition.join(", ") }}</p>
-      <p>Herald Win Rate: {{ hero.heraldWinRate }}%</p>
-      <p>Guardian Win Rate: {{ hero.guardianWinRate }}%</p>
-      <p>Crusader Win Rate: {{ hero.crusaderWinRate }}%</p>
-      <p>Archon Win Rate: {{ hero.archonWinRate }}%</p>
-      <p>Legend Win Rate: {{ hero.legendWinRate }}%</p>
-      <p>Ancient Win Rate: {{ hero.ancientWinRate }}%</p>
-      <p>Divine Win Rate: {{ hero.divineWinRate }}%</p>
-      <p>Immortal Win Rate: {{ hero.immortalWinRate }}%</p>
+      <p v-if="selectedBracket === '1'">Herald Win Rate: {{ hero.heraldWinRate }}%</p>
+      <p v-else-if="selectedBracket === '2'">Guardian Win Rate: {{ hero.guardianWinRate }}%</p>
+      <p v-else-if="selectedBracket === '3'">Crusader Win Rate: {{ hero.crusaderWinRate }}%</p>
+      <p v-else-if="selectedBracket === '4'">Archon Win Rate: {{ hero.archonWinRate }}%</p>
+      <p v-else-if="selectedBracket === '5'">Legend Win Rate: {{ hero.legendWinRate }}%</p>
+      <p v-else-if="selectedBracket === '6'">Ancient Win Rate: {{ hero.ancientWinRate }}%</p>
+      <p v-else-if="selectedBracket === '7'">Divine Win Rate: {{ hero.divineWinRate }}%</p>
+      <p v-else-if="selectedBracket === '8'">Immortal Win Rate: {{ hero.immortalWinRate }}%</p>
     </div>
   </div>
   <div v-else>
-    <p>No heroes found for Bracket {{ bracket }}.</p>
+    <p>No heroes found for Bracket {{ selectedBracket }}.</p>
   </div>
 </template>
 
@@ -121,6 +121,7 @@ export default {
     return {
       isClicked: false,
       bracket: 1,
+      selectedBracket:'',
       heroPosition: [1, 2],
       heroComplexity: [1],
       filteredHeroes: [],
