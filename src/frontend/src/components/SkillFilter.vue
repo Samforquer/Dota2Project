@@ -166,7 +166,7 @@ label {
   gap: 10px;
   cursor: pointer;
   padding: 5px;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 5px;
   flex-grow: 1;
   color: antiquewhite;
@@ -183,13 +183,6 @@ label {
 
 .form-item label {
   flex-grow: 1;
-}
-
-/* Add a custom style for the radio button */
-input[type="radio"] + img {
-  border-radius: 50%;
-  border: 2px solid #4d0f00;
-  padding: 2px;
 }
 
 label:hover {
@@ -230,14 +223,13 @@ input {
 }
 
 button {
-  margin: 10px;
+  margin: -30px;
   background-color: #f15c41;
   box-shadow: 0 5px 0 #4d0f00;
 }
 
 .form-box {
   flex: 1;
-  padding: 20px;
   border: 1px solid black;
   border-radius: 5px;
   background-color: rgba(40, 41, 37, 0.93);
