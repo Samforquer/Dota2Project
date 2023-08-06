@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Hero{
     private int id;
+    @JsonProperty("img")
+    private String img;
     @JsonProperty("localized_name")
     private String name;
     @JsonProperty("primary_attr")
@@ -61,8 +63,9 @@ public class Hero{
     @JsonProperty("heroPosition")
     private List<Integer> heroPosition;
 
-    public Hero(int id, String name, String primaryAttr, String attackType, int heroComplexity, List<Integer> heroPosition) {
+    public Hero(int id, String img, String name, String primaryAttr, String attackType, int heroComplexity, List<Integer> heroPosition) {
         this.id = id;
+        this.img = img;
         this.name = name;
         this.primaryAttr=primaryAttr;
         this.attackType = attackType;

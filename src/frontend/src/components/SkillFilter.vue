@@ -97,8 +97,14 @@
     <div v-for="hero in filteredHeroes" :key="hero.id">
       <p>Name: {{ hero.localized_name }}</p>
       <p>Positions: {{ hero.heroPosition.join(", ") }}</p>
-      <!-- Display the win rate directly from the filteredHeroes array -->
-      <p>Win Rate: {{ hero.winRate }}%</p>
+      <p>Herald Win Rate: {{ hero.heraldWinRate }}%</p>
+      <p>Guardian Win Rate: {{ hero.guardianWinRate }}%</p>
+      <p>Crusader Win Rate: {{ hero.crusaderWinRate }}%</p>
+      <p>Archon Win Rate: {{ hero.archonWinRate }}%</p>
+      <p>Legend Win Rate: {{ hero.legendWinRate }}%</p>
+      <p>Ancient Win Rate: {{ hero.ancientWinRate }}%</p>
+      <p>Divine Win Rate: {{ hero.divineWinRate }}%</p>
+      <p>Immortal Win Rate: {{ hero.immortalWinRate }}%</p>
     </div>
   </div>
   <div v-else>
@@ -116,7 +122,7 @@ export default {
       isClicked: false,
       bracket: 1,
       heroPosition: [1, 2],
-      heroComplexity: [1], // Initialize with default complexity (Easy)
+      heroComplexity: [1],
       filteredHeroes: [],
     };
   },
@@ -124,8 +130,8 @@ export default {
     async filterHeroes() {
       const backendURL = "http://localhost:8082/api";
       const bracket = this.bracket;
-      const position = this.heroPosition.join(","); // Serialize the array to a comma-separated string
-      const complexity = this.heroComplexity.join(","); // Serialize the array to a comma-separated string
+      const position = this.heroPosition.join(",");
+      const complexity = this.heroComplexity.join(",");
 
       try {
         const url = `${backendURL}/heroes/filter?bracket=${encodeURIComponent(
@@ -142,8 +148,8 @@ export default {
     onButtonClick() {
       this.isClicked = true;
       setTimeout(() => {
-        this.isClicked = false; // Reset the isClicked state after the animation duration
-      }, 1000); // Replace 500 with your animation duration in milliseconds
+        this.isClicked = false;
+      }, 1000);
     },
   },
 };
@@ -216,7 +222,7 @@ input {
 }
 
 .form-container {
-  display: flex; /* Use flexbox to arrange the forms side by side */
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
