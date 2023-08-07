@@ -75,13 +75,14 @@ public class Hero{
 
     public Hero() {
     }
-
+    public String getImg(){
+        return img;
+    }
+    public void setImg(String img){
+        this.img= img;
+    }
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -90,23 +91,6 @@ public class Hero{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPrimaryAttr() {
-        return primaryAttr;
-    }
-
-    public void setPrimaryAttr(String primaryAttr) {
-        this.primaryAttr = primaryAttr;
-    }
-
-
-    public String getAttackType() {
-        return attackType;
-    }
-
-    public void setAttackType(String attackType) {
-        this.attackType = attackType;
     }
 
     public double getPick1() {

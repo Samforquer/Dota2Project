@@ -95,9 +95,12 @@
   <div class="filtered-heroes" v-if="filteredHeroes.length > 0">
     <h2>Filtered Heroes for Bracket {{ selectedBracket }}:</h2>
     <div v-for="hero in filteredHeroes" :key="hero.id">
+      <div class="results">
       <p>Name: {{ hero.localized_name }}</p>
+      <p>Complexity: {{hero.heroComplexity}}</p>
+      <img class="hero-img" :src="`${BASE_API_URL}${hero.img}`" :alt="hero.localized_name" />
       <p>Positions: {{ hero.heroPosition.join(", ") }}</p>
-      <p v-if="selectedBracket === '1'">Herald Win Rate: {{ hero.heraldWinRate }}%</p>
+        <p v-if="selectedBracket === '1'">Herald Win Rate: {{ hero.heraldWinRate }}%</p>
       <p v-else-if="selectedBracket === '2'">Guardian Win Rate: {{ hero.guardianWinRate }}%</p>
       <p v-else-if="selectedBracket === '3'">Crusader Win Rate: {{ hero.crusaderWinRate }}%</p>
       <p v-else-if="selectedBracket === '4'">Archon Win Rate: {{ hero.archonWinRate }}%</p>
@@ -105,6 +108,7 @@
       <p v-else-if="selectedBracket === '6'">Ancient Win Rate: {{ hero.ancientWinRate }}%</p>
       <p v-else-if="selectedBracket === '7'">Divine Win Rate: {{ hero.divineWinRate }}%</p>
       <p v-else-if="selectedBracket === '8'">Immortal Win Rate: {{ hero.immortalWinRate }}%</p>
+      </div>
     </div>
   </div>
   <div v-else>
@@ -125,7 +129,14 @@ export default {
       heroPosition: [1, 2],
       heroComplexity: [1],
       filteredHeroes: [],
+      img:''
     };
+  },
+  computed: {
+    BASE_API_URL() {
+      return "https://api.opendota.com";
+    },
+
   },
   methods: {
     async filterHeroes() {
@@ -162,7 +173,17 @@ export default {
   height: auto;
   width: 40px;
 }
-
+.hero-img{
+  width: 130px;
+  height: auto;
+}
+.results{
+  margin: 7px;
+  background-color: dimgray;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding-left: 20px;
+}
 label:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -185,7 +206,7 @@ label {
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 10px;
+  padding: 8px;
 }
 
 .form-item label {
@@ -202,7 +223,7 @@ label:hover {
 }
 
 .filtered-heroes {
-  margin-top: 20px;
+  margin-top: 40px;
   padding: 20px;
   border: 1px solid black;
   border-radius: 5px;
@@ -230,7 +251,7 @@ input {
 }
 
 button {
-  margin: -30px;
+  margin: -20px;
   background-color: #f15c41;
   box-shadow: 0 5px 0 #4d0f00;
 }

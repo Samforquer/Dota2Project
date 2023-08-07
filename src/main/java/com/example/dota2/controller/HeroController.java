@@ -31,7 +31,10 @@ public class HeroController {
     public ResponseEntity<List<Hero>> getAllHeroes() {
         // Fetch all heroes from the OpenDota API
         Hero[] allHeroes = heroApiService.getAllHeroes();
-
+        for (Hero hero : allHeroes) {
+            Hero detailedHeroData = heroApiService.getHeroDetails(hero.getId());
+            hero.setImg(detailedHeroData.getImg());
+        }
         // Return all heroes as an HTTP response
         return ResponseEntity.ok(List.of(allHeroes));
     }
