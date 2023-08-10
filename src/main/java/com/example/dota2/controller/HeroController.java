@@ -43,7 +43,7 @@ public class HeroController {
     public ResponseEntity<List<Hero>> filterHeroes(
             @RequestParam int bracket,
             @RequestParam List<Integer> position,
-            @RequestParam int complexity
+            @RequestParam List<Integer> complexity
     ) {
         // Fetch all heroes from the OpenDota API
         Hero[] allHeroes = heroApiService.getAllHeroes();

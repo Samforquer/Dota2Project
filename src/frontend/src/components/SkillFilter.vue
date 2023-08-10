@@ -68,23 +68,23 @@
       <form class="role">
         <div>
           <input type="checkbox" id="carry" v-model="heroPosition" value="1">
-          <label for="carry">Carry</label>
+          <label for="carry">1. Carry</label>
         </div>
         <div>
           <input type="checkbox" id="mid-lane" v-model="heroPosition" value="2">
-          <label for="mid-lane">Mid Lane</label>
+          <label for="mid-lane">2. Mid Lane</label>
         </div>
         <div>
           <input type="checkbox" id="offlane" v-model="heroPosition" value="3">
-          <label for="offlane">Offlane</label>
+          <label for="offlane">3. Offlane</label>
         </div>
         <div>
           <input type="checkbox" id="soft-support" v-model="heroPosition" value="4">
-          <label for="soft-support">Soft Support</label>
+          <label for="soft-support">4. Soft Support</label>
         </div>
         <div>
           <input type="checkbox" id="hard-support" v-model="heroPosition" value="5">
-          <label for="hard-support">Hard Support</label>
+          <label for="hard-support">5. Hard Support</label>
         </div>
       </form>
     </div>
@@ -96,10 +96,10 @@
     <h2>Filtered Heroes for Bracket {{ selectedBracket }}:</h2>
     <div v-for="hero in filteredHeroes" :key="hero.id">
       <div class="results">
-      <p>Name: {{ hero.localized_name }}</p>
-      <p>Complexity: {{hero.heroComplexity}}</p>
+      <p>Hero: {{ hero.localized_name }}</p>
+      <p>Complexity: {{hero.heroComplexity.join(", ")}}</p>
       <img class="hero-img" :src="`${BASE_API_URL}${hero.img}`" :alt="hero.localized_name" />
-      <p>Positions: {{ hero.heroPosition.join(", ") }}</p>
+      <p>Position(s): {{ hero.heroPosition.join(", ") }}</p>
         <p v-if="selectedBracket === '1'">Herald Win Rate: {{ hero.heraldWinRate }}%</p>
       <p v-else-if="selectedBracket === '2'">Guardian Win Rate: {{ hero.guardianWinRate }}%</p>
       <p v-else-if="selectedBracket === '3'">Crusader Win Rate: {{ hero.crusaderWinRate }}%</p>

@@ -36,6 +36,7 @@ public class HeroApiService {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            // TODO replace this with better error handling
         }
     }
 
