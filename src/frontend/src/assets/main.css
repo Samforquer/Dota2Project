@@ -1,0 +1,35 @@
+@import 'base.css';
+
+#app {
+    border: 3px solid #52140d;
+    border-radius: 5px;
+    width: 85vw;
+    height: 100%;
+    background-color: #4f4d4b;
+    opacity: 0.9;
+    margin: 0 auto;
+    padding: 2rem;
+    font-weight: normal;
+}
+
+a,
+.green {
+    text-decoration: none;
+    color: #4d0f00;
+    transition: 0.4s;
+}
+
+@media (hover: hover) {
+    a:hover {
+        background-color: #f15c41;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        margin: 50px;
+        background-image: url("../assets/Dota2HeroImg.jpg");
+        display: flex;
+        place-items: center;
+    }
+}

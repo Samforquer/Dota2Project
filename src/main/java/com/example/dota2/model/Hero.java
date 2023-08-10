@@ -2,10 +2,13 @@ package com.example.dota2.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Hero{
     private int id;
+    @JsonProperty("img")
+    private String img;
     @JsonProperty("localized_name")
     private String name;
     @JsonProperty("primary_attr")
@@ -57,12 +60,13 @@ public class Hero{
     @JsonProperty("8_win")
     private double win8;
     @JsonProperty("heroComplexity")
-    private int heroComplexity;
+    private List<Integer> heroComplexity;
     @JsonProperty("heroPosition")
     private List<Integer> heroPosition;
 
-    public Hero(int id, String name, String primaryAttr, String attackType, int heroComplexity, List<Integer> heroPosition) {
+    public Hero(int id, String img, String name, String primaryAttr, String attackType, List<Integer> heroComplexity, List<Integer> heroPosition) {
         this.id = id;
+        this.img = img;
         this.name = name;
         this.primaryAttr=primaryAttr;
         this.attackType = attackType;
@@ -72,13 +76,14 @@ public class Hero{
 
     public Hero() {
     }
-
+    public String getImg(){
+        return img;
+    }
+    public void setImg(String img){
+        this.img= img;
+    }
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -87,23 +92,6 @@ public class Hero{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPrimaryAttr() {
-        return primaryAttr;
-    }
-
-    public void setPrimaryAttr(String primaryAttr) {
-        this.primaryAttr = primaryAttr;
-    }
-
-
-    public String getAttackType() {
-        return attackType;
-    }
-
-    public void setAttackType(String attackType) {
-        this.attackType = attackType;
     }
 
     public double getPick1() {
@@ -178,11 +166,11 @@ public class Hero{
         return win8;
     }
 
-    public int getHeroComplexity() {
+    public List<Integer> getHeroComplexity() {
         return heroComplexity;
     }
 
-    public void setHeroComplexity(int heroComplexity) {
+    public void setHeroComplexity(List<Integer> heroComplexity) {
         this.heroComplexity = heroComplexity;
     }
 

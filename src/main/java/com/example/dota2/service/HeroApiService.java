@@ -36,10 +36,15 @@ public class HeroApiService {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            // TODO replace this with better error handling
         }
     }
 
-
+    public Hero getHeroDetails(int heroId) {
+        // Fetch detailed hero data from the OpenDota API
+        String url = "https://api.opendota.com/api/herostats/" + heroId;
+        return restTemplate.getForObject(url, Hero.class);
+    }
     public Hero[] getAllHeroes() {
         String apiUrl = "https://api.opendota.com/api/herostats";
         ResponseEntity<Hero[]> response = restTemplate.getForEntity(apiUrl, Hero[].class);
