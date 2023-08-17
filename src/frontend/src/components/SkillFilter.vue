@@ -1,7 +1,7 @@
 <template>
   <div class="form-container">
     <div class="form-box">
-      <h3>Choose your skill bracket: </h3>
+      <h3>Choose your skill bracket (choose one): </h3>
       <form class="bracket">
         <span id="herald">
           <img class="icon-img" src="../assets/herald.png" alt="herald-img">
@@ -46,8 +46,8 @@
       </form>
     </div>
     <div class="form-box">
-      <h3>Choose your desired hero complexity: <br>
-        (Select up to 3 options)</h3>
+      <h3>Choose your desired hero complexity (choose up to 3): <br>
+        </h3>
       <form class="complexity">
         <div>
           <input type="checkbox" id="easy" v-model="heroComplexity" value="1">
@@ -64,7 +64,7 @@
       </form>
     </div>
     <div class="form-box">
-      <h3>Choose your desired Role:</h3>
+      <h3>Choose your desired Role(s) (choose up to 5):</h3>
       <form class="role">
         <div>
           <input type="checkbox" id="carry" v-model="heroPosition" value="1">
@@ -127,7 +127,7 @@ export default {
       isClicked: false,
       bracket: 1,
       selectedBracket:'',
-      heroPosition: [1, 2],
+      heroPosition: [1],
       heroComplexity: [1],
       filteredHeroes: [],
       img:''
@@ -136,6 +136,12 @@ export default {
   computed: {
     BASE_API_URL() {
       return "https://api.opendota.com";
+    },
+    winRateThreshold(){
+      const bracketWinRate = `${this.selectedBracket}WinRate`;
+      return this.sortedHeroes.filter(hero => {
+        return hero[bracketWinRate] >= 50;
+      });
     },
     // Added for sorting win rates in descending order.
     sortedHeroes() {
@@ -226,7 +232,7 @@ label {
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 8px;
+  padding: 6px;
 }
 
 .form-item label {
@@ -239,7 +245,7 @@ label:hover {
 
 #herald, #guardian, #crusader, #archon, #legend, #ancient, #divine, #immortal {
   display: flex;
-  padding: 10px;
+  padding: 6px;
 }
 
 .filtered-heroes {

@@ -604,13 +604,13 @@
         "id":102,
         "localized_name": "Abaddon",
         "heroComplexity": [1],
-        "heroPosition": [1,3]
+        "heroPosition": [1,3,5]
     },
     {
         "id":103,
         "localized_name": "Elder Titan",
         "heroComplexity": [2],
-        "heroPosition": [3]
+        "heroPosition": [3,5]
     },
     {
         "id":104,
