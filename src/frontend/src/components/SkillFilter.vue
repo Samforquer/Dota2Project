@@ -93,7 +93,7 @@
     <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="filterHeroes">Filter Heroes</button>
   </div>
   <div class="filtered-heroes" v-if="filteredHeroes.length > 0">
-    <h2>Filtered Heroes for Bracket {{ selectedBracket }}:</h2>
+    <h2>Filtered Heroes for Bracket {{ selectedBracket }} for your selected role(s) :</h2>
     <div v-for="hero in sortedHeroes" :key="hero.id">
       <div class="results">
       <p>Hero: {{ hero.localized_name }}</p>
@@ -143,8 +143,8 @@ export default {
         return hero[bracketWinRate] >= 50;
       });
     },
-    // Added for sorting win rates in descending order.
     sortedHeroes() {
+      // Added for sorting win rates in descending order.
       return this.filteredHeroes.slice().sort((a, b) => {
         return this.getWinRateForBracket(b) - this.getWinRateForBracket(a);
       });
