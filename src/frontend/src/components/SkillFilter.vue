@@ -94,20 +94,21 @@
   </div>
   <div class="filtered-heroes" v-if="filteredHeroes.length > 0">
     <h2>Filtered Heroes for Bracket {{ selectedBracket }}:</h2>
-    <div v-for="hero in filteredHeroes" :key="hero.id">
+    <div v-for="hero in sortedHeroes" :key="hero.id">
       <div class="results">
       <p>Hero: {{ hero.localized_name }}</p>
       <p>Complexity: {{hero.heroComplexity.join(", ")}}</p>
       <img class="hero-img" :src="`${BASE_API_URL}${hero.img}`" :alt="hero.localized_name" />
       <p>Position(s): {{ hero.heroPosition.join(", ") }}</p>
-        <p v-if="selectedBracket === '1'">Herald Win Rate: {{ hero.heraldWinRate }}%</p>
-      <p v-else-if="selectedBracket === '2'">Guardian Win Rate: {{ hero.guardianWinRate }}%</p>
-      <p v-else-if="selectedBracket === '3'">Crusader Win Rate: {{ hero.crusaderWinRate }}%</p>
-      <p v-else-if="selectedBracket === '4'">Archon Win Rate: {{ hero.archonWinRate }}%</p>
-      <p v-else-if="selectedBracket === '5'">Legend Win Rate: {{ hero.legendWinRate }}%</p>
-      <p v-else-if="selectedBracket === '6'">Ancient Win Rate: {{ hero.ancientWinRate }}%</p>
-      <p v-else-if="selectedBracket === '7'">Divine Win Rate: {{ hero.divineWinRate }}%</p>
-      <p v-else-if="selectedBracket === '8'">Immortal Win Rate: {{ hero.immortalWinRate }}%</p>
+        <p v-if="selectedBracket === '1'">Herald Win Rate: {{ hero.heraldWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '2'">Guardian Win Rate: {{ hero.guardianWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '3'">Crusader Win Rate: {{ hero.crusaderWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '4'">Archon Win Rate: {{ hero.archonWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '5'">Legend Win Rate: {{ hero.legendWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '6'">Ancient Win Rate: {{ hero.ancientWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '7'">Divine Win Rate: {{ hero.divineWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '8'">Immortal Win Rate: {{ hero.immortalWinRate.toFixed(2) }}%</p>
+        <!-- Added .toFixed(2) to display in 50.00% format. -->
       </div>
     </div>
   </div>
@@ -136,7 +137,12 @@ export default {
     BASE_API_URL() {
       return "https://api.opendota.com";
     },
-
+    // Added for sorting win rates in descending order.
+    sortedHeroes() {
+      return this.filteredHeroes.slice().sort((a, b) => {
+        return this.getWinRateForBracket(b) - this.getWinRateForBracket(a);
+      });
+    }
   },
   methods: {
     async filterHeroes() {
@@ -162,6 +168,20 @@ export default {
       setTimeout(() => {
         this.isClicked = false;
       }, 1000);
+    },
+    getWinRateForBracket(hero) {
+      // Added for sorting win rates in descending order.
+      switch (this.selectedBracket) {
+        case '1': return hero.heraldWinRate;
+        case '2': return hero.guardianWinRate;
+        case '3': return hero.crusaderWinRate;
+        case '4': return hero.archonWinRate;
+        case '5': return hero.legendWinRate;
+        case '6': return hero.ancientWinRate;
+        case '7': return hero.divineWinRate;
+        case '8': return hero.immortalWinRate;
+        default: return 0;
+      }
     },
   },
 };

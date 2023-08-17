@@ -11,7 +11,7 @@ defineProps({
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
     <h3>
-      Welcome to the free Dota 2 Hero Picker App!
+      This is just a placeholder
     </h3>
   </div>
 </template>
