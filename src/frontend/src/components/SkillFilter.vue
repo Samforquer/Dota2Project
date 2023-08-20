@@ -1,7 +1,7 @@
 <template>
   <div class="form-container">
     <div class="form-box">
-      <h3>Choose your skill bracket: </h3>
+      <h3>Choose your skill bracket (choose one): </h3>
       <form class="bracket">
         <span id="herald">
           <img class="icon-img" src="../assets/herald.png" alt="herald-img">
@@ -45,9 +45,10 @@
           </span>
       </form>
     </div>
+    <!-- > Todo : Separate different filter boxes into different components?<-->
     <div class="form-box">
-      <h3>Choose your desired hero complexity: <br>
-        (Select up to 3 options)</h3>
+      <h3>Choose your desired hero complexity (choose up to 3): <br>
+        </h3>
       <form class="complexity">
         <div>
           <input type="checkbox" id="easy" v-model="heroComplexity" value="1">
@@ -64,7 +65,7 @@
       </form>
     </div>
     <div class="form-box">
-      <h3>Choose your desired Role:</h3>
+      <h3>Choose your desired Role(s) (choose up to 5):</h3>
       <form class="role">
         <div>
           <input type="checkbox" id="carry" v-model="heroPosition" value="1">
@@ -93,21 +94,22 @@
     <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="filterHeroes">Filter Heroes</button>
   </div>
   <div class="filtered-heroes" v-if="filteredHeroes.length > 0">
-    <h2>Filtered Heroes for Bracket {{ selectedBracket }}:</h2>
-    <div v-for="hero in filteredHeroes" :key="hero.id">
+    <h2>Filtered Heroes for Bracket {{ selectedBracket }} for your selected role(s) :</h2>
+    <div v-for="hero in sortedHeroes" :key="hero.id">
       <div class="results">
       <p>Hero: {{ hero.localized_name }}</p>
       <p>Complexity: {{hero.heroComplexity.join(", ")}}</p>
       <img class="hero-img" :src="`${BASE_API_URL}${hero.img}`" :alt="hero.localized_name" />
       <p>Position(s): {{ hero.heroPosition.join(", ") }}</p>
-        <p v-if="selectedBracket === '1'">Herald Win Rate: {{ hero.heraldWinRate }}%</p>
-      <p v-else-if="selectedBracket === '2'">Guardian Win Rate: {{ hero.guardianWinRate }}%</p>
-      <p v-else-if="selectedBracket === '3'">Crusader Win Rate: {{ hero.crusaderWinRate }}%</p>
-      <p v-else-if="selectedBracket === '4'">Archon Win Rate: {{ hero.archonWinRate }}%</p>
-      <p v-else-if="selectedBracket === '5'">Legend Win Rate: {{ hero.legendWinRate }}%</p>
-      <p v-else-if="selectedBracket === '6'">Ancient Win Rate: {{ hero.ancientWinRate }}%</p>
-      <p v-else-if="selectedBracket === '7'">Divine Win Rate: {{ hero.divineWinRate }}%</p>
-      <p v-else-if="selectedBracket === '8'">Immortal Win Rate: {{ hero.immortalWinRate }}%</p>
+        <p v-if="selectedBracket === '1'">Herald Win Rate: {{ hero.heraldWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '2'">Guardian Win Rate: {{ hero.guardianWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '3'">Crusader Win Rate: {{ hero.crusaderWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '4'">Archon Win Rate: {{ hero.archonWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '5'">Legend Win Rate: {{ hero.legendWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '6'">Ancient Win Rate: {{ hero.ancientWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '7'">Divine Win Rate: {{ hero.divineWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === '8'">Immortal Win Rate: {{ hero.immortalWinRate.toFixed(2) }}%</p>
+        <!-- Added .toFixed(2) to display in 50.00% format. -->
       </div>
     </div>
   </div>
@@ -126,7 +128,7 @@ export default {
       isClicked: false,
       bracket: 1,
       selectedBracket:'',
-      heroPosition: [1, 2],
+      heroPosition: [1],
       heroComplexity: [1],
       filteredHeroes: [],
       img:''
@@ -136,7 +138,18 @@ export default {
     BASE_API_URL() {
       return "https://api.opendota.com";
     },
-
+    winRateThreshold(){
+      const bracketWinRate = `${this.selectedBracket}WinRate`;
+      return this.sortedHeroes.filter(hero => {
+        return hero[bracketWinRate] >= 50;
+      });
+    },
+    sortedHeroes() {
+      // Added for sorting win rates in descending order.
+      return this.filteredHeroes.slice().sort((a, b) => {
+        return this.getWinRateForBracket(b) - this.getWinRateForBracket(a);
+      });
+    }
   },
   methods: {
     async filterHeroes() {
@@ -163,6 +176,20 @@ export default {
         this.isClicked = false;
       }, 1000);
     },
+    getWinRateForBracket(hero) {
+      // Added for sorting win rates in descending order.
+      switch (this.selectedBracket) {
+        case '1': return hero.heraldWinRate;
+        case '2': return hero.guardianWinRate;
+        case '3': return hero.crusaderWinRate;
+        case '4': return hero.archonWinRate;
+        case '5': return hero.legendWinRate;
+        case '6': return hero.ancientWinRate;
+        case '7': return hero.divineWinRate;
+        case '8': return hero.immortalWinRate;
+        default: return 0;
+      }
+    },
   },
 };
 </script>
@@ -174,11 +201,11 @@ export default {
   width: 40px;
 }
 .hero-img{
-  width: 130px;
+  width: 100px;
   height: auto;
 }
 .results{
-  margin: 7px;
+  margin: 5px;
   background-color: dimgray;
   border: 1px solid black;
   border-radius: 5px;
@@ -198,6 +225,7 @@ label {
   border-radius: 5px;
   flex-grow: 1;
   color: antiquewhite;
+  background-color: #4f4d4b;
 }
 
 .bracket div,
@@ -206,7 +234,7 @@ label {
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 8px;
+  padding: 6px;
 }
 
 .form-item label {
@@ -219,12 +247,12 @@ label:hover {
 
 #herald, #guardian, #crusader, #archon, #legend, #ancient, #divine, #immortal {
   display: flex;
-  padding: 10px;
+  padding: 6px;
 }
 
 .filtered-heroes {
   margin-top: 40px;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
   background-color: rgba(40, 41, 37, 0.93);

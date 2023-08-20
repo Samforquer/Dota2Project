@@ -544,7 +544,7 @@
         "id":92,
         "localized_name": "Visage",
         "heroComplexity": [3],
-        "heroPosition": [2,3]
+        "heroPosition": [3]
     },
     {
         "id":93,
@@ -604,13 +604,13 @@
         "id":102,
         "localized_name": "Abaddon",
         "heroComplexity": [1],
-        "heroPosition": [1,3]
+        "heroPosition": [1,3,5]
     },
     {
         "id":103,
         "localized_name": "Elder Titan",
         "heroComplexity": [2],
-        "heroPosition": [3]
+        "heroPosition": [3,5]
     },
     {
         "id":104,

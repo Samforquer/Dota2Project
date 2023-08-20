@@ -4,7 +4,7 @@
       <div id="img">
         <img class="header-img" src="https://pbs.twimg.com/profile_images/1478893871199186945/1mA6tezL_400x400.jpg" alt="header-img"/>
       </div>
-      <h1>Dota Minus</h1>
+      <h1>Dota 2 Hero Picker</h1>
     </div>
   </header>
 </template>
