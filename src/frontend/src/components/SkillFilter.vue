@@ -45,6 +45,7 @@
           </span>
       </form>
     </div>
+    <!-- > Todo : Separate different filter boxes into different components?<-->
     <div class="form-box">
       <h3>Choose your desired hero complexity (choose up to 3): <br>
         </h3>
@@ -200,11 +201,11 @@ export default {
   width: 40px;
 }
 .hero-img{
-  width: 130px;
+  width: 100px;
   height: auto;
 }
 .results{
-  margin: 7px;
+  margin: 5px;
   background-color: dimgray;
   border: 1px solid black;
   border-radius: 5px;
@@ -224,6 +225,7 @@ label {
   border-radius: 5px;
   flex-grow: 1;
   color: antiquewhite;
+  background-color: #4f4d4b;
 }
 
 .bracket div,
@@ -250,7 +252,7 @@ label:hover {
 
 .filtered-heroes {
   margin-top: 40px;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
   background-color: rgba(40, 41, 37, 0.93);
