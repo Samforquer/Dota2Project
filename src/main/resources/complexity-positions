@@ -39,7 +39,7 @@
         "id":7,
         "localized_name": "Earthshaker",
         "heroComplexity": [2],
-        "heroPosition": [4]
+        "heroPosition": [2,3,4]
     },
     {
         "id":8,
