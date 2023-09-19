@@ -29,7 +29,12 @@ a,
     body {
         margin: 50px;
         background-image: url("../assets/Dota2HeroImg.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
         display: flex;
         place-items: center;
     }
+
 }

@@ -424,7 +424,7 @@
         "id":72,
         "localized_name": "Gyrocopter",
         "heroComplexity": [1],
-        "heroPosition": [4]
+        "heroPosition": [1,4]
     },
     {
         "id":73,
