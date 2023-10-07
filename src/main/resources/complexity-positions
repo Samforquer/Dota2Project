@@ -190,7 +190,7 @@
         "id":33,
         "localized_name": "Enigma",
         "heroComplexity": [2],
-        "heroPosition": [3]
+        "heroPosition": [3,4]
     },
     {
         "id":34,
@@ -292,7 +292,7 @@
         "id":50,
         "localized_name": "Dazzle",
         "heroComplexity": [1],
-        "heroPosition": [5]
+        "heroPosition": [2,5]
     },
     {
         "id":51,
@@ -310,7 +310,7 @@
         "id":53,
         "localized_name": "Nature's Prophet",
         "heroComplexity": [2],
-        "heroPosition": [3]
+        "heroPosition": [3,4,5]
     },
     {
         "id":54,
@@ -436,7 +436,7 @@
         "id":74,
         "localized_name": "Invoker",
         "heroComplexity": [3],
-        "heroPosition": [2]
+        "heroPosition": [2,4]
     },
     {
         "id":75,
@@ -472,7 +472,7 @@
         "id":80,
         "localized_name": "Lone Druid",
         "heroComplexity": [3],
-        "heroPosition": [2]
+        "heroPosition": [1,2,3]
     },
     {
         "id":81,
@@ -532,7 +532,7 @@
         "id":90,
         "localized_name": "Keeper of the Light",
         "heroComplexity": [2],
-        "heroPosition": [4,5]
+        "heroPosition": [2,4,5]
     },
     {
         "id":91,
@@ -730,18 +730,18 @@
         "id":136,
         "localized_name": "Marci",
         "heroComplexity": [2],
-        "heroPosition": [3]
+        "heroPosition": [3,4,5]
     },
     {
         "id":137,
         "localized_name": "Primal Beast",
         "heroComplexity": [1],
-        "heroPosition": [3]
+        "heroPosition": [2,3]
     },
     {
         "id":138,
         "localized_name": "Muerta",
         "heroComplexity": [1],
-        "heroPosition": [1]
+        "heroPosition": [1,2]
     }
 ]
