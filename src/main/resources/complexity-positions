@@ -136,7 +136,7 @@
         "id":23,
         "localized_name": "Kunkka",
         "heroComplexity": [2],
-        "heroPosition": [2]
+        "heroPosition": [2,3]
     },
     {
         "id":25,
