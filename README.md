@@ -1,4 +1,6 @@
 # Dota2 Hero Picker App
+![ExampleImg](https://github.com/Samforquer/Dota2Project/assets/119086351/278b73ec-b5a8-4529-ba8e-82f0df2a429d)
+![ExampleImg4](https://github.com/Samforquer/Dota2Project/assets/119086351/6aee3096-59cd-46de-8af8-7056699f0041)
 
 The Dota2 Hero Picker App is a web-based tool designed to assist Dota 2 players in making optimal hero selections for their matches. By taking into account factors such as skill bracket, hero complexity, and preferred roles, the app provides personalized hero recommendations.
 
