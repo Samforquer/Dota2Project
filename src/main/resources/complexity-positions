@@ -202,7 +202,7 @@
         "id":35,
         "localized_name": "Sniper",
         "heroComplexity": [1],
-        "heroPosition": [2]
+        "heroPosition": [1,2]
     },
     {
         "id":36,
@@ -244,7 +244,7 @@
         "id":42,
         "localized_name": "Wraith King",
         "heroComplexity": [1],
-        "heroPosition": [1]
+        "heroPosition": [1,3]
     },
     {
         "id":43,
@@ -268,7 +268,7 @@
         "id":46,
         "localized_name": "Templar Assassin",
         "heroComplexity": [2],
-        "heroPosition": [2]
+        "heroPosition": [1,2]
     },
     {
         "id":47,
@@ -328,7 +328,7 @@
         "id":56,
         "localized_name": "Clinkz",
         "heroComplexity": [2],
-        "heroPosition": [4]
+        "heroPosition": [2,4]
     },
     {
         "id":57,
@@ -370,7 +370,7 @@
         "id":63,
         "localized_name": "Weaver",
         "heroComplexity": [2],
-        "heroPosition": [1]
+        "heroPosition": [1,4]
     },
     {
         "id":64,
@@ -598,7 +598,7 @@
         "id":101,
         "localized_name": "Skywrath Mage",
         "heroComplexity": [1],
-        "heroPosition": [4]
+        "heroPosition": [4,5]
     },
     {
         "id":102,
@@ -610,7 +610,7 @@
         "id":103,
         "localized_name": "Elder Titan",
         "heroComplexity": [2],
-        "heroPosition": [3,5]
+        "heroPosition": [3,4,5]
     },
     {
         "id":104,
@@ -742,6 +742,6 @@
         "id":138,
         "localized_name": "Muerta",
         "heroComplexity": [1],
-        "heroPosition": [1,2]
+        "heroPosition": [1,2,4]
     }
 ]
