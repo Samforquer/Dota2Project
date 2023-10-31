@@ -1,6 +1,6 @@
 <template>
   <div class="heroes">
-    <h1>This is a heroes page</h1>
+    <h1>This is a placeholder to add an All Heroes Page later</h1>
   </div>
 </template>
 

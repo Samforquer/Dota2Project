@@ -2,10 +2,10 @@ package com.example.dota2.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Hero{
+
     private int id;
     @JsonProperty("img")
     private String img;
@@ -73,7 +73,6 @@ public class Hero{
         this.heroComplexity = heroComplexity;
         this.heroPosition = heroPosition;
     }
-
     public Hero() {
     }
     public String getImg(){
