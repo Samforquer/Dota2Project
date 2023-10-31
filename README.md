@@ -22,7 +22,7 @@ The Dota2 Hero Picker App is a web-based tool designed to assist Dota 2 players 
 
 ## Technologies Used
 
-- **Frontend:** The app's frontend is built using Vue.js, a progressive JavaScript framework. It interacts with the user and presents hero recommendations.
+- **Frontend:** The app's frontend is built using Vue.js. It interacts with the user and presents hero recommendations.
 - **Backend:** The backend service utilizes Spring Boot, handling hero data, filtering, and API requests.
 - **API:** OpenDota API is used to fetch detailed hero data, including win rates and other statistics.
 - **Styling:** The app is styled using CSS to provide a visually appealing and user-friendly interface.
