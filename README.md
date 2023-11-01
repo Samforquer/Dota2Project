@@ -17,7 +17,7 @@ To run the Dota 2 Hero Picker App locally, follow these steps:
    - Navigate to the `src/frontend` directory within the project:
 
      ```bash
-     cd path/to/your/Dota2Project/src/frontend
+     cd Dota2Project/src/frontend
      ```
 
    - Install the required Node.js dependencies:
