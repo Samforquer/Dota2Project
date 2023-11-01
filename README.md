@@ -4,6 +4,36 @@
 
 The Dota2 Hero Picker App is a web-based tool designed to assist Dota 2 players in making optimal hero selections for their matches. By taking into account factors such as skill bracket, hero complexity, and preferred roles, the app provides personalized hero recommendations.
 
+## Getting Started
+
+To run the Dota 2 Hero Picker App locally, follow these steps:
+
+1. **Clone the Repository**: Start by cloning the project repository to your local machine using the following command: git clone https://github.com/Samforquer/Dota2Project.git
+2. **Backend Setup:**
+- Open the project in your preferred IDE (e.g., IntelliJ IDEA).
+- Run the Spring Boot application from your IDE to start the backend server.
+3. **Frontend Setup**:
+   - Open a terminal or command prompt.
+   - Navigate to the `src/frontend` directory within the project:
+
+     ```bash
+     cd path/to/your/Dota2Project/src/frontend
+     ```
+
+   - Install the required Node.js dependencies:
+
+     ```bash
+     npm install
+     ```
+
+   - Start the Vue.js development server:
+
+     ```bash
+     npm run dev
+     ```
+
+   The development server will likely be running at `http://localhost:5173`. Follow this link or copy/paste into       your browser of choice and you should be able to demo the app from there!
+
 ## Features
 
 - **Skill Bracket Selection:** Choose your skill bracket from Herald to Immortal using the radio buttons. This sets the context for hero recommendations.
