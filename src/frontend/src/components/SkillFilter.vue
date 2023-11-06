@@ -1,51 +1,51 @@
 <template>
   <div class="form-container">
     <div class="form-box">
-      <h3>Choose your skill bracket (choose one): </h3>
+      <h3>Choose your skill bracket (choose 1): </h3>
       <form class="bracket">
         <span id="herald">
           <img class="icon-img" src="../assets/herald.png" alt="herald-img">
-        <input type="radio" id="herald" name="bracket" v-model="selectedBracket" value="1">
-        <label for="herald">Herald</label><br>
+        <input type="radio" id="herald-radio" name="bracket" v-model="selectedBracket" value="1">
+        <label for="herald-radio">Herald</label><br>
         </span>
         <span id="guardian">
           <img class="icon-img" src="../assets/guardian.png" alt="guardian-img">
-        <input type="radio" id="guardian" name="bracket" v-model="selectedBracket" value="2">
-        <label for="guardian"> Guardian</label><br>
+        <input type="radio" id="guardian-radio" name="bracket" v-model="selectedBracket" value="2">
+        <label for="guardian-radio"> Guardian</label><br>
         </span>
         <span id="crusader">
           <img class="icon-img" src="../assets/crusader.png" alt="crusader-img">
-        <input type="radio" id="crusader" name="bracket" v-model="selectedBracket" value="3">
-        <label for="crusader"> Crusader</label><br>
+        <input type="radio" id="crusader-radio" name="bracket" v-model="selectedBracket" value="3">
+        <label for="crusader-radio"> Crusader</label><br>
            </span>
         <span id="archon">
           <img class="icon-img" src="../assets/archon.png" alt="archon-img">
-        <input type="radio" id="archon" name="bracket" v-model="selectedBracket" value="4">
-        <label for="archon"> Archon</label><br>
+        <input type="radio" id="archon-radio" name="bracket" v-model="selectedBracket" value="4">
+        <label for="archon-radio"> Archon</label><br>
           </span>
         <span id="legend">
           <img class="icon-img" src="../assets/legend.png" alt="legend-img">
-        <input type="radio" id="legend" name="bracket" v-model="selectedBracket" value="5">
-        <label for="legend"> Legend</label><br>
+        <input type="radio" id="legend-radio" name="bracket" v-model="selectedBracket" value="5">
+        <label for="legend-radio"> Legend</label><br>
           </span>
         <span id="ancient">
           <img class="icon-img" src="../assets/ancient.png" alt="ancient-img">
-        <input type="radio" id="ancient" name="bracket" v-model="selectedBracket" value="6">
-        <label for="ancient"> Ancient</label><br>
+        <input type="radio" id="ancient-radio" name="bracket" v-model="selectedBracket" value="6">
+        <label for="ancient-radio"> Ancient</label><br>
           </span>
         <span id="divine">
           <img class="icon-img" src="../assets/divine.png" alt="divine-img">
-        <input type="radio" id="divine" name="bracket" v-model="selectedBracket" value="7">
-        <label for="divine"> Divine</label><br>
+        <input type="radio" id="divine-radio" name="bracket" v-model="selectedBracket" value="7">
+        <label for="divine-radio"> Divine</label><br>
           </span>
         <span id="immortal">
           <img class="icon-img" src="../assets/immortal.png" alt="immortal-img">
-        <input type="radio" id="immortal" name="bracket" v-model="selectedBracket" value="8">
-        <label for="immortal"> Immortal</label><br>
+        <input type="radio" id="immortal-radio" name="bracket" v-model="selectedBracket" value="8">
+        <label for="immortal-radio"> Immortal</label><br>
           </span>
       </form>
     </div>
-    <!-- > Todo : Separate different filter boxes into different components?<-->
+    <!-- > Todo : Separate different filter boxes into different components<-->
     <div class="form-box">
       <h3>Choose your desired hero complexity (choose up to 3): <br>
         </h3>
@@ -109,7 +109,6 @@
       <p v-else-if="selectedBracket === '6'">Ancient Win Rate: {{ hero.ancientWinRate.toFixed(2) }}%</p>
       <p v-else-if="selectedBracket === '7'">Divine Win Rate: {{ hero.divineWinRate.toFixed(2) }}%</p>
       <p v-else-if="selectedBracket === '8'">Immortal Win Rate: {{ hero.immortalWinRate.toFixed(2) }}%</p>
-        <!-- Added .toFixed(2) to display in 50.00% format. -->
       </div>
     </div>
   </div>
@@ -153,7 +152,9 @@ export default {
   },
   methods: {
     async filterHeroes() {
-      const backendURL = "http://localhost:8082/api";
+      const backendURL = "/api";
+      /* const backendURL = "http://www.dota2-hero-picker.us-east-1.elasticbeanstalk.com/api";  */
+      /* const backendURL = "http://localhost:8082/api"; TODO find better way to switch between dev and prod URL*/
       const bracket = this.bracket;
       const position = this.heroPosition.join(",");
       const complexity = this.heroComplexity.join(",");

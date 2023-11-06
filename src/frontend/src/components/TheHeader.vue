@@ -20,6 +20,7 @@ header {
   border: 2px solid black;
   border-radius: 3px;
   display: flex;
+  margin-bottom: 15px;
 }
 .header-content {
   display: flex; /* Nested flexbox to arrange image and h1 horizontally */
@@ -37,4 +38,6 @@ h1 {
   color: #4d1300;
   margin: 10px;
 }
+
+
 </style>
