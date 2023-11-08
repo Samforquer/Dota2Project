@@ -29,7 +29,14 @@ public class HeroPickerApplication {
     public FilterRegistrationBean<CorsFilter> corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
+        config.addAllowedOrigin("http://mydota2heropickerappbucket.s3-website-us-east-1.amazonaws.com");
+        config.addAllowedOrigin("https://mydota2heropickerappbucket.s3-website-us-east-1.amazonaws.com");
+        config.addAllowedOrigin("https://d1mnuatqjgcek6.cloudfront.net");
+        config.addAllowedOrigin("http://d1mnuatqjgcek6.cloudfront.net");
+        config.addAllowedOrigin("http://www.dota2heropicker.com");
+        config.addAllowedOrigin("https://www.dota2heropicker.com");
+        config.addAllowedOrigin("http://dota2heropicker.com");
+        config.addAllowedOrigin("https://dota2heropicker.com");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
 
