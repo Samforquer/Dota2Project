@@ -152,7 +152,7 @@ export default {
   },
   methods: {
     async filterHeroes() {
-      const backendURL = "http://www.dota2-hero-picker.us-east-1.elasticbeanstalk.com/api";
+      const backendURL = "https://api.dota2heropicker.com/api";
       /* const backendURL = "http://localhost:8082/api"; TODO find better way to switch between dev and prod URL*/
       const bracket = this.bracket;
       const position = this.heroPosition.join(",");
