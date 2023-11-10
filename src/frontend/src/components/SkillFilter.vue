@@ -45,7 +45,7 @@
           </span>
       </form>
     </div>
-    <!-- > Todo : Separate different filter boxes into different components<-->
+    <!-- > Todo : Separate different filter boxes into different components.<-->
     <div class="form-box">
       <h3>Choose your desired hero complexity (choose up to 3): <br>
         </h3>
