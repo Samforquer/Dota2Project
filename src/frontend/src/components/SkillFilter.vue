@@ -5,42 +5,42 @@
       <form class="bracket">
         <span id="herald">
           <img class="icon-img" src="../assets/herald.png" alt="herald-img">
-        <input type="radio" id="herald-radio" name="bracket" v-model="selectedBracket" value="1">
+        <input type="radio" id="herald-radio" name="bracket" v-model="selectedBracket" value="Herald">
         <label for="herald-radio">Herald</label><br>
         </span>
         <span id="guardian">
           <img class="icon-img" src="../assets/guardian.png" alt="guardian-img">
-        <input type="radio" id="guardian-radio" name="bracket" v-model="selectedBracket" value="2">
+        <input type="radio" id="guardian-radio" name="bracket" v-model="selectedBracket" value="Guardian">
         <label for="guardian-radio"> Guardian</label><br>
         </span>
         <span id="crusader">
           <img class="icon-img" src="../assets/crusader.png" alt="crusader-img">
-        <input type="radio" id="crusader-radio" name="bracket" v-model="selectedBracket" value="3">
+        <input type="radio" id="crusader-radio" name="bracket" v-model="selectedBracket" value="Crusader">
         <label for="crusader-radio"> Crusader</label><br>
            </span>
         <span id="archon">
           <img class="icon-img" src="../assets/archon.png" alt="archon-img">
-        <input type="radio" id="archon-radio" name="bracket" v-model="selectedBracket" value="4">
+        <input type="radio" id="archon-radio" name="bracket" v-model="selectedBracket" value="Archon">
         <label for="archon-radio"> Archon</label><br>
           </span>
         <span id="legend">
           <img class="icon-img" src="../assets/legend.png" alt="legend-img">
-        <input type="radio" id="legend-radio" name="bracket" v-model="selectedBracket" value="5">
+        <input type="radio" id="legend-radio" name="bracket" v-model="selectedBracket" value="Legend">
         <label for="legend-radio"> Legend</label><br>
           </span>
         <span id="ancient">
           <img class="icon-img" src="../assets/ancient.png" alt="ancient-img">
-        <input type="radio" id="ancient-radio" name="bracket" v-model="selectedBracket" value="6">
+        <input type="radio" id="ancient-radio" name="bracket" v-model="selectedBracket" value="Ancient">
         <label for="ancient-radio"> Ancient</label><br>
           </span>
         <span id="divine">
           <img class="icon-img" src="../assets/divine.png" alt="divine-img">
-        <input type="radio" id="divine-radio" name="bracket" v-model="selectedBracket" value="7">
+        <input type="radio" id="divine-radio" name="bracket" v-model="selectedBracket" value="Divine">
         <label for="divine-radio"> Divine</label><br>
           </span>
         <span id="immortal">
           <img class="icon-img" src="../assets/immortal.png" alt="immortal-img">
-        <input type="radio" id="immortal-radio" name="bracket" v-model="selectedBracket" value="8">
+        <input type="radio" id="immortal-radio" name="bracket" v-model="selectedBracket" value="Immortal">
         <label for="immortal-radio"> Immortal</label><br>
           </span>
       </form>
@@ -101,19 +101,21 @@
       <p>Complexity: {{hero.heroComplexity.join(", ")}}</p>
       <img class="hero-img" :src="`${BASE_API_URL}${hero.img}`" :alt="hero.localized_name" />
       <p>Position(s): {{ hero.heroPosition.join(", ") }}</p>
-        <p v-if="selectedBracket === '1'">Herald Win Rate: {{ hero.heraldWinRate.toFixed(2) }}%</p>
-      <p v-else-if="selectedBracket === '2'">Guardian Win Rate: {{ hero.guardianWinRate.toFixed(2) }}%</p>
-      <p v-else-if="selectedBracket === '3'">Crusader Win Rate: {{ hero.crusaderWinRate.toFixed(2) }}%</p>
-      <p v-else-if="selectedBracket === '4'">Archon Win Rate: {{ hero.archonWinRate.toFixed(2) }}%</p>
-      <p v-else-if="selectedBracket === '5'">Legend Win Rate: {{ hero.legendWinRate.toFixed(2) }}%</p>
-      <p v-else-if="selectedBracket === '6'">Ancient Win Rate: {{ hero.ancientWinRate.toFixed(2) }}%</p>
-      <p v-else-if="selectedBracket === '7'">Divine Win Rate: {{ hero.divineWinRate.toFixed(2) }}%</p>
-      <p v-else-if="selectedBracket === '8'">Immortal Win Rate: {{ hero.immortalWinRate.toFixed(2) }}%</p>
+        <p v-if="selectedBracket === 'Herald'">Herald Win Rate: {{ hero.heraldWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === 'Guardian'">Guardian Win Rate: {{ hero.guardianWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === 'Crusader'">Crusader Win Rate: {{ hero.crusaderWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === 'Archon'">Archon Win Rate: {{ hero.archonWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === 'Legend'">Legend Win Rate: {{ hero.legendWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === 'Ancient'">Ancient Win Rate: {{ hero.ancientWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === 'Divine'">Divine Win Rate: {{ hero.divineWinRate.toFixed(2) }}%</p>
+      <p v-else-if="selectedBracket === 'Immortal'">Immortal Win Rate: {{ hero.immortalWinRate.toFixed(2) }}%</p>
       </div>
     </div>
   </div>
-  <div v-else>
-    <p>No heroes found for Bracket {{ selectedBracket }}.</p>
+  <div v-if="isClicked">
+    <div v-show="filteredHeroes.length === 0">
+    <p>No heroes found for:  {{ selectedBracket }} bracket with a Complexity of: {{ heroComplexity }} Please select more complexity options.</p>
+    </div>
   </div>
 </template>
 
@@ -126,9 +128,9 @@ export default {
     return {
       isClicked: false,
       bracket: 1,
-      selectedBracket:'',
+      selectedBracket:'Herald',
       heroPosition: [1],
-      heroComplexity: [1],
+      heroComplexity: [1,2,3],
       filteredHeroes: [],
       img:''
     };
@@ -153,10 +155,11 @@ export default {
   methods: {
     async filterHeroes() {
       const backendURL = "https://api.dota2heropicker.com/api";
-      /* const backendURL = "http://localhost:8082/api"; TODO find better way to switch between dev and prod URL*/
+     /* const backendURL = "http://localhost:8082/api"; */
       const bracket = this.bracket;
       const position = this.heroPosition.join(",");
       const complexity = this.heroComplexity.join(",");
+      this.isClicked = true;
 
       try {
         const url = `${backendURL}/heroes/filter?bracket=${encodeURIComponent(
