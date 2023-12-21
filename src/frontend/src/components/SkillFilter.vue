@@ -94,7 +94,7 @@
     <button class="glow-on-hover" :class="{ 'glow-on-click': isClicked }" @click="filterHeroes">Filter Heroes</button>
   </div>
   <div class="filtered-heroes" v-if="filteredHeroes.length > 0">
-    <h2>Filtered Heroes for Bracket {{ selectedBracket }} for your selected role(s) :</h2>
+    <h2>Filtered Heroes for {{ selectedBracket }} with Complexity of: {{heroComplexity}} and Role of: {{ heroPosition }}:</h2>
     <div v-for="hero in sortedHeroes" :key="hero.id">
       <div class="results">
       <p>Hero: {{ hero.localized_name }}</p>
@@ -154,8 +154,8 @@ export default {
   },
   methods: {
     async filterHeroes() {
-      const backendURL = "https://api.dota2heropicker.com/api";
-     /* const backendURL = "http://localhost:8082/api"; */
+      /* const backendURL = "https://api.dota2heropicker.com/api"; */
+       const backendURL = "http://localhost:8082/api";
       const bracket = this.bracket;
       const position = this.heroPosition.join(",");
       const complexity = this.heroComplexity.join(",");
@@ -182,14 +182,14 @@ export default {
     getWinRateForBracket(hero) {
       // Added for sorting win rates in descending order.
       switch (this.selectedBracket) {
-        case '1': return hero.heraldWinRate;
-        case '2': return hero.guardianWinRate;
-        case '3': return hero.crusaderWinRate;
-        case '4': return hero.archonWinRate;
-        case '5': return hero.legendWinRate;
-        case '6': return hero.ancientWinRate;
-        case '7': return hero.divineWinRate;
-        case '8': return hero.immortalWinRate;
+        case 'Herald': return hero.heraldWinRate;
+        case 'Guardian': return hero.guardianWinRate;
+        case 'Crusader': return hero.crusaderWinRate;
+        case 'Archon': return hero.archonWinRate;
+        case 'Legend': return hero.legendWinRate;
+        case 'Ancient': return hero.ancientWinRate;
+        case 'Divine': return hero.divineWinRate;
+        case 'Immortal': return hero.immortalWinRate;
         default: return 0;
       }
     },

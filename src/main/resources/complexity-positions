@@ -81,14 +81,14 @@
         "id":14,
         "localized_name": "Pudge",
         "heroComplexity": [2],
-        "heroPosition": [4]
+        "heroPosition": [3,4]
     },
 
     {
         "id":15,
         "localized_name": "Razor",
         "heroComplexity": [1],
-        "heroPosition": [3]
+        "heroPosition": [1,3]
     },
     {
         "id":16,
